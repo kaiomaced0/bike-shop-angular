@@ -1,1 +1,34 @@
-<p>login works!</p>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef>Position</th>
+    <td mat-cell *matCellDef="let element">{{element.position}}</td>
+  </ng-container>
+</table>
+<div class="login-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Login</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form>
+        <mat-form-field appearance="fill">
+          <input matInput placeholder="Usuário">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <input matInput type="password" placeholder="Senha">
+        </mat-form-field>
+
+
+        <div class="button-container">
+          <button mat-raised-button class="custom-register-button">Cadastrar</button>
+          <button mat-raised-button class="custom-login-button">Entrar</button>
+        </div>
+        <div class="button-container">
+          <button mat-raised-button class="custom-login-button" (click)="irParaHome()">test-u</button>
+          <button mat-raised-button class="custom-login-button" (click)="irParaHomeAdmin()">test-admin</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

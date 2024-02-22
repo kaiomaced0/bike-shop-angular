@@ -1,21 +1,27 @@
 import { Routes } from '@angular/router';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
+import { AdmMainLayoutComponent } from './admin/adm-main-layout/adm-main-layout.component';
 
 export const routes: Routes = [
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then(m => m.LoginModule) // Rota de login sem o layout principal
+    loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
   },
   {
     path: '',
     component: MainLayoutComponent,
     children: [
       {
-        path: 'home',
+        path: '',
         loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
       },
-      // Outras rotas filhas que usam o layout principal aqui...
     ]
   },
-  { path: '**', redirectTo: 'home' }
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+
+  },
+  { path: '**', redirectTo: '' },
+
 ];
