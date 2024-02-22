@@ -5,17 +5,14 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatMenuModule} from '@angular/material/menu';
 
-
 @Component({
-  selector: 'app-root',
+  selector: 'app-main-layout',
   standalone: true,
   imports: [RouterOutlet, MatIconModule, MatButtonModule, MatToolbarModule, MatMenuModule],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  templateUrl: './main-layout.component.html',
+  styleUrl: './main-layout.component.css'
 })
-
-export class AppComponent {
-  title = 'bike-shop-angular';
+export class MainLayoutComponent {
 
   constructor(private router: Router) {}
 
