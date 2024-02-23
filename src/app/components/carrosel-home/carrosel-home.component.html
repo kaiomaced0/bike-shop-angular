@@ -1,0 +1,9 @@
+<div class="carousel-container">
+  <div class="carousel-slide" [style.transform]="'translateX(' + (-currentSlide * 100) + '%)'">
+    <img src="https://via.placeholder.com/1200x600?text=Promoção+1" alt="Promoção 1">
+    <img src="https://via.placeholder.com/1200x600?text=Promoção+2" alt="Promoção 2">
+    <img src="https://via.placeholder.com/1200x600?text=Promoção+3" alt="Promoção 3">
+  </div>
+  <button class="left-arrow" (click)="moveSlide(-1)">&#10094;</button>
+  <button class="right-arrow" (click)="moveSlide(1)">&#10095;</button>
+</div>
