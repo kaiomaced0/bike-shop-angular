@@ -11,7 +11,7 @@ import { MatIcon } from '@angular/material/icon';
 })
 export class CardProdutoComponent {
   @Input() id: string = 'defaultID'; // Valor padrão para o id
-  @Input() imageUrl: string = 'https://via.placeholder.com/150x180'; // Valor padrão para a imagem
+  @Input() imageUrl: string = 'https://via.placeholder.com/220x250'; // Valor padrão para a imagem
   @Input() title: string = 'Produto Padrão'; // Valor padrão para o título
   @Input() price: number = 0.00; // Valor padrão para o preço
   @Input() stars: number = 0; // Valor padrão para a quantidade de estrelas
