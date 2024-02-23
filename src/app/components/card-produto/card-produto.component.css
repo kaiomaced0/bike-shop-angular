@@ -1,0 +1,66 @@
+.product-card {
+  width: 100%;
+  max-width: 200px; /* Largura máxima do card */
+  height: auto; /* Altura automática para manter a proporção */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px; /* Adiciona uma margem ao redor dos cards para evitar sobreposição */
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.stars {
+  padding-left: 10px;
+}
+
+.title {
+  background-color: #eee;
+  width: 96%;
+  text-align: center;
+}
+
+.price {
+  align-self: flex-start;
+  padding-left: 10px;
+}
+
+.buy-button {
+  margin-top: 10px;
+  width: 100%; /* Faz o botão ocupar toda a largura do card */
+  padding: 5px;
+}
+
+
+
+/* Media query para smartphones */
+@media (max-width: 600px) {
+  .product-card {
+    margin: 10px; /* Aumenta a margem ao redor do card para melhor espaçamento */
+  }
+
+  .card-top {
+    flex-direction: column; /* Empilha os elementos do topo verticalmente */
+    align-items: center; /* Centraliza os elementos do topo */
+  }
+
+  .stars, .buy-button {
+    order: -1; /* Move as estrelas e o botão para o topo dentro do .card-top */
+    margin-bottom: 5px; /* Adiciona uma margem abaixo para espaçamento */
+  }
+
+  .title {
+    background-color: #eee; /* Mantém o fundo do título */
+    padding: 5px 0; /* Adiciona padding ao título para aumentar a área de toque */
+  }
+
+  .price {
+    align-self: center; /* Centraliza o preço no card */
+    margin-bottom: 10px; /* Adiciona margem abaixo do preço para separação do botão */
+  }
+}
