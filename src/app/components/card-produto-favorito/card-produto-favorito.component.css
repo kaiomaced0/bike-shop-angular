@@ -1,0 +1,79 @@
+/* Estilos existentes para desktop */
+
+.produto-favorito {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 400px; /* Ajustar conforme necessário para dispositivos móveis */
+  height: 200px;
+  border: 1px solid #ccc;
+  margin: 10px;
+}
+
+.imagem-produto {
+  width: 150px;
+  height: 180px;
+  margin-right: 20px;
+}
+
+.detalhes-produto {
+  display: flex;
+  flex-direction: column;
+}
+
+.titulo-preco {
+  margin-bottom: 10px;
+}
+
+.titulo {
+  margin: 0;
+  background-color: #eee;
+  padding: 5px 10px;
+}
+
+.preco {
+  margin: 0;
+}
+
+.estrelas-descricao {
+  display: flex;
+  flex-direction: column;
+}
+
+.estrelas {
+  margin: 0;
+}
+
+.descricao {
+  margin: 0;
+}
+
+/* Estilos específicos para dispositivos móveis */
+
+@media (max-width: 600px) {
+  .produto-favorito {
+    flex-direction: column; /* Empilha os elementos verticalmente */
+    width: 100%; /* Aumenta a largura para aproveitar o espaço disponível */
+    height: auto; /* Ajusta a altura automaticamente com base no conteúdo */
+    align-items: center; /* Centraliza os itens horizontalmente */
+  }
+
+  .imagem-produto {
+    margin-top: 5px; /* Remove a margem à direita da imagem */
+    margin-bottom: 10px; /* Adiciona espaço abaixo da imagem */
+    justify-content: center;
+  }
+
+  .detalhes-produto {
+    align-items: center; /* Centraliza os detalhes do produto */
+  }
+
+  .titulo-preco, .estrelas-descricao {
+    align-items: center; /* Centraliza o título, preço, estrelas e descrição */
+  }
+
+  .descricao {
+    text-align: center; /* Centraliza o texto da descrição */
+    padding: 0 10px; /* Adiciona padding para não tocar nas bordas */
+  }
+}
