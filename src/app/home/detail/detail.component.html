@@ -1,1 +1,39 @@
-<p>detail works!</p>
+<div class="product-grid">
+    <div class="miniature-images">
+      <img src="path/to/miniature1.jpg" alt="Miniature 1" (mouseenter)="changeImage('path/to/miniature1.jpg')">
+      <img src="path/to/miniature2.jpg" alt="Miniature 2" (mouseenter)="changeImage('path/to/miniature2.jpg')">
+      <!-- Adicione mais imagens conforme necessário -->
+    </div>
+    <div class="product-details">
+      <div class="title-price">
+        <h2>{{ product.name }}</h2>
+        <div class="price">{{ product.price | currency }}</div>
+      </div>
+      <div class="diagonal-warning">Aviso</div>
+      <select>
+        <option>Modelo 1</option>
+        <option>Modelo 2</option>
+        <!-- Adicione mais opções conforme necessário -->
+      </select>
+      <div class="options">
+        <div>Opção de Pagamento 1</div>
+        <div>Opção de Pagamento 2</div>
+        <!-- Adicione mais opções conforme necessário -->
+      </div>
+      <input type="number" min="1" value="1">
+      <button class="button">Comprar Agora</button>
+      <button class="button">Adicionar ao Carrinho</button>
+      <div class="wishlist-icon">♥</div>
+    </div>
+  </div>
+  <!-- product-details.component.html 
+<div class="product-details">
+    <img src="bike.jpg" alt="Bike Aro 26" class="product-image">
+    <div class="product-detail">
+      <h2>Nome do Produto</h2>
+      <p>Descrição detalhada do produto...</p>
+      <div class="preco">R$ 99,99</div>
+      <button class="add-carrinho">Adicionar ao Carrinho</button>
+    </div>
+  </div>
+  -->
