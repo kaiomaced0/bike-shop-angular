@@ -3,6 +3,10 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 10px;
+  gap: 15px;
+  align-items: center;
+}
+.carrossel{
+  justify-content: center;
   align-items: center;
 }

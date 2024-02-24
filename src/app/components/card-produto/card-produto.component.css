@@ -1,12 +1,16 @@
 .product-card {
   width: 100%;
-  max-width: 200px; /* Largura máxima do card */
-  height: auto; /* Altura automática para manter a proporção */
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  margin: 10px; /* Adiciona uma margem ao redor dos cards para evitar sobreposição */
+  margin: 10px;
+}
+
+.image{
+  align-items: center;
+  padding-top: 2px;
 }
 
 .card-top {
@@ -20,6 +24,7 @@
 }
 
 .title {
+  margin-bottom: 10px;
   background-color: #eee;
   width: 96%;
   text-align: center;
@@ -31,9 +36,22 @@
 }
 
 .buy-button {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  width: 80%;
+  font-weight: bold;
+}
+.like-button{
+  width: 20%;
+}
+
+.buttons{
   margin-top: 10px;
-  width: 100%; /* Faz o botão ocupar toda a largura do card */
-  padding: 5px;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
 }
 
 

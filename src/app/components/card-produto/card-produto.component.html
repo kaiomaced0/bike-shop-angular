@@ -1,14 +1,14 @@
 <mat-card class="product-card">
-  <div class="card-top">
-    <div class="stars">{{stars}} ★</div>
-    <button mat-icon-button (click)="curtir()">
-      <mat-icon>favorite</mat-icon>
-    </button>
-  </div>
-  <img src="{{imageUrl}}" alt="{{title}}" width="150" height="180">
+  <div class="image"><img src="{{imageUrl}}" alt="{{title}}" width="220" height="250"></div>
   <div class="title">{{title}}</div>
   <div class="price">R$ {{price}}</div>
-  <button mat-raised-button color="warn" class="buy-button" (click)="comprar()">
-    <mat-icon>shopping_cart</mat-icon> Comprar
-  </button>
+  <div class="buttons">
+    <button mat-raised-button color="warn" class="buy-button" (click)="comprar()">
+      <mat-icon>shopping_cart</mat-icon> <a>Comprar</a>
+    </button>
+    <button mat-icon-button (click)="curtir()" class="like-button">
+      <mat-icon>favorite</mat-icon>
+    </button>
+</div>
+
 </mat-card>
