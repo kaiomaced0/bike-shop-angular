@@ -12,6 +12,11 @@
   align-items: center;
   padding-top: 2px;
 }
+.imagem{
+  width: 220px;
+  height: 250px;
+
+}
 
 .card-top {
   display: flex;
@@ -42,6 +47,7 @@
   width: 80%;
   font-weight: bold;
 }
+
 .like-button{
   width: 20%;
 }
@@ -57,6 +63,11 @@
 
 /* Media query para smartphones */
 @media (max-width: 600px) {
+  .imagem{
+    width: 132px;
+    height: 150px;
+
+  }
   .product-card {
     margin: 10px; /* Aumenta a margem ao redor do card para melhor espaçamento */
   }
@@ -66,9 +77,12 @@
     align-items: center; /* Centraliza os elementos do topo */
   }
 
-  .stars, .buy-button {
+  .buy-button {
+    width: 70%;
     order: -1; /* Move as estrelas e o botão para o topo dentro do .card-top */
-    margin-bottom: 5px; /* Adiciona uma margem abaixo para espaçamento */
+  }
+  .like-button{
+    width: 30%;
   }
 
   .title {
