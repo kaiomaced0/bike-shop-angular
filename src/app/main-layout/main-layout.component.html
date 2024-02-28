@@ -2,7 +2,9 @@
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
     <mat-icon>menu</mat-icon>
   </button>
-  <span>Bike Shop</span>
+  <div (click)="irParaHome()" style="cursor: pointer;">
+    <span>Bike Shop</span>
+  </div>
   <span class="icons-toolbar"></span>
   <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" (click)="irParaFavoritos()">
     <mat-icon>favorite</mat-icon>
