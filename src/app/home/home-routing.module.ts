@@ -4,8 +4,6 @@ import { HomeComponent } from './home/home.component';
 import { CommonModule } from '@angular/common';
 import { DetailComponent } from './detail/detail.component';
 import { FavoritosComponent } from './favoritos/favoritos.component';
-import { ContaComponent } from './conta/conta/conta.component';
-import { ContaModule } from './conta/conta.module';
 import { ShopCartComponent } from './shop-cart/shop-cart.component';
 
 const routes: Routes = [
@@ -16,6 +14,10 @@ const routes: Routes = [
   {
     path: 'conta',
     loadChildren: () => import('./conta/conta.module').then(m => m.ContaModule)
+  },
+  {
+    path: 'servicos',
+    loadChildren: () => import('./servicos/servicos.module').then(m => m.ServicosModule)
   }
 ];
 
