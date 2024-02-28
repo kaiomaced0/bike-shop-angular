@@ -22,6 +22,10 @@ export const routes: Routes = [
       {
         path: 'favoritos',
         loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
+      },
+      {
+        path: 'conta',
+        loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
       }
     ]
   },

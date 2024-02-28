@@ -19,6 +19,9 @@ export class MainLayoutComponent {
   irParaLogin() {
     this.router.navigate(['/login']);
   }
+  irParaMinhaConta() {
+    this.router.navigate(['/conta']);
+  }
   irParaFavoritos() {
     this.router.navigate(['/favoritos']);
   }

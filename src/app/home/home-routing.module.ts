@@ -4,11 +4,17 @@ import { HomeComponent } from './home/home.component';
 import { CommonModule } from '@angular/common';
 import { DetailComponent } from './detail/detail.component';
 import { FavoritosComponent } from './favoritos/favoritos.component';
+import { ContaComponent } from './conta/conta/conta.component';
+import { ContaModule } from './conta/conta.module';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'detail', component: DetailComponent},
-  {path: 'favoritos', component: FavoritosComponent}
+  {path: 'favoritos', component: FavoritosComponent},
+  {
+    path: 'conta',
+    loadChildren: () => import('./conta/conta.module').then(m => m.ContaModule)
+  }
 ];
 
 @NgModule({

@@ -18,6 +18,10 @@
 
   <!-- Menu de Configurações -->
   <mat-menu #settingsMenu="matMenu">
+    <button mat-menu-item (click)="irParaMinhaConta()">
+      <mat-icon>person</mat-icon>
+      <span>Minha Conta</span>
+    </button>
     <button mat-menu-item (click)="irParaLogin()">
       <mat-icon>person</mat-icon>
       <span>Login</span>
