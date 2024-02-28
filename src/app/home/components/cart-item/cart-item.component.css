@@ -1,0 +1,14 @@
+.select-box {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+.selected {
+  color: green;
+}

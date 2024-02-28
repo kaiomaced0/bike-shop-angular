@@ -4,16 +4,16 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  width: 400px; /* Ajustar conforme necessário para dispositivos móveis */
+  width: 330px;
   height: 200px;
   border: 1px solid #ccc;
-  margin: 10px;
+  margin: 5px;
 }
 
 .imagem-produto {
   width: 150px;
   height: 180px;
-  margin-right: 20px;
+  margin: 5px;
 }
 
 .detalhes-produto {
@@ -50,7 +50,7 @@
 
 /* Estilos específicos para dispositivos móveis */
 
-@media (max-width: 600px) {
+@media (max-width: 710px) {
   .produto-favorito {
     flex-direction: column; /* Empilha os elementos verticalmente */
     width: 100%; /* Aumenta a largura para aproveitar o espaço disponível */
@@ -74,6 +74,6 @@
 
   .descricao {
     text-align: center; /* Centraliza o texto da descrição */
-    padding: 0 10px; /* Adiciona padding para não tocar nas bordas */
+    padding: 5 10px; /* Adiciona padding para não tocar nas bordas */
   }
 }
