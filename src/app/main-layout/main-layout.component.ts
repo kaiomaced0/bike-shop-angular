@@ -28,4 +28,7 @@ export class MainLayoutComponent {
   irParaFavoritos() {
     this.router.navigate(['/favoritos']);
   }
+  irParaShopCart() {
+    this.router.navigate(['/carrinho']);
+  }
 }
