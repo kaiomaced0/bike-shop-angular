@@ -6,6 +6,7 @@
 }
 
 .example-card {
+  cursor: pointer;
   flex: 0 1 calc(34%); /* Três cards por linha em desktop */
   margin: 20px 20px;
 }
