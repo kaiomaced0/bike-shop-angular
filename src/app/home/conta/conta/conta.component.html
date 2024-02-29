@@ -1,35 +1,21 @@
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Controle de Usuário</title>
-</head>
-<body>
-  <div class="container">
-    <div class="content-wrapper">
-      <div class="sidebar">
-        <h2>Perfil do Usuário</h2>
-        <p><strong>Nome:</strong> João Silva</p>
-        <p><strong>Email:</strong> joao.silva&commat;example.com</p>
-        <p><strong>Telefone:</strong> (11) 99999-9999</p>
-        <p><strong>Endereço Padrão:</strong> Rua Exemplo, 123, São Paulo - SP</p>
-      </div>
-      <div class="main-content">
-        <div class="cards">
-          <div class="card">Gostei</div>
-          <div class="card">Pedidos</div>
-          <div class="card">Endereços</div>
-          <div class="card">Dados da Conta</div>
-        </div>
-      </div>
-    </div>
-    <div class="services">
-      <h1>Serviços</h1>
-      <div class="cards">
-        <div class="card">Central de Ajuda</div>
-        <div class="card">Sugestão</div>
-        <div class="card">Perguntas e Respostas</div>
-      </div>
-    </div>
+<div class="container">
+  <div class="sidebar">
+    <h2>Perfil do Usuário</h2>
+    <p><strong>Nome:</strong> João Silva</p>
+    <p><strong>Email:</strong> joao.silva&commat;gmail.com</p>
+    <p><strong>Telefone:</strong> (63) 98414-2982</p>
+    <p><strong>Endereço Padrão:</strong> PALMAS, 403 SUL, aaaas</p>
   </div>
-</body>
+  <div class="user-options">
+    <div class="card" (click)="irParaFavoritos()"><i class="icon">❤️</i> Gostei</div>
+    <div class="card" (click)="irParaPedidos()"><i class="icon" >📦</i> Pedidos</div>
+    <div class="card" (click)="irParaEnderecos()"><i class="icon" >🏠</i> Endereços</div>
+    <div class="card" (click)="irParaDados()"><i class="icon" >👤</i> Dados da Conta</div>
+  </div>
+  <div class="services">
+    <h1>Serviços</h1>
+    <div class="card" (click)="irParaServicos()"><i class="icon">🆘</i> Central de Ajuda</div>
+    <div class="card" (click)="irParaQuestions()"><i class="icon">❓</i> Perguntas e Respostas</div>
+    <div class="card" (click)="irParaSugestoes()"><i class="icon">💡</i> Sugestão</div>
+  </div>
+</div>

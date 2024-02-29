@@ -1,9 +1,19 @@
-.produtos-favoritos{
-  justify-content: center;
+.produtos-favoritos {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
-  gap: 10px;
+  flex-wrap: wrap;
+  width: 90%;
+  margin: auto; /* Centraliza o contêiner .produtos-favoritos na página */
+}
 
+.app-card-produto-favorito {
+  margin: 10px auto; /* Adiciona margem acima/abaixo e centraliza horizontalmente cada card */
+  /* Adicione mais estilos aqui conforme necessário */
+}
+
+@media (max-width: 710px) {
+  .produtos-favoritos {
+    width: 95%;
+  }
 }
