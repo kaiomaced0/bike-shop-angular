@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ContaComponent } from './conta/conta.component';
 import { DadosComponent } from './dados/dados.component';
-import { EnderecosComponent } from './enderecos/enderecos.component';
 import { PedidosComponent } from './pedidos/pedidos.component';
 
 const routes: Routes = [
@@ -11,7 +10,8 @@ const routes: Routes = [
   },
   {path: 'dados', component: DadosComponent},
   {
-    path: 'enderecos', component: EnderecosComponent
+    path: 'enderecos',
+    loadChildren: () => import('./enderecos/enderecos.module').then(m => m.EnderecosModule)
   },
   {
     path: 'pedidos', component: PedidosComponent
