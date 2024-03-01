@@ -1,0 +1,10 @@
+.enderecos-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.novo-endereco-btn {
+  padding: 120px;
+  /* Estilize o botão conforme necessário */
+}
