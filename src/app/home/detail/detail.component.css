@@ -6,11 +6,11 @@
   
   .miniature-images {
     display: grid;
-    gap: 10px;
+    gap: 20px;
   }
   
   .miniature-images img {
-    width: 100%;
+    width: 150%;
     cursor: pointer;
     transition: transform 0.2s;
   }
@@ -53,10 +53,13 @@
     right: -20px;
   }
   
-  .diagonal-warning {
-    transform: rotate(-45deg);
+  .center-warning {
+    right: 50px;
+    text-decoration: solid;
+    text-align: center;
     background-color: yellow;
-    padding: 5px;
+    width: 500px;
+    height: 30px;
   }
   
   .options {
@@ -65,45 +68,11 @@
   }
   
   .button {
-    padding: 10px 20px;
     cursor: pointer;
+    width: 500px;
+    height: 30px;
   }
   
   .wishlist-icon {
     cursor: pointer;
   }
-  /* detail css 
-.product-details {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-  }
-  
-  .product-image {
-    max-width: 300px;
-    border-radius: 5px;
-  }
-  
-  .product-detail {
-    text-align: center;
-  }
-  
-  .price {
-    font-weight: bold;
-    margin: 10px 0;
-  }
-  
-  .add-carrinho {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .add-carrinho {
-    background-color: #0056b3;
-  }
-  */
