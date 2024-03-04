@@ -3,6 +3,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -12,5 +13,34 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  constructor(private router: Router) {}
+
+  irParaHomeAdmin() {
+    this.router.navigate(['/admin/produtos']);
+  }
+  irParaAjustesHomeAdmin() {
+    this.router.navigate(['/admin/ajustes-home']);
+  }
+  irParaCategoriasAdmin() {
+    this.router.navigate(['/admin/categorias']);
+  }
+  irParaCuponsAdmin() {
+    this.router.navigate(['/admin/cupons']);
+  }
+  irParaDestaquesAdmin() {
+    this.router.navigate(['/admin/destaques']);
+  }
+  irParaEntregasAdmin() {
+    this.router.navigate(['/admin/entregas']);
+  }
+  irParaEstoqueAdmin() {
+    this.router.navigate(['/admin/estoque']);
+  }
+  irParaPedidosAdmin() {
+    this.router.navigate(['/admin/pedidos']);
+  }
+  irParaUsuariosAdmin() {
+    this.router.navigate(['/admin/usuarios']);
+  }
 
 }

@@ -1,79 +1,72 @@
-/* Estilos existentes para desktop */
-
 .produto-favorito {
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  width: 400px; /* Ajustar conforme necessário para dispositivos móveis */
-  height: 200px;
+  justify-content: space-between;
+  width: 100%;
   border: 1px solid #ccc;
-  margin: 10px;
+  margin: 10px 0;
+}
+
+.imagem-container, .detalhes-container, .acoes-container {
+  padding: 10px;
 }
 
 .imagem-produto {
-  width: 150px;
-  height: 180px;
-  margin-right: 20px;
+  width: 100%;
+  max-width: 150px;
+  height: auto;
 }
 
-.detalhes-produto {
+.detalhes-container {
+  flex: 1;
+}
+
+.titulo, .estrelas, .preco {
+  margin: 5px 0;
+}
+
+.adicionar-carrinho {
+  background-color: yellow;
+  border-radius: 10px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.acoes-secundarias {
   display: flex;
-  flex-direction: column;
+  justify-content: space-around;
+  margin-top: 10px;
 }
 
-.titulo-preco {
-  margin-bottom: 10px;
+.remover-produto, .compartilhar-produto {
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
-.titulo {
-  margin: 0;
-  background-color: #eee;
-  padding: 5px 10px;
-}
-
-.preco {
-  margin: 0;
-}
-
-.estrelas-descricao {
-  display: flex;
-  flex-direction: column;
-}
-
-.estrelas {
-  margin: 0;
-}
-
-.descricao {
-  margin: 0;
-}
-
-/* Estilos específicos para dispositivos móveis */
-
-@media (max-width: 600px) {
+@media (max-width: 710px) {
   .produto-favorito {
-    flex-direction: column; /* Empilha os elementos verticalmente */
-    width: 100%; /* Aumenta a largura para aproveitar o espaço disponível */
-    height: auto; /* Ajusta a altura automaticamente com base no conteúdo */
-    align-items: center; /* Centraliza os itens horizontalmente */
+    flex-direction: column;
+    align-items: center;
   }
 
-  .imagem-produto {
-    margin-top: 5px; /* Remove a margem à direita da imagem */
-    margin-bottom: 10px; /* Adiciona espaço abaixo da imagem */
+  .imagem-container, .detalhes-container, .acoes-container {
+    width: 100%;
+    text-align: center;
+  }
+
+  .acoes-secundarias {
     justify-content: center;
   }
 
-  .detalhes-produto {
-    align-items: center; /* Centraliza os detalhes do produto */
+  .adicionar-carrinho{
+    width: 90%;
+    margin: 5px 0;
   }
+  .remover-produto, .compartilhar-produto {
+    width: 100%;
+    margin: 5px 0;
 
-  .titulo-preco, .estrelas-descricao {
-    align-items: center; /* Centraliza o título, preço, estrelas e descrição */
-  }
-
-  .descricao {
-    text-align: center; /* Centraliza o texto da descrição */
-    padding: 0 10px; /* Adiciona padding para não tocar nas bordas */
   }
 }

@@ -6,10 +6,10 @@
 }
 
 .example-card {
-  flex: 0 1 calc(34%);
+  cursor: pointer;
+  flex: 0 1 calc(34%); /* Três cards por linha em desktop */
   margin: 20px 20px;
 }
-
 
 .card-content {
   display: flex;
@@ -22,7 +22,41 @@
 
 .card-image img {
   padding: 10px;
-  width: 150px;
-  height: auto;
+  width: 150px; /* Largura fixa da imagem */
+  height: auto; /* Altura automática para manter a proporção */
   border-radius: 4px;
+}
+
+@media (min-width: 1600px){
+  .example-card {
+    flex: 0 1 calc(29%); /* Três cards por linha em desktop */
+  }
+}
+
+@media (min-width: 2000px){
+  .example-card {
+    flex: 0 1 calc(21%); /* Três cards por linha em desktop */
+  }
+}
+
+@media (min-width: 2500px){
+  .example-card {
+    flex: 0 1 calc(16%); /* Três cards por linha em desktop */
+  }
+}
+@media (min-width: 3000px){
+  .example-card {
+    flex: 0 1 calc(14%); /* Três cards por linha em desktop */
+  }
+}
+
+/* Media query para celulares (dispositivos com largura até 480px) */
+@media (max-width: 1000px) {
+  .example-card {
+    flex: 0 1 calc(100% - 40px); /* Um card por linha em celulares */
+  }
+
+  .card-content {
+    flex-direction: column; /* Empilha os detalhes do card verticalmente em celulares */
+  }
 }

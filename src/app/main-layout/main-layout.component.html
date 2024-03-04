@@ -2,26 +2,40 @@
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
     <mat-icon>menu</mat-icon>
   </button>
-  <span>Bike Shop</span>
+  <div (click)="irParaHome()" style="cursor: pointer;">
+    <span>Bike Shop</span>
+  </div>
   <span class="icons-toolbar"></span>
   <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" (click)="irParaFavoritos()">
     <mat-icon>favorite</mat-icon>
   </button>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-    <mat-icon>share</mat-icon>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" (click)="irParaShopCart()">
+    <mat-icon>shopping_cart</mat-icon>
   </button>
-
   <!-- Botão de Configurações -->
-  <button mat-icon-button [matMenuTriggerFor]="settingsMenu" class="example-icon" aria-label="Example icon-button with settings icon">
-    <mat-icon>settings</mat-icon>
+  <button mat-icon-button [matMenuTriggerFor]="personMenu" class="example-icon" aria-label="Example icon-button with settings icon">
+    <mat-icon>person</mat-icon>
   </button>
 
   <!-- Menu de Configurações -->
-  <mat-menu #settingsMenu="matMenu">
+  <mat-menu #personMenu="matMenu">
+
+    <button mat-menu-item (click)="irParaMinhaConta()">
+      <mat-icon>person</mat-icon>
+      <span>Minha Conta</span>
+    </button>
     <button mat-menu-item (click)="irParaLogin()">
       <mat-icon>person</mat-icon>
       <span>Login</span>
     </button>
+  </mat-menu>
+
+
+  <button mat-icon-button [matMenuTriggerFor]="settingsMenu" class="example-icon" aria-label="Example icon-button with settings icon">
+    <mat-icon>settings</mat-icon>
+  </button>
+
+  <mat-menu #settingsMenu="matMenu">
     <button mat-menu-item disabled>
       <mat-icon>settings</mat-icon>
       <span>Em breve</span>

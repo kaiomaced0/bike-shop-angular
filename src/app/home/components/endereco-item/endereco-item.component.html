@@ -1,0 +1,17 @@
+<!-- item-endereco.component.html -->
+<div class="endereco-item">
+  <div class="detalhes-container">
+    <h3 class="titulo">{{ nome }}</h3>
+    <p class="detalhe">Cidade: {{ cidade }}</p>
+    <p class="detalhe">CEP: {{ cep }}</p>
+    <p class="detalhe">Complemento: {{ complemento }}</p>
+    <p class="detalhe">Número: {{ numero }}</p>
+  </div>
+  <div class="acoes-container">
+    <button class="acao-padrao-btn" >Definir como Padrão</button>
+    <a routerLink="/conta/enderecos/edit" class="editar-btn">
+      <mat-icon>edit</mat-icon>
+    </a>
+    <!-- Incluir outros botões de ação conforme necessário -->
+  </div>
+</div>

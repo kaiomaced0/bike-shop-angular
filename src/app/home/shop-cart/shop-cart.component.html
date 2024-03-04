@@ -1,0 +1,48 @@
+<div class="shopping-cart-container">
+  <div class="containers">
+    <div class="columnA">
+      <div class="cart-item">
+        <img src="{{item1 .imageUrl}}" alt="Produto 1" class="images">
+        <div>
+          <h3>{{item1.name}}</h3>
+          <div class="quantity-control">
+            <button (click)="decreaseQuantity(1)">-</button>
+            <span>{{item1.quantity}}</span>
+            <button (click)="increaseQuantity(1)">+</button>
+            <p>R$ {{item1.price}} | Total: R$ {{item1.quantity * item1.price}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="cart-item">
+        <img src="{{item2.imageUrl}}" alt="Produto 2" class="images">
+        <div>
+          <h3>{{item2.name}}</h3>
+          <div class="quantity-control">
+            <button (click)="decreaseQuantity(2)">-</button>
+            <span>{{item2.quantity}}</span>
+            <button (click)="increaseQuantity(2)">+</button>
+            <p>R$ {{item2.price}} | Total: R$ {{item2.quantity * item2.price}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="cart-item">
+        <img src="{{item3 .imageUrl}}" alt="Produto 3" class="images">
+        <div>
+          <h3>{{item3.name}}</h3>
+          <div class="quantity-control">
+            <button (click)="decreaseQuantity(3)">-</button>
+            <span>{{item3.quantity}}</span>
+            <button (click)="increaseQuantity(3)">+</button>
+            <p>R$ {{item3.price}} | Total: R$ {{item3.quantity * item3.price}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cart-summary">
+        <h2>Total: R$ {{ total }}</h2>
+        <button class="finalize-button">Finalizar Compra</button>
+    </div>
+  </div>
+
+
+</div>

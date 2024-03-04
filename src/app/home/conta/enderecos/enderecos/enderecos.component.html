@@ -1,0 +1,6 @@
+<div class="enderecos-container">
+  <button routerLink="/conta/enderecos/new" >Adicionar Novo Endereço</button>
+  <app-endereco-item *ngFor="let endereco of enderecos" [nome]="endereco.nome" [cidade]="endereco.cidade"
+   [cep]="endereco.cep" [complemento]="endereco.complemento" [numero]="endereco.numero"></app-endereco-item>
+
+</div>

@@ -3,7 +3,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 
@@ -15,5 +15,10 @@ import { MatListModule } from '@angular/material/list';
   styleUrl: './adm-main-layout.component.css'
 })
 export class AdmMainLayoutComponent {
+  constructor(private router: Router) {}
+
+  irParaHomeAdmin() {
+    this.router.navigate(['/admin']);
+  }
 
 }

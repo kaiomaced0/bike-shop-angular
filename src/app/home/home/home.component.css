@@ -1,5 +1,5 @@
 .produtos-home{
-  margin: 20px;
+  margin: 10px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -9,4 +9,12 @@
 .carrossel{
   justify-content: center;
   align-items: center;
+}
+
+@media (max-width: 600px) {
+
+.produtos-home{
+  gap: 10px
+}
+
 }

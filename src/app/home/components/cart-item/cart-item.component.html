@@ -1,0 +1,16 @@
+<div class="cart-item">
+  <div class="select-box" (click)="toggleSelection()">
+    <div *ngIf="item.selected" class="selected">✓</div>
+  </div>
+  <img [src]="item.imageUrl" alt="Produto" width="220" height="250">
+  <div class="details">
+    <h3>{{ item.name }}</h3>
+    <div class="quantity-control">
+      <button (click)="updateQuantity(-1)">-</button>
+      <span>{{ item.quantity }}</span>
+      <button (click)="updateQuantity(1)">+</button>
+    </div>
+    <p>Preço: R$ {{ item.price }}</p>
+    <p>Total: R$ {{ item.quantity * item.price }}</p>
+  </div>
+</div>
