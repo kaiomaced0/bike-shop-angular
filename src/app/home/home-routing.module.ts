@@ -12,7 +12,7 @@ const routes: Routes = [
   {path: 'detail', component: DetailComponent},
   {path: 'favoritos', component: FavoritosComponent},
   {path: 'carrinho', component: ShopCartComponent},
-  {path: 'search', component: SearchComponent},
+  {path: 'search/:search', component: SearchComponent},
   {
     path: 'conta',
     loadChildren: () => import('./conta/conta.module').then(m => m.ContaModule)
