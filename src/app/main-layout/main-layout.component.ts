@@ -19,9 +19,12 @@ export class MainLayoutComponent {
 
   constructor(private router: Router) {}
 
-  pesquisar(termo: string) {
-    this.router.navigate(['/search'], { queryParams: { search: termo } });
+  pesquisar(query: string) {
+    console.log('Pesquisando por:', query);
+
+    this.router.navigate(['/search', { search: query }]);
   }
+
 
   irParaLogin() {
     this.router.navigate(['/login']);

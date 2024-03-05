@@ -4,3 +4,18 @@
 .outlet{
   padding: 1ch;
 }
+.search-container {
+  display: flex;
+  align-items: center;
+  margin-left: auto; /* Empurra o campo de pesquisa para a direita */
+}
+
+.search-container input {
+  margin-right: 8px; /* Espaço entre o campo de entrada e o botão */
+  margin-left: 8px;
+  width: 200px; /* Largura do campo de entrada */
+}
+
+.search-container button {
+  margin-top: 0; /* Ajuste conforme necessário */
+}
