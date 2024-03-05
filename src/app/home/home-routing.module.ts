@@ -5,12 +5,14 @@ import { CommonModule } from '@angular/common';
 import { DetailComponent } from './detail/detail.component';
 import { FavoritosComponent } from './favoritos/favoritos.component';
 import { ShopCartComponent } from './shop-cart/shop-cart.component';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'detail', component: DetailComponent},
   {path: 'favoritos', component: FavoritosComponent},
   {path: 'carrinho', component: ShopCartComponent},
+  {path: 'search', component: SearchComponent},
   {
     path: 'conta',
     loadChildren: () => import('./conta/conta.module').then(m => m.ContaModule)

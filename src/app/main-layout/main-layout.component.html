@@ -6,6 +6,10 @@
     <span>Bike Shop</span>
   </div>
   <span class="icons-toolbar"></span>
+  <input matInput placeholder="Pesquisar" [(ngModel)]="termoPesquisa">
+  <button mat-icon-button (click)="pesquisar(termoPesquisa)">
+    <mat-icon>search</mat-icon>
+  </button>
   <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" (click)="irParaFavoritos()">
     <mat-icon>favorite</mat-icon>
   </button>

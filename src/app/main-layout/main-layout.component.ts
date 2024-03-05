@@ -4,17 +4,24 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatMenuModule} from '@angular/material/menu';
+import { FormsModule, NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-main-layout',
   standalone: true,
-  imports: [RouterOutlet, MatIconModule, MatButtonModule, MatToolbarModule, MatMenuModule],
+  imports: [RouterOutlet, MatIconModule, MatButtonModule, MatToolbarModule, MatMenuModule, FormsModule],
   templateUrl: './main-layout.component.html',
   styleUrl: './main-layout.component.css'
 })
 export class MainLayoutComponent {
 
+  termoPesquisa: string = '';
+
   constructor(private router: Router) {}
+
+  pesquisar(termo: string) {
+    this.router.navigate(['/search'], { queryParams: { search: termo } });
+  }
 
   irParaLogin() {
     this.router.navigate(['/login']);
