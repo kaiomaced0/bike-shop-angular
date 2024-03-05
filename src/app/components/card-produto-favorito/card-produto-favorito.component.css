@@ -36,10 +36,10 @@
 .acoes-secundarias {
   display: flex;
   justify-content: space-around;
-  margin-top: 10px;
+  margin: 10px;
 }
 
-.remover-produto, .compartilhar-produto {
+.remover-produto, .compartilhar-produto, .desfavoritar-produto {
   background: none;
   border: none;
   cursor: pointer;
@@ -57,14 +57,15 @@
   }
 
   .acoes-secundarias {
-    justify-content: center;
+    justify-content: space-between;
+    margin: 10px;
   }
 
   .adicionar-carrinho{
     width: 90%;
     margin: 5px 0;
   }
-  .remover-produto, .compartilhar-produto {
+  .remover-produto, .compartilhar-produto, .desfavoritar-produto {
     width: 100%;
     margin: 5px 0;
 
