@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 export class HomeComponent {
   constructor(private router: Router) {}
 
-  irParaHomeAdmin() {
+  irParaProdutosAdmin() {
     this.router.navigate(['/admin/produtos']);
   }
   irParaAjustesHomeAdmin() {
