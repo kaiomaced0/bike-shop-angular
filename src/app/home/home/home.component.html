@@ -5,110 +5,12 @@
   <mat-card-content>Simple card</mat-card-content>
 </mat-card>
 <div class="produtos-home">
-  <app-card-produto>
-    [id]="'123'"
-    [imageUrl]="'https://example.com/image.jpg'"
-    [title]="'Produto Especial'"
-    [price]="29.99"
-    [stars]="5">
-  </app-card-produto>
-  <app-card-produto>
-    [id]="'123'"
-    [imageUrl]="'https://example.com/image.jpg'"
-    [title]="'Produto Especial'"
-    [price]="29.99"
-    [stars]="5">
-  </app-card-produto>
-  <app-card-produto>
-    [id]="'123'"
-    [imageUrl]="'https://example.com/image.jpg'"
-    [title]="'Produto Especial'"
-    [price]="29.99"
-    [stars]="5">
-  </app-card-produto>
-  <app-card-produto>
-    [id]="'123'"
-    [imageUrl]="'https://example.com/image.jpg'"
-    [title]="'Produto Especial'"
-    [price]="29.99"
-    [stars]="5">
-  </app-card-produto>
-  <app-card-produto>
-    [id]="'123'"
-    [imageUrl]="'https://example.com/image.jpg'"
-    [title]="'Produto Especial'"
-    [price]="29.99"
-    [stars]="5">
-  </app-card-produto>
-  <app-card-produto>
-    [id]="'123'"
-    [imageUrl]="'https://example.com/image.jpg'"
-    [title]="'Produto Especial'"
-    [price]="29.99"
-    [stars]="5">
-  </app-card-produto>
-  <app-card-produto>
-    [id]="'123'"
-    [imageUrl]="'https://example.com/image.jpg'"
-    [title]="'Produto Especial'"
-    [price]="29.99"
-    [stars]="5">
-  </app-card-produto>
-  <app-card-produto>
-    [id]="'123'"
-    [imageUrl]="'https://example.com/image.jpg'"
-    [title]="'Produto Especial'"
-    [price]="29.99"
-    [stars]="5">
-  </app-card-produto>
-  <app-card-produto>
-    [id]="'123'"
-    [imageUrl]="'https://example.com/image.jpg'"
-    [title]="'Produto Especial'"
-    [price]="29.99"
-    [stars]="5">
-  </app-card-produto>
-  <app-card-produto>
-    [id]="'123'"
-    [imageUrl]="'https://example.com/image.jpg'"
-    [title]="'Produto Especial'"
-    [price]="29.99"
-    [stars]="5">
-  </app-card-produto>
-  <app-card-produto>
-    [id]="'123'"
-    [imageUrl]="'https://example.com/image.jpg'"
-    [title]="'Produto Especial'"
-    [price]="29.99"
-    [stars]="5">
-  </app-card-produto>
-  <app-card-produto>
-    [id]="'123'"
-    [imageUrl]="'https://example.com/image.jpg'"
-    [title]="'Produto Especial'"
-    [price]="29.99"
-    [stars]="5">
-  </app-card-produto>
-  <app-card-produto>
-    [id]="'123'"
-    [imageUrl]="'https://example.com/image.jpg'"
-    [title]="'Produto Especial'"
-    [price]="29.99"
-    [stars]="5">
-  </app-card-produto>
-  <app-card-produto>
-    [id]="'123'"
-    [imageUrl]="'https://example.com/image.jpg'"
-    [title]="'Produto Especial'"
-    [price]="29.99"
-    [stars]="5">
-  </app-card-produto>
-  <app-card-produto>
-    [id]="'123'"
-    [imageUrl]="'https://example.com/image.jpg'"
-    [title]="'Produto Especial'"
-    [price]="29.99"
-    [stars]="5">
-  </app-card-produto>
+  @for (produto of produtos; track produto.id){
 
+  <app-card-produto [id]="produto.id"
+    [imageUrl]="produto.imageUrl"
+    [title]="produto.title"
+    [price]="produto.price"
+    [stars]="produto.stars"/>
+  }
 </div>
