@@ -1,0 +1,28 @@
+.card-item {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #e0e0e0;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+
+.coluna-esquerda, .coluna-direita {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  margin-top: 10px; /* Espaço acima do botão */
+  padding: 8px 12px;
+}
+
+/* Responsividade para dispositivos móveis */
+@media (max-width: 600px) {
+  .card-item {
+    flex-direction: column; /* Empilha as colunas em dispositivos móveis */
+  }
+
+  .coluna-direita {
+    margin-top: 15px; /* Espaço entre as colunas quando empilhadas */
+  }
+}

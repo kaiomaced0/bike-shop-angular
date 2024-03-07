@@ -1,0 +1,10 @@
+<div class="card-item">
+  <div class="coluna-esquerda">
+    <p>Código do Pedido: {{ codigoPedido }}</p>
+    <p>Data: {{ dataPedido }}</p>
+  </div>
+  <div class="coluna-direita">
+    <p>Preço: R$ {{ preco }}</p>
+    <button (click)="abrirAcompanhamento()">Acompanhar Pedido</button>
+  </div>
+</div>
