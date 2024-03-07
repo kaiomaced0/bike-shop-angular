@@ -1,11 +1,11 @@
 <div class="produto-favorito">
   <div class="imagem-container">
-    <img src="https://via.placeholder.com/150x180" alt="Produto Favorito" class="imagem-produto">
+    <img src="https://via.placeholder.com/150x180" alt={{title}} class="imagem-produto">
   </div>
   <div class="detalhes-container">
-    <h3 class="titulo">Nome do Produto</h3>
-    <p class="estrelas">★★★★☆</p>
-    <p class="preco">R$ 99,99</p>
+    <h3 class="titulo">{{title}}</h3>
+    <p class="estrelas"> ({{stars}} * ★)</p>
+    <p class="preco">{{price}}</p>
   </div>
   <div class="acoes-container">
     <button class="adicionar-carrinho">Adicionar ao Carrinho</button>
