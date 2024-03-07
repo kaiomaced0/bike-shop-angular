@@ -1,1 +1,37 @@
-<p>list-usuarios works!</p>
+<div class="button-container"><button mat-raised-button color="primary" style="width: 100%; border-radius: 8px; background-color: green;"
+    (click)="irParaNewUsuario()">
+    <mat-icon>add</mat-icon>
+    Adicionar Usuário
+  </button></div>
+
+<table class="tabela-usuarios">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>CPF</th>
+      <th>Email</th>
+      <th>Número de Telefone</th>
+      <th>Valor Gasto</th>
+      <th>Editar</th>
+      <th>Resetar Senha</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    @for (usuario of usuarios; track usuario.id){
+    <tr>
+      <td>{{ usuario.id }}</td>
+      <td>{{ usuario.nome }}</td>
+      <td>{{ usuario.cpf }}</td>
+      <td>{{ usuario.email }}</td>
+      <td>{{ usuario.numeroDeTelefone }}</td>
+      <td>R$ {{ usuario.valorGasto }}</td>
+      <td><mat-icon>edit</mat-icon></td>
+      <td><mat-icon>lock</mat-icon></td>
+    </tr>
+
+
+    }
+  </tbody>
+</table>

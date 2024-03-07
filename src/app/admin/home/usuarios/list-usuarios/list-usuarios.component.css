@@ -1,0 +1,32 @@
+.add-user-button {
+  width: 100%;
+  border-radius: 8px;
+  background-color: green;
+  margin: 20px;
+}
+.button-container {
+  margin-bottom: 10px;
+}
+
+
+.tabela-usuarios {
+  width: 100%; /* A tabela ocupa 100% da largura do seu contêiner */
+  border-collapse: collapse; /* Remove espaços duplos entre as bordas das células */
+}
+
+.tabela-usuarios, .tabela-usuarios th, .tabela-usuarios td {
+  border: 1px solid #ddd; /* Adiciona bordas para a tabela, cabeçalho e células */
+}
+
+.tabela-usuarios th, .tabela-usuarios td {
+  padding: 8px; /* Adiciona espaço interno nas células */
+  text-align: left; /* Alinha o texto à esquerda */
+}
+
+.tabela-usuarios thead {
+  background-color: #f2f2f2; /* Cor de fundo para o cabeçalho da tabela */
+}
+
+.tabela-usuarios tr:nth-child(even) {
+  background-color: #f9f9f9; /* Adiciona uma cor de fundo alternada para as linhas */
+}
