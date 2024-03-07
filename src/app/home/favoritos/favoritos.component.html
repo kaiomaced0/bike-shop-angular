@@ -1,48 +1,6 @@
 <div class="produtos-favoritos">
-  <app-card-produto-favorito>
-
-    id: '1',
-    imageUrl: 'https://via.placeholder.com/150x180',
-    title: 'Produto 1',
-    price: 99.99,
-    stars: 4,
-    description: 'Descrição do Produto 1'
-  </app-card-produto-favorito>
-  <app-card-produto-favorito>
-
-    id: '1',
-    imageUrl: 'https://via.placeholder.com/150x180',
-    title: 'Produto 1',
-    price: 99.99,
-    stars: 4,
-    description: 'Descrição do Produto 1'
-  </app-card-produto-favorito>
-  <app-card-produto-favorito>
-
-    id: '1',
-    imageUrl: 'https://via.placeholder.com/150x180',
-    title: 'Produto 1',
-    price: 99.99,
-    stars: 4,
-    description: 'Descrição do Produto 1'
-  </app-card-produto-favorito>
-  <app-card-produto-favorito>
-
-    id: '1',
-    imageUrl: 'https://via.placeholder.com/150x180',
-    title: 'Produto 1',
-    price: 99.99,
-    stars: 4,
-    description: 'Descrição do Produto 1'
-  </app-card-produto-favorito>
-  <app-card-produto-favorito>
-
-    id: '1',
-    imageUrl: 'https://via.placeholder.com/150x180',
-    title: 'Produto 1',
-    price: 99.99,
-    stars: 4,
-    description: 'Descrição do Produto 1'
-  </app-card-produto-favorito>
+  @for (produto of produtos; track produto.id){
+    <app-card-produto-favorito [id]="produto.id" [imageUrl]="produto.imageUrl" [price]="produto.price" [stars]="produto.stars" [title]="produto.title" [description]="produto.description"/>
+  }
 
 </div>
