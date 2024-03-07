@@ -6,6 +6,13 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./cart-item.component.css']
 })
 export class CartItemComponent {
+  @Input() id?: string; // Valor padrão para o id
+  @Input() imageUrl?: string;
+  @Input() title?: string; // Valor padrão para o título
+  @Input() price?: number; // Valor padrão para o preço
+  @Input() stars?: number; // Valor padrão para a quantidade de estrelas
+  @Input() description?: string;
+
   @Input() item: any; // Substitua 'any' pelo tipo de dados do seu item
   @Output() itemChange = new EventEmitter<any>();
 

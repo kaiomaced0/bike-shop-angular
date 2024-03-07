@@ -4,7 +4,7 @@
   </div>
   <img [src]="item.imageUrl" alt="Produto" width="220" height="250">
   <div class="details">
-    <h3>{{ item.name }}</h3>
+    <h3>{{ title }}</h3>
     <div class="quantity-control">
       <button (click)="updateQuantity(-1)">-</button>
       <span>{{ item.quantity }}</span>
