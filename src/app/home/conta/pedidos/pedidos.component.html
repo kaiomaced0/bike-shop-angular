@@ -1,1 +1,6 @@
-<p>pedidos works!</p>
+<div class="pedidos">
+  @for(pedido of pedidos; track pedido.id){
+  <app-card-item-pedido style="width: 80%;" [id]="pedido.id" [codigoPedido]="pedido.codigoPedido" [dataPedido]="pedido.dataPedido"
+    [preco]="pedido.preco" />
+  }
+</div>
