@@ -1,0 +1,29 @@
+.new-cupom-form {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.new-cupom-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.new-cupom-form form label {
+  margin-top: 10px;
+}
+
+.new-cupom-form form input, .new-cupom-form form select {
+  padding: 8px;
+  margin-top: 5px;
+}
+
+.new-cupom-form form button {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: green;
+  color: white;
+  border: none;
+  cursor: pointer;
+}

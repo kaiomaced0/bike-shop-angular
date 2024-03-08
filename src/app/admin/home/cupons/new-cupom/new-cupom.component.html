@@ -1,1 +1,23 @@
-<p>new-cupom works!</p>
+<div class="new-cupom-form">
+  <h2>Cadastro de novo Cupom</h2>
+  <form #cupomForm="ngForm" (ngSubmit)="onSubmit(cupomForm)">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" ngModel required>
+
+    <label for="desconto">Porcentagem de desconto:</label>
+    <input type="number" maxlength="2" id="desconto" name="desconto" ngModel required>
+
+    <label for="estoque">Estoque:</label>
+    <input type="number" id="estoque" name="estoque" ngModel required>
+
+    <label for="categoria">Categoria:</label>
+    <select id="categoria" name="categoria" ngModel required>
+      <option value="">Selecione uma Categoria</option>
+      @for(categoria of categorias; track categoria){
+      <option>{{ categoria }}</option>
+      }
+    </select>
+
+    <button type="submit" (click)="adicionarCupom()">Cadastrar cupom</button>
+  </form>
+</div>
