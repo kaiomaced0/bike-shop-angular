@@ -1,1 +1,41 @@
-<p>list-cupons works!</p>
+<div class="button-container">
+  <button mat-raised-button color="primary" style="width: 100%; border-radius: 8px; background-color: green;"
+    (click)="irParaNewCupom()">
+    <mat-icon>add</mat-icon>
+    Adicionar cupom
+  </button>
+</div>
+<table class="tabela-cupons">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Desconto</th>
+      <th>Estoque</th>
+      <th>Usados</th>
+      <th>Descontos Realizados</th>
+      <th>Editar</th>
+      <th>Excluir</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for(cupom of cupons; track cupom.id){
+    <tr>
+      <td>{{ cupom.id }}</td>
+      <td>{{ cupom.nome }}</td>
+      <td>{{ cupom.desconto}}%</td>
+      <td>{{ cupom.quantidadeEstoque }}</td>
+      <td>{{ cupom.usados}}</td>
+      <td>R$ {{ cupom.valorRealizado}}</td>
+      <td><button mat-icon-button (click)="editarCupom(cupom.id)">
+          <mat-icon>edit</mat-icon>
+        </button></td>
+      <td><button mat-icon-button (click)="excluirCupom(cupom.id)">
+          <mat-icon>delete</mat-icon>
+        </button></td>
+
+    </tr>
+    }
+
+  </tbody>
+</table>
