@@ -1,1 +1,36 @@
-<p>list-categorias works!</p>
+
+<div class="button-container">
+  <button mat-raised-button color="primary" style="width: 100%; border-radius: 8px; background-color: green;"
+    (click)="irParaNewCategoria()">
+    <mat-icon>add</mat-icon>
+    Adicionar Categoria
+  </button>
+</div>
+<table class="tabela-produtos">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Produtos</th>
+      <th>Editar</th>
+      <th>Excluir</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (categoria of categorias; track categoria.id) {
+    <tr>
+      <td>{{ categoria.id }}</td>
+      <td>{{ categoria.nome }}</td>
+      <td>{{ categoria.produtos }}</td>
+      <td><button mat-icon-button (click)="editarCategoria(categoria.id)">
+          <mat-icon>edit</mat-icon>
+        </button></td>
+      <td><button mat-icon-button (click)="excluirCategoria(categoria.id)">
+          <mat-icon>delete</mat-icon>
+        </button></td>
+
+    </tr>
+    }
+
+  </tbody>
+</table>
