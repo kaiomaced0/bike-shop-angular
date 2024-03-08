@@ -1,1 +1,32 @@
-<p>list-entregas works!</p>
+<table class="tabela-entregas">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Pedido</th>
+      <th>Status</th>
+      <th>Data Prevista</th>
+      <th>Data Entregue</th>
+      <th>Editar</th>
+      <th>Excluir</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (entrega of entregas; track entrega.id) {
+    <tr>
+      <td>{{ entrega.id }}</td>
+      <td>{{ entrega.pedido }}</td>
+      <td>{{ entrega.status }}</td>
+      <td>{{ entrega.dataPrevista }}</td>
+      <td>{{ entrega.dataEntregue }}</td>
+      <td><button mat-icon-button >
+          <mat-icon>edit</mat-icon>
+        </button></td>
+      <td><button mat-icon-button >
+          <mat-icon>delete</mat-icon>
+        </button></td>
+
+    </tr>
+    }
+
+  </tbody>
+</table>

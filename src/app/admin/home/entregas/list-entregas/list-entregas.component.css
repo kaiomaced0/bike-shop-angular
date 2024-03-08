@@ -1,0 +1,15 @@
+.tabela-entregas {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px; /* Espaçamento acima da tabela */
+}
+
+.tabela-entregas th, .tabela-entregas td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.tabela-entregas th {
+  background-color: #f2f2f2;
+}
