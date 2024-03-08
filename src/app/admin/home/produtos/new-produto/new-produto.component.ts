@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatOption, MatSelect } from '@angular/material/select';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-produto',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, MatFormField, MatSelect, MatLabel, MatOption],
   templateUrl: './new-produto.component.html',
   styleUrl: './new-produto.component.css'
 })
