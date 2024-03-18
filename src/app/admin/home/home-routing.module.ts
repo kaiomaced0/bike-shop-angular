@@ -85,6 +85,24 @@ const routes: Routes = [
         loadChildren: () => import('./usuarios/usuarios.module').then(m => m.UsuariosModule)
       },
     ]
+  },
+  {
+    path: 'fornecedores',
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./fornecedor/fornecedor.module').then(m => m.FornecedorModule)
+      },
+    ]
+  },
+  {
+    path: 'marcas',
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./marca/marca.module').then(m => m.MarcaModule)
+      },
+    ]
   }
 ];
 

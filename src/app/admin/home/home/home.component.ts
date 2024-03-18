@@ -42,5 +42,11 @@ export class HomeComponent {
   irParaUsuariosAdmin() {
     this.router.navigate(['/admin/usuarios']);
   }
+  irParaMarcasAdmin() {
+    this.router.navigate(['/admin/marcas']);
+  }
+  irParaFornecedoresAdmin() {
+    this.router.navigate(['/admin/fornecedores']);
+  }
 
 }
