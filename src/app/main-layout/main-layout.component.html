@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="visibleSidebar1 = true">
     <mat-icon>menu</mat-icon>
   </button>
   <div (click)="irParaHome()" style="cursor: pointer;">
@@ -53,5 +53,11 @@
 
   </mat-menu>
 </mat-toolbar>
+
+<p-sidebar [(visible)]="visibleSidebar1" [baseZIndex]="10000">
+  <h1 style="font-weight:normal">Left Sidebar</h1>
+  <button pButton type="button" (click)="visibleSidebar1 = false" label="Save" class="ui-button-success"></button>
+  <button pButton type="button" (click)="visibleSidebar1 = false" label="Cancel" class="ui-button-secondary"></button>
+</p-sidebar>
 <div class="outlet"><router-outlet></router-outlet></div>
 
