@@ -1,25 +1,23 @@
 <mat-toolbar color="primary">
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="visibleSidebar1 = true">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
+    (click)="visibleSidebar1 = true">
     <mat-icon>menu</mat-icon>
   </button>
   <div (click)="irParaHome()" style="cursor: pointer;">
     <span>Bike Shop</span>
   </div>
   <span class="icons-toolbar"></span>
-  <div class="search-container">
-    <input matInput placeholder="Pesquisar" #searchQuery>
-    <button mat-icon-button (click)="pesquisar(searchQuery.value)">
-      <mat-icon>search</mat-icon>
-    </button>
-  </div>
-  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" (click)="irParaFavoritos()">
+  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon"
+    (click)="irParaFavoritos()">
     <mat-icon>favorite</mat-icon>
   </button>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" (click)="irParaShopCart()">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon"
+    (click)="irParaShopCart()">
     <mat-icon>shopping_cart</mat-icon>
   </button>
   <!-- Botão de Configurações -->
-  <button mat-icon-button [matMenuTriggerFor]="personMenu" class="example-icon" aria-label="Example icon-button with settings icon">
+  <button mat-icon-button [matMenuTriggerFor]="personMenu" class="example-icon"
+    aria-label="Example icon-button with settings icon">
     <mat-icon>person</mat-icon>
   </button>
 
@@ -37,7 +35,8 @@
   </mat-menu>
 
 
-  <button mat-icon-button [matMenuTriggerFor]="settingsMenu" class="example-icon" aria-label="Example icon-button with settings icon">
+  <button mat-icon-button [matMenuTriggerFor]="settingsMenu" class="example-icon"
+    aria-label="Example icon-button with settings icon">
     <mat-icon>settings</mat-icon>
   </button>
 
@@ -59,5 +58,13 @@
   <button pButton type="button" (click)="visibleSidebar1 = false" label="Save" class="ui-button-success"></button>
   <button pButton type="button" (click)="visibleSidebar1 = false" label="Cancel" class="ui-button-secondary"></button>
 </p-sidebar>
-<div class="outlet"><router-outlet></router-outlet></div>
+<div class="outlet">
 
+  <!-- <div class="search-container">
+    <input matInput placeholder="Pesquisar" #searchQuery>
+    <button mat-icon-button (click)="pesquisar(searchQuery.value)">
+      <mat-icon>search</mat-icon>
+    </button>
+  </div> -->
+  <router-outlet></router-outlet>
+</div>
