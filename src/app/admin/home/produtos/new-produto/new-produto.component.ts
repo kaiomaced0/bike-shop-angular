@@ -14,6 +14,8 @@ import { Router } from '@angular/router';
 export class NewProdutoComponent{
   constructor(private router: Router) {}
   categorias = ['Categoria 1', 'Categoria 2', 'Categoria 3', 'Categoria 4', 'Categoria 5'];
+  cores = ['VERMELHO', 'AZUL', 'AMARELO'];
+  marcas = ['Marca 1', 'Marca 2', 'Marca 3'];
 
   onSubmit(form: any) {
     console.log('Dados do Formulário:', form.value);
