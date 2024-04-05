@@ -1,0 +1,38 @@
+<div class="button-container">
+  <button mat-raised-button color="primary" style="width: 100%; border-radius: 8px; background-color: green;"
+    (click)="irParaNewBike()">
+    <mat-icon>add</mat-icon>
+    Adicionar Bike
+  </button>
+</div>
+<table class="tabela-produtos">
+  <thead>
+    <tr>
+      <th style="width: 10%;">ID</th>
+      <th style="width: 30%;">Nome</th>
+      <th style="width: 15%;">Preço</th>
+      <th style="width: 10%;">Quantidade em Estoque</th>
+      <th style="width: 10%;">Editar</th>
+      <th style="width: 10%;">Excluir</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for(bike of bikes; track bike.produto!.id){
+
+    <tr>
+      <td>{{ bike.produto!.id }}</td>
+      <td>{{ bike.produto!.nome}}</td>
+      <td>{{ bike.produto!.preco}}</td>
+      <td>{{ bike.produto!.estoque }}</td>
+      <td><button mat-icon-button (click)="editarBike(bike.produto!.id!)">
+          <mat-icon>edit</mat-icon>
+        </button></td>
+      <td><button mat-icon-button (click)="excluirBike(bike.produto!.id!)">
+          <mat-icon>delete</mat-icon>
+        </button></td>
+
+    </tr>
+    }
+
+  </tbody>
+</table>

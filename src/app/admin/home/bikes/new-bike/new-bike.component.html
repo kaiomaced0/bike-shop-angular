@@ -1,0 +1,45 @@
+<!-- produto.component.html -->
+<div class="new-produto-form">
+  <h2>Cadastro de Nova Bike</h2>
+  <form #produtoForm="ngForm" (ngSubmit)="adicionarBike()">
+    <div>
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome" [(ngModel)]="bike!.produto!.nome" required>
+    </div>
+
+    <div>
+      <label for="nomeLongo">Nome longo:</label>
+      <input type="text" id="nomeLongo" name="nomeLongo" [(ngModel)]="bike!.produto!.nomeLongo!" required>
+    </div>
+
+    <div>
+      <label for="descricao">Descricao:</label>
+      <input type="text" id="descricao" name="descricao" [(ngModel)]="bike!.produto!.descricao!" required>
+    </div>
+
+    <div>
+      <label for="precoCusto">Custo:</label>
+      <input type="number" id="precoCusto" name="precoCusto" [(ngModel)]="bike!.produto!.precoCusto!" required>
+    </div>
+
+    <div>
+      <label for="precoVenda">Preço:</label>
+      <input type="number" id="precoVenda" name="precoVenda" [(ngModel)]="bike!.produto!.precoVenda!" required>
+    </div>
+
+    <div>
+      <label for="marcha">Marchas:</label>
+      <input type="text" id="marcha" name="marcha" [(ngModel)]="bike!.marcha" required>
+    </div>
+
+    <div>
+      <label for="estoque">Estoque:</label>
+      <input type="number" id="estoque" name="estoque" [(ngModel)]="bike!.produto!.estoque" required>
+    </div>
+
+
+    <div>
+      <button type="submit" (click)="adicionarBike()">Cadastrar Bike</button>
+    </div>
+  </form>
+</div>
