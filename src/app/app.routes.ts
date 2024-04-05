@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
-import { AdmMainLayoutComponent } from './admin/adm-main-layout/adm-main-layout.component';
 
 export const routes: Routes = [
   {
