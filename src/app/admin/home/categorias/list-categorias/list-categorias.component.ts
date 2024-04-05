@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { Router } from '@angular/router';
+import { Categoria } from '../../../../models/categoria.model';
+import { CategoriaService } from '../../../../services/categoria/categoria.service';
 
 @Component({
   selector: 'app-list-categorias',
@@ -11,15 +13,15 @@ import { Router } from '@angular/router';
   styleUrl: './list-categorias.component.css'
 })
 export class ListCategoriasComponent {
-  constructor(private router: Router) {}
 
-  categorias = [
-    {"id": 1, "nome": "categoria1", "produtos": 15},
-    {"id": 2, "nome": "categoria2", "produtos": 23},
-    {"id": 3, "nome": "categoria3", "produtos": 10},
-    {"id": 4, "nome": "categoria4", "produtos": 45},
-    {"id": 5, "nome": "categoria5", "produtos": 1},
-  ]
+  constructor(private router: Router, private service: CategoriaService) {
+    this.service.getAll().subscribe((data: Categoria[]) => {
+      this.categorias = data;
+    });
+  }
+
+  categorias?: Categoria[];
+
   irParaNewCategoria() {
     this.router.navigate(['/admin/categorias/new']);
   }

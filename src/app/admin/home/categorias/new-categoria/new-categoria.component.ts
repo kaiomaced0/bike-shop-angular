@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CategoriaService } from '../../../../services/categoria/categoria.service';
 
 @Component({
   selector: 'app-new-categoria',
@@ -11,13 +12,22 @@ import { Router } from '@angular/router';
 })
 export class NewCategoriaComponent {
 
-  constructor(private router: Router) {}
 
+  nome: string = '';
+
+  constructor(private router: Router, private service: CategoriaService) {}
   onSubmit(form: any) {
     console.log('Dados do Formulário:', form.value);
-    // Aqui você pode adicionar a lógica para salvar os dados do formulário
   }
   adicionarCategoria() {
+      this.service.insert(this.nome).subscribe({
+        next: (response) => {
+          console.log('Categoria criada com sucesso:', response);
+        },
+        error: (error) => {
+          console.error('Erro ao criar Categoria:', error);
+        }
+      });
     this.router.navigate(['/admin/categorias']);
   }
 }

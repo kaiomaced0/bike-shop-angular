@@ -9,11 +9,10 @@
 <table class="tabela-produtos">
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Nome</th>
-      <th>Produtos</th>
-      <th>Editar</th>
-      <th>Excluir</th>
+      <th style="width: 10%;">ID</th>
+      <th style="width: 70%;">Nome</th>
+      <th style="width: 10%;">Editar</th>
+      <th style="width: 10%;">Excluir</th>
     </tr>
   </thead>
   <tbody>
@@ -21,11 +20,10 @@
     <tr>
       <td>{{ categoria.id }}</td>
       <td>{{ categoria.nome }}</td>
-      <td>{{ categoria.produtos }}</td>
-      <td><button mat-icon-button (click)="editarCategoria(categoria.id)">
+      <td><button mat-icon-button (click)="editarCategoria(categoria.id!)">
           <mat-icon>edit</mat-icon>
         </button></td>
-      <td><button mat-icon-button (click)="excluirCategoria(categoria.id)">
+      <td><button mat-icon-button (click)="excluirCategoria(categoria.id!)">
           <mat-icon>delete</mat-icon>
         </button></td>
 

@@ -4,6 +4,7 @@ import { ListCategoriasComponent } from './list-categorias/list-categorias.compo
 import { NewCategoriaComponent } from './new-categoria/new-categoria.component';
 import { EditCategoriaComponent } from './edit-categoria/edit-categoria.component';
 import { ViewCategoriaComponent } from './view-categoria/view-categoria.component';
+import { CategoriaService } from '../../../services/categoria/categoria.service';
 
 const routes: Routes = [
   {path: '', component: ListCategoriasComponent},
@@ -13,6 +14,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [CategoriaService]
 })
 export class CategoriasRoutingModule { }
