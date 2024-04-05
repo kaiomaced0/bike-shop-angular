@@ -1,0 +1,33 @@
+<div class="button-container">
+  <button mat-raised-button color="primary" style="width: 100%; border-radius: 8px; background-color: green;"
+    (click)="irParaNewFreio()">
+    <mat-icon>add</mat-icon>
+    Adicionar freio
+  </button>
+</div>
+<table class="tabela-freios">
+  <thead>
+    <tr>
+      <th style="width: 20%;">ID</th>
+      <th style="width: 60%;">Nome</th>
+      <th style="width: 10%;">Editar</th>
+      <th style="width: 10%;">Excluir</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for(freio of freios; track freio.id){
+    <tr>
+      <td>{{ freio.id }}</td>
+      <td>{{ freio.nome }}</td>
+      <td><button mat-icon-button (click)="editarFreio(freio.id!)">
+          <mat-icon>edit</mat-icon>
+        </button></td>
+      <td><button mat-icon-button (click)="excluirFreio(freio.id!)">
+          <mat-icon>delete</mat-icon>
+        </button></td>
+
+    </tr>
+    }
+
+  </tbody>
+</table>

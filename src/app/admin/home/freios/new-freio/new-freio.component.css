@@ -1,0 +1,29 @@
+.new-produto-form {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.new-produto-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.new-produto-form form label {
+  margin-top: 10px;
+}
+
+.new-produto-form form input, .new-produto-form form select {
+  padding: 8px;
+  margin-top: 5px;
+}
+
+.new-produto-form form button {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: green;
+  color: white;
+  border: none;
+  cursor: pointer;
+}

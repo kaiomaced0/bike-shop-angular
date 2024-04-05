@@ -1,0 +1,24 @@
+.tabela-freios {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px; /* Espaçamento acima da tabela */
+}
+
+.tabela-freios th, .tabela-freios td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.tabela-freios th {
+  background-color: #f2f2f2;
+}
+
+.tabela-freios mat-icon-button {
+  color: #757575; /* Cor mais suave para os ícones */
+  margin: 0 5px; /* Espaçamento ao redor dos ícones */
+}
+
+.tabela-freios mat-icon-button:hover {
+  color: #333; /* Cor um pouco mais escura ao passar o mouse */
+}
