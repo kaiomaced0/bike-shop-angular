@@ -10,10 +10,9 @@
     <tr>
       <th>ID</th>
       <th>Nome</th>
+      <th>codigo</th>
       <th>Desconto</th>
       <th>Estoque</th>
-      <th>Usados</th>
-      <th>Descontos Realizados</th>
       <th>Editar</th>
       <th>Excluir</th>
     </tr>
@@ -23,14 +22,13 @@
     <tr>
       <td>{{ cupom.id }}</td>
       <td>{{ cupom.nome }}</td>
-      <td>{{ cupom.desconto}}%</td>
-      <td>{{ cupom.quantidadeEstoque }}</td>
-      <td>{{ cupom.usados}}</td>
-      <td>R$ {{ cupom.valorRealizado}}</td>
-      <td><button mat-icon-button (click)="editarCupom(cupom.id)">
+      <td>{{ cupom.codigo}}</td>
+      <td>{{ cupom.valorDesconto}}%</td>
+      <td>{{ cupom.quantidade }}</td>
+      <td><button mat-icon-button (click)="editarCupom(cupom.id!)">
           <mat-icon>edit</mat-icon>
         </button></td>
-      <td><button mat-icon-button (click)="excluirCupom(cupom.id)">
+      <td><button mat-icon-button (click)="excluirCupom(cupom.id!)">
           <mat-icon>delete</mat-icon>
         </button></td>
 

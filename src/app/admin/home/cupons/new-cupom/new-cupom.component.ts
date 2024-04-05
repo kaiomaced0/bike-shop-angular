@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CupomService } from '../../../../services/cupom/cupom.service';
+import { Cupom } from '../../../../models/cupom.model';
 
 @Component({
   selector: 'app-new-cupom',
@@ -10,15 +12,23 @@ import { Router } from '@angular/router';
   styleUrl: './new-cupom.component.css'
 })
 export class NewCupomComponent {
-  constructor(private router: Router) {}
-  categorias = ['Categoria 1', 'Categoria 2', 'Categoria 3', 'Categoria 4', 'Categoria 5'];
+  cupom: Cupom = new Cupom();
 
+  constructor(private router: Router, private service: CupomService) {}
   onSubmit(form: any) {
     console.log('Dados do Formulário:', form.value);
-    // Aqui você pode adicionar a lógica para salvar os dados do formulário
   }
   adicionarCupom() {
-    this.router.navigate(['/admin/cupons']);
+    this.cupom.produtos = [];
+    this.service.insert(this.cupom!).subscribe({
+      next: (produtoAdicionado) => {
+        console.log('Produto adicionado com sucesso:', produtoAdicionado);
+        this.router.navigate(['/admin/cupons']);
+      },
+      error: (erro) => {
+        console.error('Erro ao adicionar produto:', erro, this.cupom!);
+        // Trate erros, como exibir uma mensagem para o usuário
+      }
+    });
   }
-
 }
