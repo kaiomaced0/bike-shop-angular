@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { AdmMainLayoutComponent } from '../adm-main-layout/adm-main-layout.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -101,6 +100,42 @@ const routes: Routes = [
       {
         path: '',
         loadChildren: () => import('./marca/marca.module').then(m => m.MarcaModule)
+      },
+    ]
+  },
+  {
+    path: 'ferramentas',
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./ferramentas/ferramentas.module').then(m => m.FerramentasModule)
+      },
+    ]
+  },
+  {
+    path: 'pneus',
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./pneus/pneus.module').then(m => m.PneusModule)
+      },
+    ]
+  },
+  {
+    path: 'freios',
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./freios/freios.module').then(m => m.FreiosModule)
+      },
+    ]
+  },
+  {
+    path: 'bikes',
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./bikes/bikes.module').then(m => m.BikesModule)
       },
     ]
   }
