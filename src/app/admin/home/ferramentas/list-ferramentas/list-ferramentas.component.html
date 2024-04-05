@@ -1,0 +1,37 @@
+<div class="button-container">
+  <button mat-raised-button color="primary" style="width: 100%; border-radius: 8px; background-color: green;"
+    (click)="irParaNewFerramenta()">
+    <mat-icon>add</mat-icon>
+    Adicionar ferramenta
+  </button>
+</div>
+<table class="tabela-ferramentas">
+  <thead>
+    <tr>
+      <th style="width: 10%;">ID</th>
+      <th style="width: 40%;">Nome</th>
+      <th style="width: 15%;">Preço</th>
+      <th style="width: 15%;">Estoque</th>
+      <th style="width: 10%;">Editar</th>
+      <th style="width: 10%;">Excluir</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for(ferramenta of ferramentas; track ferramenta.id!){
+    <tr>
+      <td>{{ ferramenta.id! }}</td>
+      <td>{{ ferramenta.nome! }}</td>
+      <td>{{ ferramenta.preco!}}</td>
+      <td>{{ ferramenta.estoque! }}</td>
+      <td><button mat-icon-button (click)="editarFerramenta(ferramenta.id!)">
+          <mat-icon>edit</mat-icon>
+        </button></td>
+      <td><button mat-icon-button (click)="excluirFerramenta(ferramenta.id!)">
+          <mat-icon>delete</mat-icon>
+        </button></td>
+
+    </tr>
+    }
+
+  </tbody>
+</table>
