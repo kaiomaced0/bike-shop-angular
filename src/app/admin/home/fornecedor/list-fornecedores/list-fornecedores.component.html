@@ -1,1 +1,39 @@
-<p>list-fornecedores works!</p>
+<div class="button-container">
+  <button mat-raised-button color="primary" style="width: 100%; border-radius: 8px; background-color: green;"
+    (click)="irParaNewfornecedor()">
+    <mat-icon>add</mat-icon>
+    Adicionar fornecedor
+  </button>
+</div>
+<table class="tabela-fornecedors">
+  <thead>
+    <tr>
+      <th style="width: 10%;">ID</th>
+      <th style="width: 30%;">Nome</th>
+      <th style="width: 15%;">Preço</th>
+      <th style="width: 15%;">Categoria</th>
+      <th style="width: 10%;">Quantidade em Estoque</th>
+      <th style="width: 10%;">Editar</th>
+      <th style="width: 10%;">Excluir</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for(fornecedor of fornecedors; track fornecedor.id){
+    <tr>
+      <td>{{ fornecedor.id }}</td>
+      <td>{{ fornecedor.nome }}</td>
+      <td>{{ fornecedor.preco}}</td>
+      <td>{{ fornecedor.categoria }}</td>
+      <td>{{ fornecedor.quantidadeEstoque }}</td>
+      <td><button mat-icon-button (click)="editarfornecedor(fornecedor.id)">
+          <mat-icon>edit</mat-icon>
+        </button></td>
+      <td><button mat-icon-button (click)="excluirfornecedor(fornecedor.id)">
+          <mat-icon>delete</mat-icon>
+        </button></td>
+
+    </tr>
+    }
+
+  </tbody>
+</table>
