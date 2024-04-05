@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { Router } from '@angular/router';
+import { UsuarioService } from '../../../../services/usuario/usuario.service';
+import { Usuario } from '../../../../models/usuario.model';
 
 @Component({
   selector: 'app-list-usuarios',
@@ -11,16 +13,22 @@ import { Router } from '@angular/router';
   styleUrl: './list-usuarios.component.css',
 })
 export class ListUsuariosComponent {
-  constructor(private router: Router) {}
 
-  usuarios = [
-    { id: 1, nome: 'Usuário 1', cpf: '123.456.789-00', email: 'usuario1@exemplo.com', numeroDeTelefone: '1234-5678', valorGasto: 1000 },
-    { id: 2, nome: 'Usuário 2', cpf: '987.654.321-00', email: 'usuario2@exemplo.com', numeroDeTelefone: '8765-4321', valorGasto: 2000 },
-    // Adicione mais usuários conforme necessário
-  ];
+  constructor(private router: Router, private usuarioService: UsuarioService) {
+  }
 
+  usuarios: Usuario[] = [];
+
+  ngOnInit() {
+    this.usuarioService.getAll().subscribe((data: Usuario[]) => {
+      this.usuarios = data;
+    });
+  }
 
   irParaNewUsuario() {
     this.router.navigate(['/admin/usuarios/new']);
+  }
+  resetarSenha(id:number){
+    this.usuarioService.resetarSenha(id);
   }
 }

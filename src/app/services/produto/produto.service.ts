@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable} from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Produto } from '../../models/produto.model';
+import { ProdutoDTO } from '../../dto/produto.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -17,37 +18,18 @@ export class ProdutoService {
   constructor(private httpClient: HttpClient) { }
 
   list(){
-    return this.httpClient.get<Produto[]>(this.apiUrl, this.httpOptions).pipe(
+    return this.httpClient.get<Produto[]>(this.apiUrl+'/admin', this.httpOptions).pipe(
       tap(produtos => console.log(produtos))
     );
   }
-  
-  findAll(page?: number, pageSize?: number): Observable<Produto[]> {
-    let params = {};
-
-    if (page !== undefined && pageSize !== undefined) {
-      params = {
-        page: page.toString(),
-        pageSize: pageSize.toString()
-      }
-    }
-
-    return this.httpClient.get<Produto[]>(`${this.apiUrl}`, {params});
+  getProdutos(): Observable<Produto[]> {
+    return this.httpClient.get<Produto[]>(this.apiUrl, this.httpOptions);
   }
-
-  findById(id: string): Observable<Produto> {
-    return this.httpClient.get<Produto>(`${this.apiUrl}/${id}`);
+  insert(p: ProdutoDTO): Observable<ProdutoDTO> {
+    return this.httpClient.post<ProdutoDTO>(this.apiUrl, p, this.httpOptions);
   }
-
-  insert(produto: Produto): Observable<Produto> {
-    return this.httpClient.post<Produto>(this.apiUrl, produto, this.httpOptions);
+  delete(id: number): void {
+    const url = `${this.apiUrl}/delete/${id}`;
+    this.httpClient.put(url, this.httpOptions);
   }
-
-  update(produto: Produto): Observable<Produto> {
-    return this.httpClient.put<Produto>(`${this.apiUrl}/${produto.id}`, produto);
-  }
-  delete(produto: Produto): Observable<Produto> {
-    return this.httpClient.patch<Produto>(`${this.apiUrl}/${produto.id}`, produto);
-  }
-
 }

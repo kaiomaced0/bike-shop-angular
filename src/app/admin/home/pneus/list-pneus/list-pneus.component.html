@@ -1,0 +1,39 @@
+<div class="button-container">
+  <button mat-raised-button color="primary" style="width: 100%; border-radius: 8px; background-color: green;"
+    (click)="irParaNewPneu()">
+    <mat-icon>add</mat-icon>
+    Adicionar pneu
+  </button>
+</div>
+<table class="tabela-pneus">
+  <thead>
+    <tr>
+      <th style="width: 10%;">ID</th>
+      <th style="width: 30%;">Nome</th>
+      <th style="width: 15%;">Custo</th>
+      <th style="width: 15%;">Preço</th>
+      <th style="width: 10%;">Estoque</th>
+      <th style="width: 10%;">Editar</th>
+      <th style="width: 10%;">Excluir</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for(pneu of pneus; track pneu.id){
+    <tr>
+      <td>{{ pneu.id }}</td>
+      <td>{{ pneu.nome }}</td>
+      <td>{{ pneu.valorCompra}}</td>
+      <td>{{ pneu.preco}}</td>
+      <td>{{ pneu.estoque }}</td>
+      <td><button mat-icon-button (click)="editarPneu(pneu.id!)">
+          <mat-icon>edit</mat-icon>
+        </button></td>
+      <td><button mat-icon-button (click)="excluirPneu(pneu.id!)">
+          <mat-icon>delete</mat-icon>
+        </button></td>
+
+    </tr>
+    }
+
+  </tbody>
+</table>

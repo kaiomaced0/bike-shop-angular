@@ -1,53 +1,40 @@
+<!-- produto.component.html -->
 <div class="new-produto-form">
   <h2>Cadastro de Novo Produto</h2>
-  <form #produtoForm="ngForm" (ngSubmit)="onSubmit(produtoForm)">
-    <label for="nome">Nome:</label>
-    <input type="text" id="nome" name="nome" ngModel required>
+  <form #produtoForm="ngForm" (ngSubmit)="adicionarProduto()">
+    <div>
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome" [(ngModel)]="produto!.nome!" required>
+    </div>
 
-    <label for="preco">Preço:</label>
-    <input type="number" id="preco" name="preco" ngModel required>
+    <div>
+      <label for="nomeLongo">Nome longo:</label>
+      <input type="text" id="nomeLongo" name="nomeLongo" [(ngModel)]="produto!.nomeLongo!" required>
+    </div>
 
-    <label for="valor">Valor:</label>
-    <input type="number" id="valor" name="valor" ngModel required>
+    <div>
+      <label for="descricao">Descricao:</label>
+      <input type="text" id="descricao" name="descricao" [(ngModel)]="produto!.descricao!" required>
+    </div>
 
-    <label for="estoque">Estoque inicial:</label>
-    <input type="number" id="estoque" name="estoque" ngModel required>
+    <div>
+      <label for="precoCusto">Custo:</label>
+      <input type="number" id="precoCusto" name="precoCusto" [(ngModel)]="produto!.precoCusto!" required>
+    </div>
 
-    <label for="categoria">Categoria:</label>
-    <select id="categoria" name="categoria" ngModel required>
-      <option value="">Selecione uma Categoria</option>
-      @for(categoria of categorias; track categoria){
-      <option>{{ categoria }}</option>
-      }
-    </select>
+    <div>
+      <label for="precoVenda">Preço:</label>
+      <input type="number" id="precoVenda" name="precoVenda" [(ngModel)]="produto!.precoVenda!" required>
+    </div>
 
-    <label for="cor">Cor:</label>
-    <select id="cor" name="cor" ngModel required>
-      <option value="">Selecione uma Cor</option>
-      @for(cor of cores; track cor){
-      <option>{{ cor }}</option>
-      }
-    </select>
+    <div>
+      <label for="estoque">Estoque Inicial:</label>
+      <input type="number" id="estoque" name="estoque" [(ngModel)]="produto!.estoque!" required>
+    </div>
 
-    <label for="marca">Marca:</label>
-    <select id="marca" name="marca" ngModel required>
-      <option value="">Selecione uma Marca</option>
-      @for(marca of marcas; track marca){
-      <option>{{ marca }}</option>
-      }
-    </select>
 
-    <label for="categoria">Cor:</label>
-    <select id="cor" name="cor" ngModel required>
-      <option value="">Selecione uma Cor</option>
-      @for(cor of cores; track cor){
-      <option>{{ cor }}</option>
-      }
-    </select>
-
-    <label for="imagemUrl">Caminho da Imagem:</label>
-    <input type="text" id="imagemUrl" name="imagemUrl" ngModel>
-
-    <button type="submit" (click)="adicionarProduto()">Cadastrar Produto</button>
+    <div>
+      <button type="submit">Cadastrar Produto</button>
+    </div>
   </form>
 </div>

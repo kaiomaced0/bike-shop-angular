@@ -48,5 +48,17 @@ export class HomeComponent {
   irParaFornecedoresAdmin() {
     this.router.navigate(['/admin/fornecedores']);
   }
+  irParaFreiosAdmin() {
+    this.router.navigate(['/admin/freios']);
+  }
+  irParaPneusAdmin() {
+    this.router.navigate(['/admin/pneus']);
+  }
+  irParaFerramentasAdmin() {
+    this.router.navigate(['/admin/ferramentas']);
+  }
+  irParaBikesAdmin(){
+    this.router.navigate(['/admin/bikes']);
+  }
 
 }

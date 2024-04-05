@@ -1,4 +1,4 @@
-<!-- <div class="button-container">
+<div class="button-container">
   <button mat-raised-button color="primary" style="width: 100%; border-radius: 8px; background-color: green;"
     (click)="irParaNewProduto()">
     <mat-icon>add</mat-icon>
@@ -11,7 +11,6 @@
       <th style="width: 10%;">ID</th>
       <th style="width: 30%;">Nome</th>
       <th style="width: 15%;">Preço</th>
-      <th style="width: 15%;">Categoria</th>
       <th style="width: 10%;">Quantidade em Estoque</th>
       <th style="width: 10%;">Editar</th>
       <th style="width: 10%;">Excluir</th>
@@ -19,16 +18,16 @@
   </thead>
   <tbody>
     @for(produto of produtos; track produto.id){
+
     <tr>
       <td>{{ produto.id }}</td>
       <td>{{ produto.nome }}</td>
       <td>{{ produto.preco}}</td>
-      <td>{{ produto.categoria }}</td>
-      <td>{{ produto.quantidadeEstoque }}</td>
-      <td><button mat-icon-button (click)="editarProduto(produto.id)">
+      <td>{{ produto.estoque }}</td>
+      <td><button mat-icon-button (click)="editarProduto(produto.id!)" style="cursor: pointer;">
           <mat-icon>edit</mat-icon>
         </button></td>
-      <td><button mat-icon-button (click)="excluirProduto(produto.id)">
+      <td><button mat-icon-button (click)="excluirProduto(produto.id!)"style="cursor: pointer;">
           <mat-icon>delete</mat-icon>
         </button></td>
 
@@ -36,4 +35,4 @@
     }
 
   </tbody>
-</table> -->
+</table>

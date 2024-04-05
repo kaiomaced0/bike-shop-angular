@@ -1,0 +1,40 @@
+<!-- pneu.component.html -->
+<div class="new-pneu-form">
+  <h2>Cadastro de Novo Pneu</h2>
+  <form #pneuForm="ngForm" (ngSubmit)="adicionarPneu()">
+    <div>
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome" [(ngModel)]="pneu!.nome!" required>
+    </div>
+
+    <div>
+      <label for="nomeLongo">Nome longo:</label>
+      <input type="text" id="nomeLongo" name="nomeLongo" [(ngModel)]="pneu!.nomeLongo!" required>
+    </div>
+
+    <div>
+      <label for="descricao">Descricao:</label>
+      <input type="text" id="descricao" name="descricao" [(ngModel)]="pneu!.descricao!" required>
+    </div>
+
+    <div>
+      <label for="precoCusto">Custo:</label>
+      <input type="number" id="precoCusto" name="precoCusto" [(ngModel)]="pneu!.precoCusto!" required>
+    </div>
+
+    <div>
+      <label for="precoVenda">Preço:</label>
+      <input type="number" id="precoVenda" name="precoVenda" [(ngModel)]="pneu!.precoVenda!" required>
+    </div>
+
+    <div>
+      <label for="estoque">Estoque Inicial:</label>
+      <input type="number" id="estoque" name="estoque" [(ngModel)]="pneu!.estoque!" required>
+    </div>
+
+
+    <div>
+      <button type="submit" (click)="adicionarPneu()">Cadastrar Pneu</button>
+    </div>
+  </form>
+</div>

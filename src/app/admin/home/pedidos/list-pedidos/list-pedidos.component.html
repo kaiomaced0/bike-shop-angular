@@ -2,22 +2,30 @@
   <thead>
     <tr>
       <th>ID</th>
-      <th>codigo</th>
       <th>Usuario</th>
+      <th>Rastreio</th>
       <th>Status</th>
-      <th>Data Prevista</th>
+      <th>valor Total</th>
+      <th>Forma de Pagamento</th>
+      <th>Pagamento Realizado</th>
+      <th>Cupom ID</th>
+      <th>Endereco ID</th>
       <th>Editar</th>
       <th>Excluir</th>
     </tr>
   </thead>
   <tbody>
-    @for (pedido of pedidos; track pedido.id) {
+    @for (pedido of compras; track pedido.id) {
     <tr>
       <td>{{ pedido.id }}</td>
-      <td>#{{ pedido.codigo }}</td>
-      <td>{{ pedido.usuario }}</td>
-      <td>{{ pedido.status }}</td>
-      <td>{{ pedido.dataPrevista }}</td>
+      <td>{{ pedido.loginUsuario }}</td>
+      <td>#{{ pedido.codigoRastreio }}</td>
+      <td>{{ pedido.statusPedido }}</td>
+      <td>R$ {{ pedido.valorTotal }}</td>
+      <td>{{ pedido.formaPagamento }}</td>
+      <td>{{ pedido.pago }}</td>
+      <td>{{ pedido.idCupom }}</td>
+      <td>{{ pedido.idEnderecoEntrega }}</td>
       <td><button mat-icon-button >
           <mat-icon>edit</mat-icon>
         </button></td>
