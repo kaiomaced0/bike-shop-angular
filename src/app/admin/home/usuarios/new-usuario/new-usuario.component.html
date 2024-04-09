@@ -1,6 +1,6 @@
 <div class="new-usuario-container">
   <h2>Cadastro de Usuário</h2>
-  <form #usuarioForm="ngForm" (ngSubmit)="adicionarUsuario()">
+  <form #usuarioForm="ngForm">
     <div class="form-field">
       <label for="nome">Nome:</label>
       <input type="text" id="nome" name="nome" [(ngModel)]="usuario!.nome" required>
@@ -26,6 +26,9 @@
       <input type="password" id="senha" name="senha" [(ngModel)]="usuario!.senha" required>
     </div>
 
-    <button type="submit" (click)="adicionarUsuario()">Cadastrar</button>
+    <div class="button-container">
+      <button mat-flat-button color="warn" (click)="cancelar()">Cancelar</button>
+      <button mat-flat-button color="primary" type="submit" (click)="adicionarUsuario()">Cadastrar</button>
+    </div>
   </form>
 </div>
