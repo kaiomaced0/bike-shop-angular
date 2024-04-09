@@ -5,7 +5,7 @@ export class Produto {
   nome?: string;
   nomeLongo?: string;
   descricao?: string;
-  custo?: string;
+  valorCompra?: string;
   preco?: number;
   cor?: string;
   estoque?: number;
