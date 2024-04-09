@@ -7,6 +7,9 @@
 .button-container {
   margin-bottom: 10px;
 }
+.mat-icon{
+  cursor: pointer;
+}
 
 
 .tabela-usuarios {
