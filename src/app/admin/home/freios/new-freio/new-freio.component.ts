@@ -16,9 +16,6 @@ export class NewFreioComponent {
   nome: string = '';
 
   constructor(private router: Router, private service: FreioService) {}
-  onSubmit(form: any) {
-    console.log('Dados do Formulário:', form.value);
-  }
   adicionarFreio() {
       this.service.insert(this.nome).subscribe({
         next: (response) => {

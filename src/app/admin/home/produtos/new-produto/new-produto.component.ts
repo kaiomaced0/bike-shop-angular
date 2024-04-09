@@ -21,9 +21,6 @@ export class NewProdutoComponent{
   produto: ProdutoDTO = new ProdutoDTO();
 
   constructor(private router: Router, private service: ProdutoService) {}
-  onSubmit(form: any) {
-    console.log('Dados do Formulário:', form.value);
-  }
   adicionarProduto() {
     this.produto!.idCor = 1;
     this.produto!.idMarca = 1;

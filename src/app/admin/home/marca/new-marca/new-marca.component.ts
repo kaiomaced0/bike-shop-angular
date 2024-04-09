@@ -16,9 +16,6 @@ export class NewMarcaComponent {
   nome: string = '';
 
   constructor(private router: Router, private service: MarcaService) {}
-  onSubmit(form: any) {
-    console.log('Dados do Formulário:', form.value);
-  }
   adicionarMarca() {
       this.service.insert(this.nome).subscribe({
         next: (response) => {

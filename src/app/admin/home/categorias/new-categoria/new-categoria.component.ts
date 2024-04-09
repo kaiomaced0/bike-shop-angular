@@ -16,9 +16,6 @@ export class NewCategoriaComponent {
   nome: string = '';
 
   constructor(private router: Router, private service: CategoriaService) {}
-  onSubmit(form: any) {
-    console.log('Dados do Formulário:', form.value);
-  }
   adicionarCategoria() {
       this.service.insert(this.nome).subscribe({
         next: (response) => {

@@ -21,9 +21,6 @@ export class NewBikeComponent {
   constructor(private router: Router, private service: BikeService) {
     this.bike!.produto! = new ProdutoDTO();
   }
-  onSubmit(form: any) {
-    console.log('Dados do Formulário:', form.value);
-  }
   adicionarBike() {
 
     this.bike!.produto!.idCor = 1;

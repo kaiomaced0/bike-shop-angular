@@ -16,9 +16,6 @@ export class NewPneuComponent {
   pneu: PneuDTO = new PneuDTO();
 
   constructor(private router: Router, private service: PneuService) {}
-  onSubmit(form: any) {
-    console.log('Dados do Formulário:', form.value);
-  }
   adicionarPneu() {
     this.pneu!.idCor = 1;
     this.pneu!.idMarca = 1;
