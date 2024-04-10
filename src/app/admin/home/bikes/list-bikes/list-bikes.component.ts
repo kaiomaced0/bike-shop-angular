@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { Router } from '@angular/router';
-import { ProdutoService } from '../../../../services/produto/produto.service';
 import { BikeService } from '../../../../services/bike/bike.service';
 import { Bike } from '../../../../models/bike.models';
 
@@ -24,7 +23,7 @@ export class ListBikesComponent {
   ngOnInit() {
     this.bikeService.getAll().subscribe((data: Bike[]) => {
       this.bikes = data;
-      
+
     });
   }
 
@@ -32,7 +31,7 @@ export class ListBikesComponent {
     this.router.navigate(['/admin/bikes/new']);
   }
   editarBike(produtoId: number) {
-    this.router.navigate(['/admin/bikes/edit']);
+    this.router.navigate([`/admin/bikes/edit/${produtoId}`]);
   }
 
   excluirBike(produtoId: number) {
