@@ -5,4 +5,6 @@ export class Bike{
   marcha?: string;
   tamanho?: string;
   tipoBike?: string;
+  idTamanho?: number;
+  idTipoBike?: number;
 }

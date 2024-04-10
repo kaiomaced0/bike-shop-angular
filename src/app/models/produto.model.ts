@@ -9,8 +9,10 @@ export class Produto {
   preco?: number;
   cor?: string;
   estoque?: number;
-  images?: string[];
+  img?: string[];
+  idMarca?: number;
   marca?: Marca;
+  idCor?: number;
 
   constructor(
   ) {

@@ -9,7 +9,9 @@ export class Pneu{
   preco?: number;
   cor?: string;
   estoque?: number;
-  images?: string[];
+  img?: string[];
+  idMarca?: number;
   marca?: Marca;
+  idCor?: number;
 
 }
