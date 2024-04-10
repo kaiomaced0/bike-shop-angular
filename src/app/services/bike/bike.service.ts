@@ -2,7 +2,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Bike } from '../../models/bike.models';
 import { Observable } from 'rxjs';
-import { BikeDTO } from '../../dto/bike.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +20,8 @@ export class BikeService {
     return this.http.get<Bike[]>(this.baseUrl+'/admin', this.httpOptions);
   }
 
-  insert(p: BikeDTO): Observable<BikeDTO> {
-    return this.http.post<BikeDTO>(this.baseUrl, p, this.httpOptions);
+  insert(p: Bike): Observable<Bike> {
+    return this.http.post<Bike>(this.baseUrl, p, this.httpOptions);
   }
 
   update(id: number, bike: Bike): Observable<Bike> {
