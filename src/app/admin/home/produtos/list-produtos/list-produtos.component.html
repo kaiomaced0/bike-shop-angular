@@ -8,9 +8,10 @@
 <table class="tabela-produtos">
   <thead>
     <tr>
-      <th style="width: 10%;">ID</th>
-      <th style="width: 30%;">Nome</th>
-      <th style="width: 15%;">Preço</th>
+      <th style="width: 8%;">ID</th>
+      <th style="width: 22%;">Nome</th>
+      <th style="width: 30%;">Nome Longo</th>
+      <th style="width: 10%;">Preço</th>
       <th style="width: 10%;">Quantidade em Estoque</th>
       <th style="width: 10%;">Editar</th>
       <th style="width: 10%;">Excluir</th>
@@ -22,14 +23,11 @@
     <tr>
       <td>{{ produto.id }}</td>
       <td>{{ produto.nome }}</td>
+      <td>{{ produto.nomeLongo }}</td>
       <td>{{ produto.preco}}</td>
       <td>{{ produto.estoque }}</td>
-      <td><button mat-icon-button (click)="editarProduto(produto.id!)" style="cursor: pointer;">
-          <mat-icon>edit</mat-icon>
-        </button></td>
-      <td><button mat-icon-button (click)="excluirProduto(produto.id!)"style="cursor: pointer;">
-          <mat-icon>delete</mat-icon>
-        </button></td>
+      <td><mat-icon (click)="editar(produto.id!)">edit</mat-icon></td>
+      <td><mat-icon (click)="deletar(produto.id!, produto.nome!)">delete</mat-icon></td>
 
     </tr>
     }
