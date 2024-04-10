@@ -1,26 +1,32 @@
 import { Component } from '@angular/core';
-import { Bike } from '../../../../models/bike.models';
-import { BikeDTO } from '../../../../dto/bike.dto';
 import { Router } from '@angular/router';
 import { BikeService } from '../../../../services/bike/bike.service';
 import { FormsModule } from '@angular/forms';
-import { ProdutoDTO } from '../../../../dto/produto.dto';
+import { Bike } from '../../../../models/bike.models';
+import { Produto } from '../../../../models/produto.model';
+import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-new-bike',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, MatButton],
   templateUrl: './new-bike.component.html',
   styleUrl: './new-bike.component.css'
 })
 export class NewBikeComponent {
 
 
-  bike: BikeDTO = new BikeDTO();
+  bike: Bike = new Bike();
 
   constructor(private router: Router, private service: BikeService) {
-    this.bike!.produto! = new ProdutoDTO();
+    this.bike!.produto! = new Produto();
   }
+
+
+  cancelar(){
+    this.router.navigate(['/admin/bikes']);
+  }
+
   adicionarBike() {
 
     this.bike!.produto!.idCor = 1;
