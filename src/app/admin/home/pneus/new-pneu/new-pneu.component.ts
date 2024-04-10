@@ -2,20 +2,27 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatFormField } from '@angular/material/form-field';
 import { Router } from '@angular/router';
-import { PneuDTO } from '../../../../dto/pneu.dto';
 import { PneuService } from '../../../../services/pneu/pneu.service';
+import { Pneu } from '../../../../models/pneu.model';
+import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-new-pneu',
   standalone: true,
-  imports: [MatFormField,FormsModule],
+  imports: [MatFormField,FormsModule, MatButton],
   templateUrl: './new-pneu.component.html',
   styleUrl: './new-pneu.component.css'
 })
 export class NewPneuComponent {
-  pneu: PneuDTO = new PneuDTO();
+  pneu: Pneu = new Pneu();
 
   constructor(private router: Router, private service: PneuService) {}
+
+
+  cancelar(){
+    this.router.navigate(['/admin/pneus']);
+  }
+
   adicionarPneu() {
     this.pneu!.idCor = 1;
     this.pneu!.idMarca = 1;
@@ -23,11 +30,10 @@ export class NewPneuComponent {
     this.service.insert(this.pneu!).subscribe({
       next: (produtoAdicionado) => {
         console.log('Pneu adicionado com sucesso:', produtoAdicionado);
-        this.router.navigate(['/admin/produtos']);
+        this.router.navigate(['/admin/pneus']);
       },
       error: (erro) => {
         console.error('Erro ao adicionar Pneu:', erro, this.pneu!);
-        // Trate erros, como exibir uma mensagem para o usuário
       }
     });
   }
