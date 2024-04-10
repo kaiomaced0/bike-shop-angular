@@ -4,10 +4,12 @@ import { ListBikesComponent } from './list-bikes/list-bikes.component';
 import { BikeService } from '../../../services/bike/bike.service';
 import { ProdutoService } from '../../../services/produto/produto.service';
 import { NewBikeComponent } from './new-bike/new-bike.component';
+import { EditBikeComponent } from './edit-bike/edit-bike.component';
 
 const routes: Routes = [
   {path:'', component: ListBikesComponent},
-  {path: 'new', component: NewBikeComponent}
+  {path: 'new', component: NewBikeComponent},
+  {path: 'edit/:id', component: EditBikeComponent}
 ];
 
 @NgModule({

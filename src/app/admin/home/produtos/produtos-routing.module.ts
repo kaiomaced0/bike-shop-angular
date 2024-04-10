@@ -9,8 +9,8 @@ import { ProdutoService } from '../../../services/produto/produto.service';
 const routes: Routes = [
   {path: '', component: ListProdutosComponent},
   {path: 'new', component: NewProdutoComponent},
-  {path: 'edit', component: EditProdutoComponent},
-  {path: 'view', component: ViewProdutoComponent},
+  {path: 'edit/:id', component: EditProdutoComponent},
+  {path: 'view/:id', component: ViewProdutoComponent},
 
 ];
 

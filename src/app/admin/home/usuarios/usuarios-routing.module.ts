@@ -9,7 +9,7 @@ const routes: Routes = [
   {path: '', component: ListUsuariosComponent},
   {path: 'new', component: NewUsuarioComponent},
   {path: 'edit/:id', component: EditUsuarioComponent},
-  {path: 'view', component: ViewUsuarioComponent},];
+  {path: 'view/:id', component: ViewUsuarioComponent},];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
