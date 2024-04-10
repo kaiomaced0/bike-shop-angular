@@ -3,6 +3,9 @@
   border-collapse: collapse;
   margin-top: 20px; /* Espaçamento acima da tabela */
 }
+.mat-icon{
+  cursor: pointer;
+}
 
 .tabela-pneus th, .tabela-pneus td {
   border: 1px solid #5f5e5e;
