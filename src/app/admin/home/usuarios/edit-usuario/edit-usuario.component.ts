@@ -51,7 +51,7 @@ export class EditUsuarioComponent {
       next: () => {
         console.log('Usuário atualizado com sucesso');
         this.router.navigate(['/admin/usuarios']);
-        this.snackBar.open('Senha resetada', 'Fechar', {
+        this.snackBar.open('Usuario atualizado', 'Fechar', {
           duration: 2000,
         });
       },
