@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Pneu } from '../../models/pneu.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
-import { PneuDTO } from '../../dto/pneu.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -22,8 +21,8 @@ export class PneuService {
       tap(pneu => console.log(pneu)));
   }
 
-  insert(p: PneuDTO): Observable<PneuDTO> {
-    return this.http.post<PneuDTO>(this.baseUrl, p, this.httpOptions);
+  insert(p: Pneu): Observable<Pneu> {
+    return this.http.post<Pneu>(this.baseUrl, p, this.httpOptions);
   }
 
   update(id: number, Pneu: Pneu): Observable<Pneu> {
