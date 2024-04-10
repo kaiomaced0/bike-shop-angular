@@ -1,9 +1,13 @@
-<div class="new-produto-form">
-  <h2>Cadastro de Novo Freio</h2>
-  <form #produtoForm="ngForm">
+<div class="new-freio-form">
+  <h2>Cadastrar Freio</h2>
+  <form #freioform="ngForm" class="form-field">
     <label for="nome">Nome:</label>
     <input type="text" id="nome" name="nome" [(ngModel)]="nome">
 
-    <button type="submit" (click)="adicionarFreio()">Cadastrar Freio</button>
+
+    <div class="button-container">
+      <button mat-flat-button color="warn" (click)="cancelar()">Cancelar</button>
+      <button mat-flat-button color="primary" type="submit" (click)="adicionarFreio()">Cadastrar</button>
+    </div>
   </form>
 </div>

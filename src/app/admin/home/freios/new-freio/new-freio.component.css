@@ -1,29 +1,43 @@
-.new-produto-form {
-  max-width: 400px;
+.new-freio-form {
+  max-width: 500px;
   margin: auto;
   padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #cacaca;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.new-produto-form form {
+.new-freio-form h2 {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}
+
+.button-container {
   display: flex;
-  flex-direction: column;
+  justify-content: flex-end;
+  gap: 10px;
 }
 
-.new-produto-form form label {
-  margin-top: 10px;
+.button-container button {
+  width: auto;
+  padding: 10px 15px;
 }
 
-.new-produto-form form input, .new-produto-form form select {
+.form-field {
+  margin-bottom: 10px;
+}
+
+.form-field label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-field input {
+  width: 100%;
   padding: 8px;
-  margin-top: 5px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
 }
 
-.new-produto-form form button {
-  margin-top: 20px;
-  padding: 10px;
-  background-color: green;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
+
