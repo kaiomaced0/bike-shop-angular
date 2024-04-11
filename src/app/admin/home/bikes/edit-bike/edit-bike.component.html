@@ -1,1 +1,45 @@
-<p>edit-bike works!</p>
+<!-- produto.component.html -->
+<div class="new-produto-form">
+  <h2>Atualizar Bike</h2>
+  <form #produtoForm="ngForm" class="form-field">
+    <div>
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome" [(ngModel)]="bike!.produto!.nome" required>
+    </div>
+
+    <div>
+      <label for="nomeLongo">Nome longo:</label>
+      <input type="text" id="nomeLongo" name="nomeLongo" [(ngModel)]="bike!.produto!.nomeLongo!" required>
+    </div>
+
+    <div>
+      <label for="descricao">Descricao:</label>
+      <input type="text" id="descricao" name="descricao" [(ngModel)]="bike!.produto!.descricao!" required>
+    </div>
+
+    <div>
+      <label for="valorCompra">Custo:</label>
+      <input type="number" id="valorCompra" name="valorCompra" [(ngModel)]="bike!.produto!.valorCompra" required>
+    </div>
+
+    <div>
+      <label for="preco">Preço:</label>
+      <input type="number" id="preco" name="preco" [(ngModel)]="bike!.produto!.preco!" required>
+    </div>
+
+    <div>
+      <label for="marcha">Marchas:</label>
+      <input type="text" id="marcha" name="marcha" [(ngModel)]="bike!.marcha" required>
+    </div>
+
+    <div>
+      <label for="estoque">Estoque:</label>
+      <input type="number" id="estoque" name="estoque" [(ngModel)]="bike!.produto!.estoque" required>
+    </div>
+
+    <div class="button-container">
+      <button mat-flat-button color="warn" (click)="cancelar()">Cancelar</button>
+      <button mat-flat-button color="primary" type="submit" (click)="atualizarBike()">Atualizar</button>
+    </div>
+  </form>
+</div>
