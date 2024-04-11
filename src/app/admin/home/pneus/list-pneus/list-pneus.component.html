@@ -25,8 +25,8 @@
       <td>{{ pneu.valorCompra}}</td>
       <td>{{ pneu.preco}}</td>
       <td>{{ pneu.estoque }}</td>
-      <td><mat-icon (click)="editarPneu(pneu.id!)">edit</mat-icon></td>
-      <td><mat-icon (click)="excluirPneu(pneu.id!)">delete</mat-icon></td>
+      <td><mat-icon (click)="editar(pneu.id!)">edit</mat-icon></td>
+      <td><mat-icon (click)="deletar(pneu.id!, pneu.nome!)">delete</mat-icon></td>
 
     </tr>
     }
