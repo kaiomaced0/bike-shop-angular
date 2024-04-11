@@ -5,6 +5,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormsModule } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 import { Produto } from '../../../../models/produto.model';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfiermDialogResetarsenhaComponent } from '../../../../components/dialog/confierm-dialog-resetarsenha/confierm-dialog-resetarsenha.component';
 
 @Component({
   selector: 'app-edit-produto',
@@ -21,7 +23,9 @@ export class EditProdutoComponent {
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private service: ProdutoService, private snackBar: MatSnackBar
+    private service: ProdutoService,
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -47,17 +51,28 @@ export class EditProdutoComponent {
   }
 
   atualizarProduto() {
-    this.service.update(this.produto.id!, this.produto).subscribe({
-      next: () => {
-        console.log('Produto atualizado com sucesso');
-        this.router.navigate(['/admin/produtos']);
-        this.snackBar.open('Produto atualizado', 'Fechar', {
-          duration: 2000,
-        });
-      },
-      error: (erro) => {
-        console.error('Erro ao atualizar Produto:', erro);
-      }
-    });
-  }
+    const dialogRef = this.dialog.open(ConfiermDialogResetarsenhaComponent, {
+      width: '250px',
+      data: {
+        message: `Tem certeza que deseja atualizar o produto?`,
+      }});
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          this.service.update(this.produto.id!, this.produto).subscribe({
+            next: () => {
+              console.log('Produto atualizado com sucesso');
+              this.router.navigate(['/admin/produtos']);
+              this.snackBar.open('Produto atualizado', 'Fechar', {
+                duration: 2000,
+              });
+            },
+            error: (erro) => {
+              console.error('Erro ao atualizar Produto:', erro);
+            }
+          });
+        }
+
+
+  });}
+
 }

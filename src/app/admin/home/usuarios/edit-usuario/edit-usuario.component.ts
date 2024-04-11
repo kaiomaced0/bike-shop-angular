@@ -5,6 +5,8 @@ import { UsuarioService } from '../../../../services/usuario/usuario.service';
 import { FormsModule } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatButton } from '@angular/material/button';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfiermDialogResetarsenhaComponent } from '../../../../components/dialog/confierm-dialog-resetarsenha/confierm-dialog-resetarsenha.component';
 
 @Component({
   selector: 'app-edit-usuario',
@@ -20,8 +22,10 @@ export class EditUsuarioComponent {
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private service: UsuarioService, private snackBar: MatSnackBar
-  ) {}
+    private service: UsuarioService,
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
+  ) { }
 
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
@@ -38,7 +42,7 @@ export class EditUsuarioComponent {
     }
   }
 
-  cancelar(){
+  cancelar() {
     this.router.navigate(['/admin/usuarios']);
   }
 
@@ -47,16 +51,27 @@ export class EditUsuarioComponent {
   }
 
   atualizarUsuario() {
-    this.service.update(this.usuario.id!, this.usuario).subscribe({
-      next: () => {
-        console.log('Usuário atualizado com sucesso');
-        this.router.navigate(['/admin/usuarios']);
-        this.snackBar.open('Usuario atualizado', 'Fechar', {
-          duration: 2000,
+
+    const dialogRef = this.dialog.open(ConfiermDialogResetarsenhaComponent, {
+      width: '250px',
+      data: {
+        message: `Tem certeza que deseja atualizar o usuario?`,
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.service.update(this.usuario.id!, this.usuario).subscribe({
+          next: () => {
+            console.log('Usuário atualizado com sucesso');
+            this.router.navigate(['/admin/usuarios']);
+            this.snackBar.open('Usuario atualizado', 'Fechar', {
+              duration: 2000,
+            });
+          },
+          error: (erro) => {
+            console.error('Erro ao atualizar usuário:', erro);
+          }
         });
-      },
-      error: (erro) => {
-        console.error('Erro ao atualizar usuário:', erro);
       }
     });
   }
