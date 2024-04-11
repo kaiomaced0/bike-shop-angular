@@ -6,10 +6,13 @@ export class Ferramenta{
   nome?: string;
   nomeLongo?: string;
   descricao?: string;
-  custo?: string;
+  valorCompra?: string;
   preco?: number;
   cor?: string;
   estoque?: number;
-  images?: string[];
+  img?: string[];
+  idMarca?: number;
   marca?: Marca;
+  idCor?: number;
+
 }
