@@ -24,8 +24,8 @@
       <td>{{ bike.produto!.nome}}</td>
       <td>{{ bike.produto!.preco}}</td>
       <td>{{ bike.produto!.estoque }}</td>
-      <td><mat-icon (click)="editarBike(bike.produto!.id!)">edit</mat-icon></td>
-      <td><mat-icon (click)="excluirBike(bike.produto!.id!)">delete</mat-icon></td>
+      <td><mat-icon (click)="editar(bike.produto!.id!)">edit</mat-icon></td>
+      <td><mat-icon (click)="deletar(bike.produto!.id!, bike.produto!.nome!)">delete</mat-icon></td>
 
     </tr>
     }
