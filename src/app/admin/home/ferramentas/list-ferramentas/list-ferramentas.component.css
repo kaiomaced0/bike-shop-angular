@@ -3,6 +3,9 @@
   border-collapse: collapse;
   margin-top: 20px; /* Espaçamento acima da tabela */
 }
+.mat-icon{
+  cursor: pointer;
+}
 
 .tabela-ferramentas th, .tabela-ferramentas td {
   border: 1px solid #ddd;

@@ -23,12 +23,8 @@
       <td>{{ ferramenta.nome! }}</td>
       <td>{{ ferramenta.preco!}}</td>
       <td>{{ ferramenta.estoque! }}</td>
-      <td><button mat-icon-button (click)="editarFerramenta(ferramenta.id!)">
-          <mat-icon>edit</mat-icon>
-        </button></td>
-      <td><button mat-icon-button (click)="excluirFerramenta(ferramenta.id!)">
-          <mat-icon>delete</mat-icon>
-        </button></td>
+      <td><mat-icon (click)="editar(ferramenta.id!)">edit</mat-icon></td>
+      <td><mat-icon (click)="deletar(ferramenta.id!, ferramenta.nome!)">delete</mat-icon></td>
 
     </tr>
     }
