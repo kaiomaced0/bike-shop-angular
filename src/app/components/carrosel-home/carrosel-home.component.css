@@ -9,6 +9,7 @@
 }
 
 .carousel-slide {
+  cursor: pointer;
   display: flex;
   transition: transform 0.5s ease-in-out;
 }
