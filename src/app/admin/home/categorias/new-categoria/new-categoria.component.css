@@ -16,16 +16,23 @@
   margin-top: 10px;
 }
 
-.new-produto-form form input, .new-produto-form form select {
-  padding: 8px;
-  margin-top: 5px;
+.form-field {
+  margin-bottom: 10px;
 }
 
-.new-produto-form form button {
-  margin-top: 20px;
-  padding: 10px;
-  background-color: green;
-  color: white;
-  border: none;
-  cursor: pointer;
+.new-produto-form form input, .new-produto-form form select {
+  padding: 8px;
+  margin-bottom: 10px;
 }
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.button-container button {
+  width: auto;
+  padding: 10px 15px;
+}
+
