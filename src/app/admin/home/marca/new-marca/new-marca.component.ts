@@ -3,17 +3,22 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MarcaService } from '../../../../services/marca/marca.service';
 import { Marca } from '../../../../models/marca.model';
+import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-new-marca',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, MatButton],
   templateUrl: './new-marca.component.html',
   styleUrl: './new-marca.component.css'
 })
 export class NewMarcaComponent {
 
   nome: string = '';
+
+  cancelar(){
+    this.router.navigate(['/admin/marcas']);
+  }
 
   constructor(private router: Router, private service: MarcaService) {}
   adicionarMarca() {
