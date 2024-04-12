@@ -20,12 +20,8 @@
     <tr>
       <td>{{ categoria.id }}</td>
       <td>{{ categoria.nome }}</td>
-      <td><button mat-icon-button (click)="editarCategoria(categoria.id!)">
-          <mat-icon>edit</mat-icon>
-        </button></td>
-      <td><button mat-icon-button (click)="excluirCategoria(categoria.id!)">
-          <mat-icon>delete</mat-icon>
-        </button></td>
+      <td><mat-icon (click)="editar(categoria.id!)">edit</mat-icon></td>
+      <td><mat-icon (click)="deletar(categoria.id!, categoria.nome!)">delete</mat-icon></td>
 
     </tr>
     }
