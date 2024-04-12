@@ -7,11 +7,14 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.form-field input{
+  margin-bottom: 10px;
+}
+
 .new-cupom-form form {
   display: flex;
   flex-direction: column;
 }
-
 .new-cupom-form form label {
   margin-top: 10px;
 }
@@ -21,11 +24,8 @@
   margin-top: 5px;
 }
 
-.new-cupom-form form button {
-  margin-top: 20px;
-  padding: 10px;
-  background-color: green;
-  color: white;
-  border: none;
-  cursor: pointer;
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px; /* Espaço entre os botões */
 }

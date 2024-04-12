@@ -3,16 +3,21 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CupomService } from '../../../../services/cupom/cupom.service';
 import { Cupom } from '../../../../models/cupom.model';
+import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-new-cupom',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, MatButton],
   templateUrl: './new-cupom.component.html',
   styleUrl: './new-cupom.component.css'
 })
 export class NewCupomComponent {
   cupom: Cupom = new Cupom();
+
+  cancelar(){
+    this.router.navigate(['/admin/cupons']);
+  }
 
   constructor(private router: Router, private service: CupomService) {}
   onSubmit(form: any) {
