@@ -1,1 +1,21 @@
-<p>edit-cupom works!</p>
+<div class="new-cupom-form">
+  <h2>Atualizar Cupom</h2>
+  <form #cupomForm="ngForm" class="form-field">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" [(ngModel)]="cupom!.nome!" required>
+
+    <label for="codigo">Codigo:</label>
+    <input type="text" id="codigo" name="codigo" [(ngModel)]="cupom!.codigo!" required>
+
+    <label for="desconto">Porcentagem de desconto:</label>
+    <input type="number" maxlength="2" id="desconto" name="desconto" [(ngModel)]="cupom!.valorDesconto" required>
+
+    <label for="estoque">Estoque:</label>
+    <input type="number" id="estoque" name="estoque" [(ngModel)]="cupom!.quantidade" required>
+
+    <div class="button-container">
+      <button mat-flat-button color="warn" (click)="cancelar()">Cancelar</button>
+      <button mat-flat-button color="primary" type="submit" (click)="atualizarCupom()">Atualizar</button>
+    </div>
+  </form>
+</div>
