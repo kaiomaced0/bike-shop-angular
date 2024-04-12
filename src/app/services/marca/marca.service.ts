@@ -35,13 +35,18 @@ export class MarcaService {
     return this.http.post<Marca>(this.baseUrl, {nome}, this.httpOptions);
   }
 
-  update(id: number, Marca: Marca): Observable<Marca> {
-    const url = `${this.baseUrl}/${id}`;
-    return this.http.put<Marca>(url, Marca);
+  delete(id: number): Observable<any> {
+    const url = `${this.baseUrl}/delete/${id}`;
+    return this.http.patch(url, null, this.httpOptions2);
   }
 
-  delete(id: number): Observable<void> {
+  getById(id: number): Observable<Marca> {
     const url = `${this.baseUrl}/${id}`;
-    return this.http.delete<void>(url);
+    return this.http.get<Marca>(url, this.httpOptions);
+  }
+
+  update(id: number, p: Marca): Observable<any> {
+    const url = `${this.baseUrl}/${id}`;
+    return this.http.patch(url, p, this.httpOptions);
   }
 }

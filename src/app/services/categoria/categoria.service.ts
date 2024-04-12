@@ -34,13 +34,18 @@ export class CategoriaService {
     return this.http.post<Categoria>(this.baseUrl, {nome}, this.httpOptions);
   }
 
-  update(id: number, Categoria: Categoria): Observable<Categoria> {
+  update(id: number, categoria: Categoria): Observable<Categoria> {
     const url = `${this.baseUrl}/${id}`;
-    return this.http.put<Categoria>(url, Categoria);
+    return this.http.patch<Categoria>(url, categoria, this.httpOptions);
   }
 
-  delete(id: number): Observable<void> {
+  delete(id: number): Observable<any> {
+    const url = `${this.baseUrl}/delete/${id}`;
+    return this.http.patch(url, null, this.httpOptions2);
+  }
+
+  getById(id: number): Observable<Categoria> {
     const url = `${this.baseUrl}/${id}`;
-    return this.http.delete<void>(url);
+    return this.http.get<Categoria>(url, this.httpOptions);
   }
 }

@@ -35,13 +35,19 @@ export class CupomService {
     return this.http.post<Cupom>(this.baseUrl, Cupom, this.httpOptions);
   }
 
-  update(id: number, Cupom: Cupom): Observable<Cupom> {
-    const url = `${this.baseUrl}/${id}`;
-    return this.http.put<Cupom>(url, Cupom);
+
+  delete(id: number): Observable<any> {
+    const url = `${this.baseUrl}/delete/${id}`; 
+    return this.http.patch(url, null, this.httpOptions2);
   }
 
-  delete(id: number): Observable<void> {
+  getById(id: number): Observable<Cupom> {
     const url = `${this.baseUrl}/${id}`;
-    return this.http.delete<void>(url);
+    return this.http.get<Cupom>(url, this.httpOptions);
+  }
+
+  update(id: number, p: Cupom): Observable<any> {
+    const url = `${this.baseUrl}/${id}`;
+    return this.http.put(url, p, this.httpOptions);
   }
 }

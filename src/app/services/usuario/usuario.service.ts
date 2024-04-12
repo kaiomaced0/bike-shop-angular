@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class UsuarioService {
 
-  private baseUrl = '/usuario';
+  private baseUrl = '/pessoafisica';
 
   constructor(private http: HttpClient) { }
   // httpOptions = {
@@ -30,12 +30,12 @@ export class UsuarioService {
   }
 
   resetarSenha(id: number): Observable<any> {
-    const url = `${this.baseUrl}/resetarsenha/${id}`;
+    const url = `/usuario/resetarsenha/${id}`;
     return this.http.patch(url, null, this.httpOptions2);
   }
 
   insert(p: Usuario): Observable<Usuario> {
-    return this.http.post<Usuario>(this.baseUrl, p, this.httpOptions);
+    return this.http.post<Usuario>('/usuario', p, this.httpOptions);
   }
 
   getById(id: number): Observable<Usuario> {
@@ -44,11 +44,11 @@ export class UsuarioService {
   }
 
   update(id: number, usuario: Usuario): Observable<any> {
-    const url = `${this.baseUrl}/${id}`;
+    const url = `/usuario/${id}`;
     return this.http.put(url, usuario, this.httpOptions);
   }
   delete(id: number): Observable<any> {
-    const url = `${this.baseUrl}/delete/${id}`;
-    return this.http.patch(url,null, this.httpOptions2);
+    const url = `/usuario/delete/${id}`;
+    return this.http.patch(url, null, this.httpOptions2);
   }
 }
