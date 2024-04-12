@@ -10,6 +10,10 @@
   text-align: left;
 }
 
+.mat-icon{
+  cursor: pointer;
+}
+
 .tabela-cupons th {
   background-color: #f2f2f2;
 }
