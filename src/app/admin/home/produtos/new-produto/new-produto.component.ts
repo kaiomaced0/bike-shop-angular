@@ -15,9 +15,6 @@ import { Produto } from '../../../../models/produto.model';
   styleUrl: './new-produto.component.css'
 })
 export class NewProdutoComponent{
-  marcas = ['Marca 1', 'Marca 2', 'Marca 3'];
-
-
   produto: Produto = new Produto();
 
   cancelar(){
@@ -25,7 +22,7 @@ export class NewProdutoComponent{
   }
 
   constructor(private router: Router, private service: ProdutoService) {
-    
+
   }
   adicionarProduto() {
     this.produto!.idCor = 1;
