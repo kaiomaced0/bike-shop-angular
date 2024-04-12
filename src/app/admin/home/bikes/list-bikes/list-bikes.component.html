@@ -11,6 +11,7 @@
       <th style="width: 10%;">ID</th>
       <th style="width: 30%;">Nome</th>
       <th style="width: 15%;">Preço</th>
+      <th style="width: 15%;">Marcha</th>
       <th style="width: 10%;">Quantidade em Estoque</th>
       <th style="width: 10%;">Editar</th>
       <th style="width: 10%;">Excluir</th>
@@ -23,6 +24,7 @@
       <td>{{ bike.produto!.id }}</td>
       <td>{{ bike.produto!.nome}}</td>
       <td>{{ bike.produto!.preco}}</td>
+      <td>{{ bike.marcha!}}</td>
       <td>{{ bike.produto!.estoque }}</td>
       <td><mat-icon (click)="editar(bike.produto!.id!)">edit</mat-icon></td>
       <td><mat-icon (click)="deletar(bike.produto!.id!, bike.produto!.nome!)">delete</mat-icon></td>
