@@ -9,8 +9,7 @@ import { CupomService } from '../../../services/cupom/cupom.service';
 const routes: Routes = [
   {path: '', component: ListCuponsComponent},
   {path: 'new', component: NewCupomComponent},
-  {path: 'edit', component: EditCupomComponent},
-  {path: 'view', component: ViewCupomComponent},];
+  {path: 'edit/:id', component: EditCupomComponent}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

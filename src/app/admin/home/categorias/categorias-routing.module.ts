@@ -9,8 +9,7 @@ import { CategoriaService } from '../../../services/categoria/categoria.service'
 const routes: Routes = [
   {path: '', component: ListCategoriasComponent},
   {path: 'new', component: NewCategoriaComponent},
-  {path: 'edit', component: EditCategoriaComponent},
-  {path: 'view', component: ViewCategoriaComponent},];
+  {path: 'edit/:id', component: EditCategoriaComponent}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

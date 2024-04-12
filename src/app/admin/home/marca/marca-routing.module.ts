@@ -9,8 +9,7 @@ import { MarcaService } from '../../../services/marca/marca.service';
 const routes: Routes = [
   {path: '', component: ListMarcasComponent},
   {path: 'new', component: NewMarcaComponent},
-  {path: 'edit', component: EditMarcaComponent},
-  {path: 'view', component: ViewMarcaComponent}];
+  {path: 'edit/:id', component: EditMarcaComponent}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
