@@ -4,6 +4,10 @@
   margin-top: 20px; /* Espaçamento acima da tabela */
 }
 
+.mat-icon{
+  cursor: pointer;
+}
+
 .tabela-marcas th, .tabela-marcas td {
   border: 1px solid #ddd;
   padding: 8px;

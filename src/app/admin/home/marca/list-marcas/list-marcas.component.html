@@ -1,6 +1,6 @@
 <div class="button-container">
   <button mat-raised-button color="primary" style="width: 100%; border-radius: 8px; background-color: green;"
-    (click)="irParaNewmarca()">
+    (click)="irParaNewMarca()">
     <mat-icon>add</mat-icon>
     Adicionar Marca
   </button>
@@ -19,12 +19,8 @@
     <tr>
       <td>{{ marca.id }}</td>
       <td>{{ marca.nome }}</td>
-      <td><button mat-icon-button (click)="editarmarca(marca.id)">
-          <mat-icon>edit</mat-icon>
-        </button></td>
-      <td><button mat-icon-button (click)="excluirmarca(marca.id)">
-          <mat-icon>delete</mat-icon>
-        </button></td>
+      <td><mat-icon (click)="editar(marca.id)">edit</mat-icon></td>
+      <td><mat-icon (click)="deletar(marca.id!, marca.nome!)">delete</mat-icon></td>
 
     </tr>
     }
