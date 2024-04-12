@@ -24,6 +24,12 @@ const PROXY_CONF = [
     logLevel: 'debug'
   },
   {
+    context: ['/pessoafisica'],
+    target: 'http://localhost:8080/',
+    secure: false,
+    logLevel: 'debug'
+  },
+  {
     context: ['/ferramenta'],
     target: 'http://localhost:8080/',
     secure: false,
