@@ -4,7 +4,6 @@ import { MatCardModule } from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
-import { AuthService } from '../../../services/auth/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +13,7 @@ import { AuthService } from '../../../services/auth/auth.service';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  constructor(private router: Router, public auth: AuthService) {
+  constructor(private router: Router) {
     auth.login('kaio', '123')
   }
 
