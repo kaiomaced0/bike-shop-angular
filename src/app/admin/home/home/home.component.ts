@@ -4,6 +4,7 @@ import { MatCardModule } from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
+import { AuthService } from '../../../services/auth/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,9 @@ import { Router } from '@angular/router';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  constructor(private router: Router) {}
+  constructor(private router: Router, public auth: AuthService) {
+    auth.login('kaio', '123')
+  }
 
   irParaProdutosAdmin() {
     this.router.navigate(['/admin/produtos']);

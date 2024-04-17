@@ -4,7 +4,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth/auth.service';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -14,16 +13,7 @@ import { AuthService } from '../../services/auth/auth.service';
 })
 export class LoginComponent {
   dataSource = ELEMENT_DATA;
-  constructor(public authService: AuthService,private router: Router) {}
-
-  login() {
-    this.authService.login('username', 'password').subscribe(success => {
-      if (success) {
-        console.log('Login successful');
-      }
-    });
-  }
-
+  constructor(private router: Router) {}
   irParaHome(){
     this.router.navigate(['']);
 
