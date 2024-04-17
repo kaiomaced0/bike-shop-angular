@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent {
   constructor(private router: Router) {
+    localStorage.setItem('token', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJ1bml0aW5zLWp3dCIsInN1YiI6ImthaW8iLCJncm91cHMiOlsiVXNlciIsIkFkbWluIl0sImV4cCI6MTcxMzQ2NjAyNSwiaWF0IjoxNzEzMzc5NjI2LCJqdGkiOiIyNjRiZmNjMy0xNWI0LTQ0YmQtYWQwMC0wNzA0ZjkzMmVjN2YifQ.KHEpCoJWR_LWcuwCzh-14ovMiZy06cVSMtE6QD_ydnlUFNx_MbG9kknX-1aHuHTuS8DXIXCph55FQNx0y2zg9DtDVbUMCjhv_EiChdNWrn2XI9jPr_E5oB-ocixKAHG6W8y4xtxx_ui7itdVADTfRemW1o_tzPUpCpG7IwkYJLb_BayBGnX1mX8--nbwW-XBozxhBae2tP-hDEzGT65HFlAATqp-PRdAClCVwFmyWvSqjFfGIGt3sUJ8d8_YN0nXowjC12F8Gzo0uIu3HN1W4YoncehKZ9JQqm-mDPVRGacpIYcbnYV83PvGDOmQpVOiT6gwolpT3XjGMM4TLhWIcQ')
   }
 
   irParaProdutosAdmin() {
