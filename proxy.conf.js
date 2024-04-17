@@ -1,5 +1,11 @@
 const PROXY_CONF = [
   {
+    context: ['/auth'],
+    target: 'http://localhost:8080/',
+    secure: false,
+    logLevel: 'debug'
+  },
+  {
     context: ['/produto'],
     target: 'http://localhost:8080/',
     secure: false,
