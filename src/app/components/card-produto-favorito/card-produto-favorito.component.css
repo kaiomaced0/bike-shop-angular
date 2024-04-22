@@ -42,6 +42,8 @@
 .remover-produto, .compartilhar-produto, .desfavoritar-produto {
   background: none;
   border: none;
+}
+.mat-icon{
   cursor: pointer;
 }
 
