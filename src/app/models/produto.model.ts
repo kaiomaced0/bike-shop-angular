@@ -1,3 +1,4 @@
+import { Categoria } from "./categoria.model";
 import { Marca } from "./marca.model";
 
 export class Produto {
@@ -13,6 +14,8 @@ export class Produto {
   idMarca?: number;
   marca?: Marca;
   idCor?: number;
+  categoriasId?: number[];
+  categorias?: Categoria[];
 
   constructor(
   ) {

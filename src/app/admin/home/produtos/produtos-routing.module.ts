@@ -5,6 +5,8 @@ import { NewProdutoComponent } from './new-produto/new-produto.component';
 import { EditProdutoComponent } from './edit-produto/edit-produto.component';
 import { ViewProdutoComponent } from './view-produto/view-produto.component';
 import { ProdutoService } from '../../../services/produto/produto.service';
+import { CategoriaService } from '../../../services/categoria/categoria.service';
+import { MarcaService } from '../../../services/marca/marca.service';
 
 const routes: Routes = [
   {path: '', component: ListProdutosComponent},
@@ -17,6 +19,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
-  providers: [ProdutoService]
+  providers: [ProdutoService, CategoriaService, MarcaService]
 })
 export class ProdutosRoutingModule { }
