@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { MatCard } from '@angular/material/card';
 import { MatIcon } from '@angular/material/icon';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card-produto',
@@ -10,6 +11,10 @@ import { MatIcon } from '@angular/material/icon';
   styleUrl: './card-produto.component.css'
 })
 export class CardProdutoComponent {
+
+
+  constructor(private router: Router) {
+  }
   @Input() id: string = 'defaultID'; // Valor padrão para o id
   @Input() imageUrl: string = 'https://via.placeholder.com/220x250';
   @Input() title: string = 'Produto Padrão'; // Valor padrão para o título
@@ -25,4 +30,11 @@ export class CardProdutoComponent {
     console.log("Produto comprado:", this.id);
     // Implemente a lógica para "comprar" aqui
   }
+
+
+  irParaDetail() {
+    this.router.navigate(['/detail/'+this.id]);
+  }
+
+
 }

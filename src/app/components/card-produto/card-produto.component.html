@@ -1,5 +1,5 @@
 <mat-card class="product-card">
-  <div class="image"><img src="{{imageUrl}}" alt="{{title}}" class="imagem"></div>
+  <div class="image" (click)="irParaDetail()"><img src="{{imageUrl}}" alt="{{title}}" class="imagem"></div>
   <div class="title">{{title}}</div>
   <div class="price">R$ {{price}}</div>
   <div class="buttons">

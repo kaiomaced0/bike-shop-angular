@@ -36,10 +36,11 @@ export class EditProdutoComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log(this.produto);
     this.produto.categoriasId = [];
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     if (id) {
-      this.service.getById(+id).subscribe({
+      this.service.getByIdAdmin(+id).subscribe({
         next: (data) => {
           this.produto = data;
         },
@@ -64,6 +65,7 @@ export class EditProdutoComponent implements OnInit {
         console.error('Erro ao carregar marcas', erro);
       }
     });
+    this.produto.categoriasId = [];
     this.produto.categorias?.forEach(element => {
       this.produto.categoriasId?.push(element.id!);
     });

@@ -3,6 +3,7 @@ import {MatCardModule} from '@angular/material/card';
 import { CardProdutoComponent } from '../../components/card-produto/card-produto.component';
 import { CarroselHomeComponent } from '../../components/carrosel-home/carrosel-home.component';
 import { MatFormField } from '@angular/material/form-field';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +13,8 @@ import { MatFormField } from '@angular/material/form-field';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  constructor(private router: Router) {
+  }
   produtos = [
     {
       "id": "1",
@@ -154,5 +157,6 @@ export class HomeComponent {
       "stars": 3
     }
   ];
+
 
 }

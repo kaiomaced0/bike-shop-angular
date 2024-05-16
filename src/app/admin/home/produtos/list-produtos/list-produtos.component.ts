@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { Router } from '@angular/router';
@@ -16,7 +16,7 @@ import { ConfiermDialogResetarsenhaComponent } from '../../../../components/dial
   templateUrl: './list-produtos.component.html',
   styleUrl: './list-produtos.component.css'
 })
-export class ListProdutosComponent {
+export class ListProdutosComponent implements OnInit{
 
   constructor(private router: Router, private produtoService: ProdutoService, private dialog: MatDialog, private snackBar: MatSnackBar) {
   }
@@ -24,7 +24,7 @@ export class ListProdutosComponent {
   produtos: Produto[] = [];
 
   ngOnInit() {
-    this.produtoService.list().subscribe((data: Produto[]) => {
+    this.produtoService.listAdmin().subscribe((data: Produto[]) => {
       this.produtos = data;
     });
   }

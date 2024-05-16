@@ -22,8 +22,13 @@ export class ProdutoService {
 
   constructor(private httpClient: HttpClient) { }
 
-  list(){
+  listAdmin(){
     return this.httpClient.get<Produto[]>(this.apiUrl+'/admin', this.httpOptions).pipe(
+      tap(produtos => console.log(produtos))
+    );
+  }
+  list(){
+    return this.httpClient.get<Produto[]>(this.apiUrl, this.httpOptions).pipe(
       tap(produtos => console.log(produtos))
     );
   }
@@ -40,6 +45,14 @@ export class ProdutoService {
   getById(id: number): Observable<Produto> {
     const url = `${this.apiUrl}/${id}`;
     return this.httpClient.get<Produto>(url, this.httpOptions);
+  }
+
+  getByIdAdmin(id: number): Observable<Produto> {
+    const url = `${this.apiUrl}/admin/${id}`;
+    return this.httpClient.get<Produto>(url, this.httpOptions).pipe(
+      tap(produto => console.log(produto))
+    );
+
   }
 
   update(id: number, p: Produto): Observable<any> {
