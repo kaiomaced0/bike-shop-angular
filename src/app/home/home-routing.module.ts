@@ -6,6 +6,8 @@ import { DetailComponent } from './detail/detail.component';
 import { FavoritosComponent } from './favoritos/favoritos.component';
 import { ShopCartComponent } from './shop-cart/shop-cart.component';
 import { SearchComponent } from './search/search.component';
+import { ProdutoService } from '../services/produto/produto.service';
+import { HomeService } from '../services/home/home.service';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -25,6 +27,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes), CommonModule],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [ProdutoService, HomeService]
 })
 export class HomeRoutingModule { }

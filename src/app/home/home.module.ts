@@ -5,13 +5,14 @@ import { HomeRoutingModule } from './home-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { ShopCartComponent } from './shop-cart/shop-cart.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    HomeRoutingModule,
+    HomeRoutingModule, HttpClientModule
   ]
 })
 export class HomeModule { }
