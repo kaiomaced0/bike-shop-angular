@@ -16,6 +16,7 @@ export class Produto {
   idCor?: number;
   categoriasId?: number[];
   categorias?: Categoria[];
+  starts?: number;
 
   constructor(
   ) {

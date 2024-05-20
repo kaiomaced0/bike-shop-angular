@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +23,14 @@ export class AuthService {
 
   login(login: string, senha: string): Observable<any> {
     const body = { login, senha };
-    return this.http.post<any>(this.baseUrl, body, { observe: 'response' });
+    return this.http.post<any>(this.baseUrl, body, { observe: 'response' }).pipe(tap(response => {
+      if (response.status === 200) {
+        const token = response.headers.get('Authorization');
+        if (token) {
+          localStorage.setItem('token', token);
+        }
+      }
+    }))
 }
 
 }
