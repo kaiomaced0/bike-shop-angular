@@ -82,6 +82,12 @@ const PROXY_CONF = [
     target: 'http://localhost:8080/',
     secure: false,
     logLevel: 'debug'
+  },
+  {
+    context: ['/home'],
+    target: 'http://localhost:8080/',
+    secure: false,
+    logLevel: 'debug'
   }
 ];
 
