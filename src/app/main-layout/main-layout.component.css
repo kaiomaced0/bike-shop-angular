@@ -1,6 +1,9 @@
 .icons-toolbar {
   flex: 1 1 auto;
 }
+.layout{
+  width: 100%;
+}
 .outlet{
   padding: 1ch;
 }
@@ -14,8 +17,4 @@
   margin-right: 8px; /* Espaço entre o campo de entrada e o botão */
   margin-left: 8px;
   width: 200px; /* Largura do campo de entrada */
-}
-
-.search-container button {
-  margin-top: 0; /* Ajuste conforme necessário */
 }

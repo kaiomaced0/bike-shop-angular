@@ -12,6 +12,7 @@
 .image{
   align-items: center;
   padding-top: 2px;
+  cursor: pointer;
 }
 .imagem{
   width: 220px;

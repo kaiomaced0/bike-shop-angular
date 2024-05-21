@@ -3,76 +3,65 @@
     grid-template-columns: 1fr 3fr;
     gap: 20px;
   }
-  
+
   .miniature-images {
     display: grid;
     gap: 20px;
   }
-  
+
   .miniature-images img {
-    width: 150%;
     cursor: pointer;
     transition: transform 0.2s;
   }
-  
+
   .miniature-images img:hover {
     transform: scale(1.1);
   }
-  
+
   .product-details {
     display: grid;
     gap: 20px;
   }
-  
+
   .title-price {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  
+
   .title-price .price {
     position: relative;
     padding: 0 15px;
   }
-  
-  .title-price .price::before,
-  .title-price .price::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    height: 1px;
-    background-color: #000;
-  }
-  
+
   .title-price .price::before {
     left: -20px;
   }
-  
+
   .title-price .price::after {
     right: -20px;
   }
-  
+
   .center-warning {
     right: 50px;
     text-decoration: solid;
     text-align: center;
     background-color: yellow;
-    width: 500px;
+    width: 100%;
     height: 30px;
   }
-  
+
   .options {
     display: grid;
     gap: 10px;
   }
-  
+
   .button {
     cursor: pointer;
-    width: 500px;
+    width: 200px;
     height: 30px;
   }
-  
+
   .wishlist-icon {
     cursor: pointer;
   }

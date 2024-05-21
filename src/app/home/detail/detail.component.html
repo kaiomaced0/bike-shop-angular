@@ -1,23 +1,22 @@
 <div class="product-grid">
     <div class="miniature-images">
-      <img src="path/to/miniature1.jpg" alt="Miniature 1" (mouseenter)="changeImage('path/to/miniature1.jpg')">
-      <img src="path/to/miniature2.jpg" alt="Miniature 2" (mouseenter)="changeImage('path/to/miniature2.jpg')">
-      <!-- Adicione mais imagens conforme necessário -->
+      <img src="https://placehold.co/200x180/orange/white?text=Promoção+1" alt="111">
+      <img src="https://placehold.co/200x180/red/white?text=Promoção+1" alt="111">
+      <img src="https://placehold.co/200x180/green/white?text=Promoção+1" alt="111">
     </div>
     <div class="product-details">
       <div class="title-price">
-        <h2>{{ product.name }}</h2>
-        <div class="price">{{ product.price | currency }}</div>
+        <h2>{{ produto.nome! }}</h2>
+        <div class="price">{{ produto.preco! | currency }}</div>
       </div>
       <div class="center-warning">Aviso</div>
       <select>
         <option>Amarela</option>
         <option>Verde</option>
         <option>Azul</option>
-        <!-- Adicione mais opções conforme necessário -->
       </select>
       <div class="options">
-        <div>PIX (10% desconto)</div>
+        <div>PIX (5% desconto)</div>
         <div>Boleto </div>
         <!-- Adicione mais opções conforme necessário -->
       </div>
@@ -27,7 +26,7 @@
       <div class="wishlist-icon">♥</div>
     </div>
   </div>
-<!-- product-details.component.html 
+<!-- product-details.component.html
 <div class="product-details">
   <img src="bike.jpg" alt="Bike Aro 26" class="product-image">
   <div class="product-detail">
