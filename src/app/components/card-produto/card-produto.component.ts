@@ -16,7 +16,7 @@ export class CardProdutoComponent {
   constructor(private router: Router) {
   }
   @Input() id: string = 'defaultID'; // Valor padrão para o id
-  @Input() imageUrl: string = 'https://via.placeholder.com/220x250';
+  @Input() imageUrl: string = 'https://via.placeholder.com/190x215';
   @Input() title: string = 'Produto Padrão'; // Valor padrão para o título
   @Input() price: number = 0.00; // Valor padrão para o preço
   @Input() stars: number = 0; // Valor padrão para a quantidade de estrelas
