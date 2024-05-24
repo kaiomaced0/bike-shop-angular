@@ -3,21 +3,19 @@
   height: auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: end;
   align-items: center;
   margin: 10px;
   border: 2px solid #c7c7c7;
+  height: 320px;
 }
 
-.image{
+.imagem{
   align-items: center;
   padding-top: 2px;
   cursor: pointer;
-}
-.imagem{
-  width: 220px;
-  height: 250px;
-
+  max-width: 220px;
+  max-height : 250px;
 }
 
 .card-top {
@@ -68,11 +66,12 @@
 /* Media query para smartphones */
 @media (max-width: 600px) {
   .imagem{
-    width: 132px;
-    height: 150px;
+    max-width: 140px;
+    max-height: 125px;
 
   }
   .product-card {
+    height: 250px;
     margin: 10px; /* Aumenta a margem ao redor do card para melhor espaçamento */
   }
 
