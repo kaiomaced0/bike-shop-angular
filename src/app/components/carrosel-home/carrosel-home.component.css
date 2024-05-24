@@ -6,6 +6,7 @@
   overflow: hidden;
   width: 60%; /* Largura inicial do carrossel */
   margin: auto; /* Centraliza o carrossel horizontalmente */
+  max-width: 1150px;
 }
 
 .carousel-slide {
@@ -17,6 +18,7 @@
 .carousel-slide img {
   max-width: 100%; /* Garante que a imagem não exceda a largura do container */
   display: block; /* Remove espaços extras abaixo da imagem */
+  height: 300px;
 }
 
 .left-arrow, .right-arrow {
