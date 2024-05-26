@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatList, MatListItem } from '@angular/material/list';
 import { CardProdutoFavoritoComponent } from '../../components/card-produto-favorito/card-produto-favorito.component';
+import { UsuariologadoService } from '../../usuariologado/usuariologado.service';
+import { Router } from '@angular/router';
+import { Produto } from '../../models/produto.model';
 
 @Component({
   selector: 'app-favoritos',
@@ -9,7 +12,17 @@ import { CardProdutoFavoritoComponent } from '../../components/card-produto-favo
   templateUrl: './favoritos.component.html',
   styleUrl: './favoritos.component.css'
 })
-export class FavoritosComponent {
+export class FavoritosComponent implements OnInit {
+  constructor(private router: Router, private service: UsuariologadoService) {
+  }
+
+  produtoss: Produto[] = [];
+
+  ngOnInit() {
+    this.service.listgostei().subscribe((data: Produto[]) => {
+      this.produtoss = data;
+    });
+  }
   produtos = [
     {
         "id": "1",

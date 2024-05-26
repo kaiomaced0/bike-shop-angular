@@ -6,6 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { ShopCartComponent } from './shop-cart/shop-cart.component';
 import { HttpClientModule } from '@angular/common/http';
+import { UsuariologadoService } from '../usuariologado/usuariologado.service';
 
 
 @NgModule({

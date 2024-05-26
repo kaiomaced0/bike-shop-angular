@@ -6,8 +6,9 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { UsuariologadoService } from './usuariologado/usuariologado.service';
 
 export const appConfig: ApplicationConfig = {
 
-  providers: [provideRouter(routes), provideAnimationsAsync(), provideStore(), provideEffects(), provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() })]
+  providers: [provideRouter(routes), provideAnimationsAsync(), provideStore(), provideEffects(), provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }), UsuariologadoService]
 };
