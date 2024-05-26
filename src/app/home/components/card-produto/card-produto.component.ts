@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { MatCard } from '@angular/material/card';
 import { MatIcon } from '@angular/material/icon';
 import { Router } from '@angular/router';
+import { UsuariologadoService } from '../../../usuariologado/usuariologado.service';
 
 @Component({
   selector: 'app-card-produto',
@@ -13,17 +14,17 @@ import { Router } from '@angular/router';
 export class CardProdutoComponent {
 
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private service: UsuariologadoService) {
   }
-  @Input() id: string = 'defaultID'; // Valor padrão para o id
+  @Input() id?: number; // Valor padrão para o id
   @Input() imageUrl: string = 'https://via.placeholder.com/190x215';
   @Input() title: string = 'Produto Padrão'; // Valor padrão para o título
   @Input() price: number = 0.00; // Valor padrão para o preço
   @Input() stars: number = 0; // Valor padrão para a quantidade de estrelas
 
   curtir() {
-    console.log("Produto curtido:", this.id);
-    // Implemente a lógica para "curtir" aqui
+    this.service.insertGostei(this.id!);
+    console.log("Produto curtido:", this.id!);
   }
 
   comprar() {
