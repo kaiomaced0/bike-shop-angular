@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
+import { UsuariologadoService } from '../../../usuariologado/usuariologado.service';
 
 @Component({
   selector: 'app-conta',
@@ -8,9 +9,25 @@ import { Router, RouterOutlet } from '@angular/router';
   templateUrl: './conta.component.html',
   styleUrl: './conta.component.css'
 })
-export class ContaComponent {
+export class ContaComponent implements OnInit {
+  usuario: any;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private usuarioLogadoService: UsuariologadoService) { }
+
+  ngOnInit(): void {
+    this.usuarioLogadoService.getUsuarioLogado().subscribe(
+      data => {
+        this.usuario = data;
+      },
+      error => {
+        console.error('Erro ao carregar dados do usuário', error);
+      }
+    );
+  }
+
+  editarPerfil(): void {
+    this.irParaDados();
+  }
 
   irParaDados() {
     this.router.navigate(['/conta/dados']);
