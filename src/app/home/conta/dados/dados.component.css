@@ -1,0 +1,30 @@
+.profile-container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.profile-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.profile-item label {
+  font-weight: bold;
+}
+
+.profile-item span {
+  flex-grow: 1;
+  margin-left: 10px;
+}
+
+@media (max-width: 768px) {
+  .profile-container {
+    width: 100%;
+  }
+}

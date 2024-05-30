@@ -1,1 +1,33 @@
-<p>dados works!</p>
+<div class="profile-container">
+  <h2>Perfil do Usuário</h2>
+  <div>
+    <div class="profile-item">
+      <label>Nome:</label>
+      <span>{{ usuario!.nome! }}</span>
+      <button mat-icon-button color="primary">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+    <div class="profile-item">
+      <label>Email:</label>
+      <span>{{ usuario!.email! }}</span>
+      <button mat-icon-button color="primary">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+    <div class="profile-item">
+      <label>Senha:</label>
+      <span>********</span>
+      <button mat-icon-button color="primary">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+    <div class="profile-item">
+      <label>Data de Nascimento:</label>
+      <span>{{ usuario!.dataNascimento! || null }}</span>
+      <button mat-icon-button color="primary">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
