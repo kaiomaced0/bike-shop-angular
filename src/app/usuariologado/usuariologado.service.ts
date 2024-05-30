@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { Produto } from '../models/produto.model';
+import { Usuario } from '../models/usuario.model';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,11 @@ export class UsuariologadoService {
 
   constructor(private httpClient: HttpClient) { }
 
+  getUsuarioLogado(): Observable<Usuario> {
+    return this.httpClient.get<Usuario>(this.apiUrl, this.httpOptions).pipe(
+      tap(usuario => console.log(usuario))
+    )
+  }
 
   listgostei(){
     return this.httpClient.get<Produto[]>(this.apiUrl+'/gostei', this.httpOptions).pipe(
