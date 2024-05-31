@@ -1,9 +1,0 @@
-<div class="carousel-container">
-  <div class="carousel-slide" [style.transform]="'translateX(' + (-currentSlide * 100) + '%)'">
-    @for (carrossel of carrossels; track carrossel.id!) {
-    <img src="{{carrossel.image!}}" alt="{{carrossel.nome!}}">
-    }
-  </div>
-  <button class="left-arrow" (click)="moveSlide(-1)">&#10094;</button>
-  <button class="right-arrow" (click)="moveSlide(1)">&#10095;</button>
-</div>

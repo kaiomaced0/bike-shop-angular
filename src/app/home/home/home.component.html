@@ -1,5 +1,13 @@
 <div class="carrossel">
-  <app-carrosel-home></app-carrosel-home>
+  <div class="carousel-container">
+    <div class="carousel-slide" [style.transform]="'translateX(' + (-currentSlide * 100) + '%)'">
+      @for (carrossel of carrossels; track carrossel.id!) {
+        <img src="{{carrossel!.image!}}" alt="{{carrossel!.nome!}}" (click)="irParaTela(carrossel!.link!)">
+      }
+    </div>
+    <button class="left-arrow" (click)="moveSlide(-1)">&#10094;</button>
+    <button class="right-arrow" (click)="moveSlide(1)">&#10095;</button>
+  </div>
 </div>
 <mat-card>
   <mat-card-content>Simple card</mat-card-content>
