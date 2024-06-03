@@ -18,6 +18,9 @@ export class ProdutoService {
   httpOptions2 = {
     headers: new HttpHeaders({'Authorization': 'Bearer ' + this.token})
   };
+  httpOptions3 = {
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
+  };
 
 
   constructor(private httpClient: HttpClient) { }
@@ -28,7 +31,7 @@ export class ProdutoService {
     );
   }
   list(){
-    return this.httpClient.get<Produto[]>(this.apiUrl, this.httpOptions).pipe(
+    return this.httpClient.get<Produto[]>(this.apiUrl, this.httpOptions3).pipe(
       tap(produtos => console.log(produtos))
     );
   }

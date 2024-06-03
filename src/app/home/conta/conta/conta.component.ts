@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { UsuariologadoService } from '../../../services/usuariologado/usuariologado.service';
+import { Usuario } from '../../../models/usuario.model';
 
 @Component({
   selector: 'app-conta',
@@ -10,7 +11,7 @@ import { UsuariologadoService } from '../../../services/usuariologado/usuariolog
   styleUrl: './conta.component.css'
 })
 export class ContaComponent implements OnInit {
-  usuario: any;
+  usuario?: Usuario;
 
   constructor(private router: Router, private usuarioLogadoService: UsuariologadoService) { }
 

@@ -6,16 +6,16 @@
     </div>
     <div class="profile-details">
       <div class="profile-item">
-        <label>Nome:</label> {{ usuario.nome || null}}
+        <label>Nome:</label> {{ usuario!.nome! || null}}
       </div>
       <div class="profile-item">
-        <label>Email:</label> {{ usuario.email || null}}
+        <label>Email:</label> {{ usuario!.email! || null}}
       </div>
       <div class="profile-item">
-        <label>CPF:</label> {{ usuario.cpf || null}}
+        <label>CPF:</label> {{ usuario!.cpf! || null}}
       </div>
       <div class="profile-item">
-        <label>Telefone:</label> {{ usuario.telefone || null}}
+        <label>Telefone:</label> {{ usuario!.telefone![0] || null}}
       </div>
     </div>
   </div>

@@ -6,8 +6,9 @@ export class Usuario{
   login?: string;
   senha?: string;
   dataNascimento?: Date;
-  nome?: string | null;
-  email?: string | null;
+  nome?: string;
+  email?: string;
+  telefone?: string[];
   cartoes?: any[];
   enderecos?: any[];
   listaGostei?: Produto[];

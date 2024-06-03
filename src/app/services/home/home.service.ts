@@ -18,12 +18,15 @@ export class HomeService {
   httpOptions2 = {
     headers: new HttpHeaders({'Authorization': 'Bearer ' + this.token})
   };
+  httpOptions3 = {
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
+  };
 
 
   constructor(private httpClient: HttpClient) { }
 
   carrossel(){
-    return this.httpClient.get<Carrossel[]>(this.apiUrl+'/carrossel', this.httpOptions).pipe(
+    return this.httpClient.get<Carrossel[]>(this.apiUrl+'/carrossel', this.httpOptions3).pipe(
       tap(carrossel => console.log(carrossel))
     );
   }
