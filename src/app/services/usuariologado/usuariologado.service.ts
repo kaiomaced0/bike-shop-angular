@@ -1,8 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
-import { Produto } from '../models/produto.model';
-import { Usuario } from '../models/usuario.model';
+import { Usuario } from '../../models/usuario.model';
+import { Produto } from '../../models/produto.model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -17,11 +18,20 @@ export class UsuariologadoService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token})
   };
   httpOptions2 = {
-    headers: new HttpHeaders({'Authorization': 'Bearer ' + this.token})
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + this.token
+    }),
+    responseType: 'blob' as 'json'
   };
 
 
   constructor(private httpClient: HttpClient) { }
+
+  baixarImagem(nomeImagem: string): Observable<Blob> {
+    const url = `${this.apiUrl}/download/${nomeImagem}`;
+    return this.httpClient.get<Blob>(url, this.httpOptions2);
+  }
 
   getUsuarioLogado(): Observable<Usuario> {
     return this.httpClient.get<Usuario>(this.apiUrl, this.httpOptions).pipe(

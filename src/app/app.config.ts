@@ -6,7 +6,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
-import { UsuariologadoService } from './usuariologado/usuariologado.service';
+import { UsuariologadoService } from './services/usuariologado/usuariologado.service';
 
 export const appConfig: ApplicationConfig = {
 

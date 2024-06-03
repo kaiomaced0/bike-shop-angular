@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
-import { UsuariologadoService } from '../../../usuariologado/usuariologado.service';
+import { UsuariologadoService } from '../../../services/usuariologado/usuariologado.service';
 
 @Component({
   selector: 'app-conta',

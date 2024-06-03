@@ -31,8 +31,10 @@ export class MainLayoutComponent {
     this.router.navigate(['/login']);
   }
   logout() {
-    localStorage.removeItem('token');
-    this.irParaHome();
+    localStorage.clear();
+    this.router.navigate(['/']).then(() => {
+      window.location.reload();
+    });
   }
   irParaHome() {
     this.router.navigate(['/']);

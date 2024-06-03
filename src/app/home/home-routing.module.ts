@@ -8,7 +8,7 @@ import { ShopCartComponent } from './shop-cart/shop-cart.component';
 import { SearchComponent } from './search/search.component';
 import { ProdutoService } from '../services/produto/produto.service';
 import { HomeService } from '../services/home/home.service';
-import { UsuariologadoService } from '../usuariologado/usuariologado.service';
+import { UsuariologadoService } from '../services/usuariologado/usuariologado.service';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},

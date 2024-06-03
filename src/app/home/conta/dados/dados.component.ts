@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UsuariologadoService } from '../../../usuariologado/usuariologado.service';
+import { UsuariologadoService } from '../../../services/usuariologado/usuariologado.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIcon } from '@angular/material/icon';
 import { Usuario } from '../../../models/usuario.model';

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatList, MatListItem } from '@angular/material/list';
 import { CardProdutoFavoritoComponent } from '../../components/card-produto-favorito/card-produto-favorito.component';
-import { UsuariologadoService } from '../../usuariologado/usuariologado.service';
+import { UsuariologadoService } from '../../services/usuariologado/usuariologado.service';
 import { Router } from '@angular/router';
 import { Produto } from '../../models/produto.model';
 

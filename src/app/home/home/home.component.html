@@ -1,23 +1,33 @@
+<!-- home.component.html -->
 <div class="carrossel">
   <div class="carousel-container">
     <div class="carousel-slide" [style.transform]="'translateX(' + (-currentSlide * 100) + '%)'">
-      @for (carrossel of carrossels; track carrossel.id!) {
-        <img src="{{carrossel!.image!}}" alt="{{carrossel!.nome!}}" (click)="irParaTela(carrossel!.link!)">
-      }
+      <ng-container>
+        @for (carrossel of carrossels; track carrossel.id!) {
+          <img [src]="carrossel!.image!" alt="{{carrossel!.nome!}}" (click)="irParaTela(carrossel!.link!)">
+        }
+         </ng-container>
     </div>
     <button class="left-arrow" (click)="moveSlide(-1)">&#10094;</button>
     <button class="right-arrow" (click)="moveSlide(1)">&#10095;</button>
   </div>
 </div>
+
 <mat-card>
   <mat-card-content>Simple card</mat-card-content>
 </mat-card>
+
 <div class="produtos-home">
-  @for (produto of produtos; track produto.id){
-  <app-card-produto [id]="produto.id!"
-    [imageUrl]="produto.img![0]"
-    [title]="produto.nome!"
-    [price]="produto.preco!"
-    [stars]="produto.starts!"/>
-  }
+  <ng-container>
+    @for (produto of produtos; track produto.id!) {
+    <app-card-produto
+      [id]="produto.id!"
+      [imageUrl]="produto.img![0]"
+      [title]="produto.nome!"
+      [price]="produto.preco!"
+      [stars]="produto.starts!">
+    </app-card-produto>
+
+    }
+  </ng-container>
 </div>
