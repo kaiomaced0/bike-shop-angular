@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Compra } from '../../models/compra.model';
 import { Observable, tap } from 'rxjs';
+import { CompraItemCompra } from '../../models/compraitemcompra.models';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,13 @@ export class CompraService {
   getAll(): Observable<Compra[]> {
     return this.http.get<Compra[]>(this.baseUrl, this.httpOptions).pipe(
       tap(compra => console.log(compra)));
+  }
+
+  enviarCompra(compra: CompraItemCompra): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
+    return this.http.post(this.baseUrl, compra, httpOptions);
   }
 
   insert(Compra: Compra): Observable<Compra> {

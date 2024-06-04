@@ -1,6 +1,6 @@
-import { HttpClient, HttpHeaders, HttpClientModule} from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpClientModule, HttpParams} from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable} from 'rxjs';
+import { Observable, Observer} from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Produto } from '../../models/produto.model';
 
@@ -34,6 +34,9 @@ export class ProdutoService {
     return this.httpClient.get<Produto[]>(this.apiUrl, this.httpOptions3).pipe(
       tap(produtos => console.log(produtos))
     );
+  }
+  listIds(ids: number[]): Observable<Produto[]> {
+    return this.httpClient.post<Produto[]>(`${this.apiUrl}/carrinho/ids`, ids ,this.httpOptions3);
   }
 
   insert(p: Produto): Observable<Produto> {
