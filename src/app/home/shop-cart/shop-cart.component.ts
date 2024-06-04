@@ -3,17 +3,18 @@ import { CartItemComponent } from '../components/cart-item/cart-item.component';
 import { Router } from '@angular/router';
 import { Produto } from '../../models/produto.model';
 import { CartService } from '../../services/cart/cart.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-shop-cart',
   standalone: true,
-  imports: [],
+  imports: [FormsModule, ],
   templateUrl: './shop-cart.component.html',
   styleUrls: ['./shop-cart.component.css'],
 })
 export class ShopCartComponent implements OnInit {
 
-  cart: any;
+  cart?: Produto;
 
   constructor(private cartService: CartService, private router: Router) {}
 

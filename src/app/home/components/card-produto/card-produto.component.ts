@@ -1,8 +1,11 @@
+import { HttpClientModule } from '@angular/common/http';
 import { Component, Input } from '@angular/core';
 import { MatCard } from '@angular/material/card';
 import { MatIcon } from '@angular/material/icon';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { UsuariologadoService } from '../../../usuariologado/usuariologado.service';
+import { UsuariologadoService } from '../../../services/usuariologado/usuariologado.service';
+import { SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-card-produto',
