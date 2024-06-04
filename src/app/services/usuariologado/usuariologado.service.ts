@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
-import { Produto } from '../models/produto.model';
+import { Produto } from '../../models/produto.model';
+import { tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +34,7 @@ export class UsuariologadoService {
     return this.httpClient.patch(url, null, this.httpOptions);
   }
 
-  deleteGostei(id: string){
+  deleteGostei(id: number){
     const url = `${this.apiUrl}/gostei/delete/${id}`;
     return this.httpClient.patch(url, null, this.httpOptions);
   }

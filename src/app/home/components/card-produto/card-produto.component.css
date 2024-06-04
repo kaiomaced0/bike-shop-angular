@@ -50,8 +50,12 @@
 }
 
 .like-button{
-  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  display: flex;
   width: 20%;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .buttons{

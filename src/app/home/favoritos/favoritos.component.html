@@ -1,6 +1,6 @@
 <div class="produtos-favoritos">
   @for (produto of produtos; track produto.id){
-    <app-card-produto-favorito [id]="produto.id" [imageUrl]="produto.imageUrl" [price]="produto.price" [stars]="produto.stars" [title]="produto.title" [description]="produto.description"/>
+    <app-card-produto-favorito [id]="produto.id" [imageUrl]="produto.img![0]" [price]="produto.preco" [stars]="produto.starts" [title]="produto.nome" [description]="produto.descricao"/>
   }
 
 </div>

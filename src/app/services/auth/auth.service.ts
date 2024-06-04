@@ -11,7 +11,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  private token  = localStorage.getItem('token');
+  private token = localStorage.getItem('token');
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token})

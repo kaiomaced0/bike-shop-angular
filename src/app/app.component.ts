@@ -6,7 +6,6 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatMenuModule} from '@angular/material/menu';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { UsuariologadoService } from './usuariologado/usuariologado.service';
 
 
 @Component({

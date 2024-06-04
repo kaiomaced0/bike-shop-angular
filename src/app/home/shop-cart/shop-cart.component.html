@@ -1,4 +1,4 @@
-<div class="shopping-cart-container">
+<!-- <div class="shopping-cart-container">
   <div class="containers">
     <div class="columnA">
       <div class="cart-item">
@@ -45,4 +45,23 @@
   </div>
 
 
+</div> -->
+<!-- cart.component.html -->
+<div class="cart-container">
+  <h2>Carrinho de Compras</h2>
+  <div *ngFor="let item of cart.items" class="cart-item">
+    <div>{{ item.produto.nome }}</div>
+    <div>Preço: {{ item.produto.preco | currency }}</div>
+    <div>
+      Quantidade:
+      <input type="number" [(ngModel)]="item.quantity" (change)="updateQuantity(item.produto.id, item.quantity)" />
+    </div>
+    <div>
+      <button mat-button color="warn" (click)="removeFromCart(item.produto.id)">Remover</button>
+    </div>
+  </div>
+  <div class="total-price">
+    <strong>Total: {{ cart.totalPrice | currency }}</strong>
+  </div>
+  <button mat-raised-button color="primary" (click)="proceedToCheckout()">Finalizar Compra</button>
 </div>

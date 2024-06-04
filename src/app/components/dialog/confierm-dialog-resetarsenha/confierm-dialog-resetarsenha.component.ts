@@ -4,7 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/materia
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-confierm-dialog-resetarsenha',
+  selector: 'app-confirm-dialog',
   standalone: true,
   imports: [MatDialogModule,
     MatSnackBarModule, MatButton],

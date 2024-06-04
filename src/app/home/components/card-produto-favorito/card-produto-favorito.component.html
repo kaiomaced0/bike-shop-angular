@@ -1,6 +1,6 @@
 <div class="produto-favorito">
   <div class="imagem-container">
-    <img src="https://via.placeholder.com/150x180" alt={{title}} class="imagem-produto">
+    <img src={{imageUrl}} alt={{title}} class="imagem-produto">
   </div>
   <div class="detalhes-container">
     <h3 class="titulo">{{title}}</h3>
@@ -10,7 +10,7 @@
   <div class="acoes-container">
     <button class="adicionar-carrinho">Adicionar ao Carrinho</button>
     <div class="acoes-secundarias">
-      <button class="remover-produto"><mat-icon>delete</mat-icon></button>
+      <button class="remover-produto"><mat-icon (click)="deletar()">delete</mat-icon></button>
       <button class="compartilhar-produto"><mat-icon>share</mat-icon></button>
       <button class="desfavoritar-produto"><mat-icon>favorite</mat-icon></button>
     </div>
