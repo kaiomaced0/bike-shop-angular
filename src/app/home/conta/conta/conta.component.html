@@ -1,11 +1,25 @@
 <div class="container">
-  <div class="sidebar">
-    <h2>Perfil do Usuário</h2>
-    <p><strong>Nome:</strong> João Silva</p>
-    <p><strong>Email:</strong> joao.silva&commat;gmail.com</p>
-    <p><strong>Telefone:</strong> (63) 98414-2982</p>
-    <p><strong>Endereço Padrão:</strong> PALMAS, 403 SUL, aaaas</p>
+  <div class="profile-container">
+    <div class="header">
+      <h2>Perfil do Usuário</h2>
+      <button mat-button color="primary" (click)="editarPerfil()">Editar</button>
+    </div>
+    <div class="profile-details">
+      <div class="profile-item">
+        <label>Nome:</label> {{ usuario!.nome! || null}}
+      </div>
+      <div class="profile-item">
+        <label>Email:</label> {{ usuario!.email! || null}}
+      </div>
+      <div class="profile-item">
+        <label>CPF:</label> {{ usuario!.cpf! || null}}
+      </div>
+      <div class="profile-item">
+        <label>Telefone:</label> {{ usuario!.telefone![0] || null}}
+      </div>
+    </div>
   </div>
+
   <div class="user-options">
     <div class="card" (click)="irParaFavoritos()"><i class="icon">❤️</i> Gostei</div>
     <div class="card" (click)="irParaPedidos()"><i class="icon" >📦</i> Pedidos</div>

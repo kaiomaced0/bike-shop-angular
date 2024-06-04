@@ -10,11 +10,12 @@ import { CategoriaService } from '../../../../services/categoria/categoria.servi
 import { Categoria } from '../../../../models/categoria.model';
 import { Marca } from '../../../../models/marca.model';
 import { MarcaService } from '../../../../services/marca/marca.service';
+import { UploadComponent } from '../../../../components/upload/upload/upload.component';
 
 @Component({
   selector: 'app-new-produto',
   standalone: true,
-  imports: [FormsModule, MatFormField, MatSelect, MatLabel, MatOption, MatButton, MatSelectModule, ReactiveFormsModule],
+  imports: [FormsModule, MatFormField, MatSelect, MatLabel, MatOption, MatButton, MatSelectModule, ReactiveFormsModule, UploadComponent],
   templateUrl: './new-produto.component.html',
   styleUrl: './new-produto.component.css'
 })

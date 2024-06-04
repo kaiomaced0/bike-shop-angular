@@ -1,13 +1,17 @@
+import { Produto } from "./produto.model";
+
 export class Usuario{
   id?: number;
   cpf?: string;
   login?: string;
   senha?: string;
-  nome?: string | null;
-  email?: string | null;
+  dataNascimento?: Date;
+  nome?: string;
+  email?: string;
+  telefone?: string[];
   cartoes?: any[];
   enderecos?: any[];
-  listaGostei?: any[];
+  listaGostei?: Produto[];
 
   constructor() {
   }

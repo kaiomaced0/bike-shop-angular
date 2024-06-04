@@ -4,6 +4,36 @@
   align-items: center;
 }
 
+.profile-container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile-details {
+  margin-top: 20px;
+}
+
+.profile-item {
+  margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  .profile-container {
+    width: 100%;
+  }
+}
+
+
 .sidebar {
   background-color: #333;
   color: white;

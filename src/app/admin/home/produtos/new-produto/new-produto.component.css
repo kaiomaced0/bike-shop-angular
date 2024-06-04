@@ -14,6 +14,10 @@
   gap: 10px; /* Espaço entre os botões */
 }
 
+.upload-image{
+  padding: 20px;
+}
+
 .new-produto-form h2 {
   margin-bottom: 20px;
   text-align: center;

@@ -27,9 +27,14 @@ export class MainLayoutComponent {
     this.router.navigate(['/search', { search: query }]);
   }
 
-
   irParaLogin() {
     this.router.navigate(['/login']);
+  }
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['/']).then(() => {
+      window.location.reload();
+    });
   }
   irParaHome() {
     this.router.navigate(['/']);
