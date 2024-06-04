@@ -6,6 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { UsuariologadoService } from '../../../services/usuariologado/usuariologado.service';
 import { SafeUrl } from '@angular/platform-browser';
+import { CarrinhoService } from '../../../services/carrinho/carrinho.service';
 
 @Component({
   selector: 'app-card-produto',
@@ -17,7 +18,7 @@ import { SafeUrl } from '@angular/platform-browser';
 export class CardProdutoComponent {
 
 
-  constructor(private router: Router, private service: UsuariologadoService, private snackBar: MatSnackBar) {
+  constructor(private router: Router, private service: UsuariologadoService, private snackBar: MatSnackBar, private carrinhoService: CarrinhoService) {
   }
   @Input() id?: number; // Valor padrão para o id
   @Input() imageUrl: SafeUrl = 'https://via.placeholder.com/190x215';
@@ -38,11 +39,14 @@ export class CardProdutoComponent {
         });
       }
     });
-}
+  }
 
   comprar() {
     console.log("Produto comprado:", this.id);
-    // Implemente a lógica para "comprar" aqui
+    this.carrinhoService.adicionarProduto(this.id!)
+    this.snackBar.open('Produto adicionado ao carrinho', 'Fechar', {
+      duration: 2000,
+    });
   }
 
 
