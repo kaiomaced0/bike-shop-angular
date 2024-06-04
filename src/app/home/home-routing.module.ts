@@ -9,6 +9,8 @@ import { SearchComponent } from './search/search.component';
 import { ProdutoService } from '../services/produto/produto.service';
 import { HomeService } from '../services/home/home.service';
 import { UsuariologadoService } from '../services/usuariologado/usuariologado.service';
+import { CarrinhoService } from '../services/carrinho/carrinho.service';
+import { CompraService } from '../services/compra/compra.service';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -29,6 +31,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forChild(routes), CommonModule],
   exports: [RouterModule],
-  providers: [ProdutoService, HomeService, UsuariologadoService]
+  providers: [ProdutoService, HomeService, UsuariologadoService, CarrinhoService, CompraService]
 })
 export class HomeRoutingModule { }
