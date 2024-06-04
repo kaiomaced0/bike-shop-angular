@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfiermDialogResetarsenhaComponent } from '../../../components/dialog/confierm-dialog-resetarsenha/confierm-dialog-resetarsenha.component';
 import { UsuariologadoService } from '../../../services/usuariologado/usuariologado.service';
+import { CarrinhoService } from '../../../services/carrinho/carrinho.service';
 
 @Component({
   selector: 'app-card-produto-favorito',
@@ -17,7 +18,7 @@ import { UsuariologadoService } from '../../../services/usuariologado/usuariolog
 export class CardProdutoFavoritoComponent {
 
 
-  constructor(private router: Router, private service: UsuariologadoService, private dialog: MatDialog, private snackBar: MatSnackBar) {
+  constructor(private router: Router, private service: UsuariologadoService, private dialog: MatDialog, private snackBar: MatSnackBar, private carrinhoService: CarrinhoService) {
   }
 
   @Input() id?: number; // Valor padrão para o id
@@ -33,6 +34,7 @@ export class CardProdutoFavoritoComponent {
             this.snackBar.open('Produto deletado', 'Fechar', {
               duration: 2000,
             });
+            window.location.reload();
           },
           error: (error) => {
             this.snackBar.open('Erro ao deletar Produto', 'Fechar', {
@@ -40,6 +42,14 @@ export class CardProdutoFavoritoComponent {
             });
           }
         });
+    }
+
+    comprar() {
+      console.log("Produto comprado:", this.id);
+      this.carrinhoService.adicionarProduto(this.id!)
+      this.snackBar.open('Produto adicionado ao carrinho', 'Fechar', {
+        duration: 2000,
+      });
     }
 
 
