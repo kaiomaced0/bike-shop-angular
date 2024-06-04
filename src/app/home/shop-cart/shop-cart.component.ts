@@ -2,102 +2,83 @@ import { Component, OnInit } from '@angular/core';
 import { CartItemComponent } from '../components/cart-item/cart-item.component';
 import { Router } from '@angular/router';
 import { Produto } from '../../models/produto.model';
-import { CartService } from '../../services/cart/cart.service';
 import { FormsModule } from '@angular/forms';
+import { UsuariologadoService } from '../../services/usuariologado/usuariologado.service';
+import { CarrinhoService } from '../../services/carrinho/carrinho.service';
+import { ItemCompra } from '../../models/itemcompra.models';
+import { CompraService } from '../../services/compra/compra.service';
+import { ProdutoService } from '../../services/produto/produto.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-shop-cart',
   standalone: true,
-  imports: [FormsModule, ],
+  imports: [FormsModule],
   templateUrl: './shop-cart.component.html',
   styleUrls: ['./shop-cart.component.css'],
 })
 export class ShopCartComponent implements OnInit {
 
-  cart?: Produto;
+  carrinho: ItemCompra[] = [];
+  produtos: Produto[] = [];
+  listids: number[] = [];
+  total: number = 0;
 
-  constructor(private cartService: CartService, private router: Router) {}
+  constructor(
+    private carrinhoService: CarrinhoService,
+    private compraService: CompraService,
+    private router: Router,
+    private produtoService: ProdutoService
+  ) { }
 
   ngOnInit(): void {
-    this.loadCart();
+    this.carrinho = this.carrinhoService.getCarrinho();
+    this.carrinho.forEach( i => this.listids.push(i.produtoId!));
+    this.produtoService.listIds(this.listids).subscribe(data => {
+      this.produtos = data;
+    });
+    this.getTotal();
+
+    console.log(this.carrinho, this.produtos, this.listids, this.total);
   }
 
-  loadCart() {
-    this.cart = this.cartService.getCartItems();
+  adicionarProduto(produtoId: number): void {
+      this.carrinhoService.adicionarProduto(produtoId);
+      this.getTotal();
   }
 
-  addToCart(produto: Produto) {
-    this.cartService.addToCart(produto, 1);
-    this.loadCart();
+  aumentarQuantidade(produtoId: number): void {
+    this.carrinhoService.aumentarQuantidade(produtoId);
   }
 
-  removeFromCart(produtoId: number) {
-    this.cartService.removeFromCart(produtoId);
-    this.loadCart();
+  removerDoCarrinho(produtoId: number): void {
+    this.carrinhoService.removerProduto(produtoId);
+    this.carrinho = this.carrinhoService.getCarrinho();
+    this.getTotal();
+
+    window.location.reload();
   }
 
-  updateQuantity(produtoId: number, quantity: number) {
-    this.cartService.updateQuantity(produtoId, quantity);
-    this.loadCart();
+  getQuantidade(produtoId: number): number {
+    return this.carrinhoService.getQuantidade(produtoId);
   }
 
-  clearCart() {
-    this.cartService.clearCart();
-    this.loadCart();
+  getTotal(){
+        this.total = 0;
+          this.produtos.forEach(element => {
+            this.total = this.total + (element.preco! * this.getQuantidade(element.id!));
+          });
   }
 
-  proceedToCheckout() {
-    this.router.navigate(['/finalizar-compra']);
+
+  diminuirQuantidade(produtoId: number): void {
+    this.carrinhoService.diminuirQuantidade(produtoId);
   }
 
-//   constructor(private router: Router, private service: UsuariologadoService) {
-//     this.calculateTotal();
-//   }
-
-//   produtos: Produto[] = [];
-
-//   ngOnInit() {
-//     localStorage.getItem('produtos-carrinho');
-//   }
-
-//   item1 = { name: 'Produto 1', imageUrl: 'https://via.placeholder.com/220x250', quantity: 1, price: 100, selected: true };
-//   item2 = { name: 'Produto 2', imageUrl: 'https://via.placeholder.com/220x250', quantity: 1, price: 150, selected: true };
-//   item3 = { name: 'Produto 3', imageUrl: 'https://via.placeholder.com/220x250', quantity: 1, price: 1220, selected: true };
-
-//   total = 0;
-
-//   increaseQuantity(itemNumber: number) {
-//     if (itemNumber === 1) {
-//       this.item1.quantity++;
-//     } else if (itemNumber === 2) {
-//       this.item2.quantity++;
-//     } else if (itemNumber === 3) {
-//       this.item3.quantity++;
-//     }
-//     this.calculateTotal();
-//   }
-
-//   decreaseQuantity(itemNumber: number) {
-//     if (itemNumber === 1 && this.item1.quantity > 1) {
-//       this.item1.quantity--;
-//     } else if (itemNumber === 2 && this.item2.quantity > 1) {
-//       this.item2.quantity--;
-//     } else if (itemNumber === 3 && this.item3.quantity > 1) {
-//       this.item3.quantity--;
-//     }
-//     this.calculateTotal();
-//   }
-
-//   calculateTotal() {
-//     this.total = 0;
-//     if (this.item1.selected) {
-//       this.total += this.item1.quantity * this.item1.price;
-//     }
-//     if (this.item2.selected) {
-//       this.total += this.item2.quantity * this.item2.price;
-//     }
-//     if (this.item3.selected) {
-//       this.total += this.item3.quantity * this.item3.price;
-//     }
-//   }
+  finalizarCompra(): void {
+    const compra = this.carrinhoService.enviarCompra(100, 100);
+    this.compraService.enviarCompra(compra).subscribe(() => {
+      this.router.navigate(['/finalizar-compra']);
+    });
+  }
 }
