@@ -10,7 +10,7 @@ import { CompraItemCompra } from '../../models/compraitemcompra.models';
 export class CompraService {
 
   // private baseUrl = 'http://localhost:8080/compra';
-  private baseUrl = 'http://34.151.200.157:8080/compra';
+  private baseUrl = 'http://34.151.200.157:8443/compra';
 
   private token  = localStorage.getItem('token');
 

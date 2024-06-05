@@ -9,7 +9,7 @@ import { tap } from 'rxjs';
 export class HomeService {
 
   // private apiUrl = 'http://localhost:8080/home';
-  private apiUrl = 'https://34.151.200.157:8080/home';
+  private apiUrl = 'https://34.151.200.157:8443/home';
 
   private token  = localStorage.getItem('token');
 
