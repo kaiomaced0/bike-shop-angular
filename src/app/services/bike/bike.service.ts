@@ -41,8 +41,12 @@ export class BikeService {
     return this.http.patch(url, null, this.httpOptions2);
   }
 
-  getById(id: number): Observable<Bike> {
+  getByIdAdmin(id: number): Observable<Bike> {
     const url = `${this.baseUrl}/admin/${id}`;
+    return this.http.get<Bike>(url, this.httpOptions);
+  }
+  getById(id: number): Observable<Bike> {
+    const url = `${this.baseUrl}/${id}`;
     return this.http.get<Bike>(url, this.httpOptions);
   }
 }
