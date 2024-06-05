@@ -8,9 +8,9 @@
     <h1>{{produto.nome}}</h1>
     <h2>R$ {{produto.preco}}</h2>
     <div class="product-buttons">
-      <button class="buy-now">Comprar Agora</button>
-      <button class="add-to-cart">Adicionar ao Carrinho</button>
-      <button class="add-to-wishlist">Adicionar à Lista de Desejos</button>
+      <button class="buy-now" (click)="comprar()">Comprar Agora</button>
+      <button class="add-to-cart" (click)="comprar()">Adicionar ao Carrinho</button>
+      <button class="add-to-wishlist" (click)="curtir()">Adicionar à Lista de Desejos</button>
     </div>
     <div class="product-description">
       <h3>Descrição do Produto</h3>
