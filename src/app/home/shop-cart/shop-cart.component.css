@@ -21,7 +21,7 @@
 
 .cart-summary {
   width: 30%;
-  margin-top: 20px;
+  margin-top: 2rem;
 }
 
 .finalize-button {
@@ -35,7 +35,6 @@
   display: flex;
   justify-content: center;
 }
-
 
 .columnA{
   width: 70%;
@@ -71,14 +70,42 @@
 
   .containers {
     flex-direction: column;
+    height: 100%;
   }
 
   .columnA, .cart-summary {
     width: 100%;
   }
+  .columnA{
+    position: relative;
+    top: 0;
+    max-height: 50%;
+
+    margin-bottom: 15%;
+  }
+  .cart-summary{
+    height: 15%;
+  }
 
   .cart-item, .quantity-control, .details {
     align-items: center;
     text-align: center;
+  }
+}
+
+@media (max-width: 800px) and (orientation: landscape) {
+
+  .columnA{
+    position: relative;
+    top: 0;
+
+    margin-bottom: 20%;
+  }
+
+  .cart-summary{
+    height: 25%;
+  }
+  .finalize-button{
+    margin-bottom: 1rem;
   }
 }

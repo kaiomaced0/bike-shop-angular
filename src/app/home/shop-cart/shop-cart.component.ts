@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CartItemComponent } from '../components/cart-item/cart-item.component';
 import { Router } from '@angular/router';
 import { Produto } from '../../models/produto.model';
 import { FormsModule } from '@angular/forms';
@@ -36,25 +35,19 @@ export class ShopCartComponent implements OnInit {
     this.carrinho.forEach( i => this.listids.push(i.produtoId!));
     this.produtoService.listIds(this.listids).subscribe(data => {
       this.produtos = data;
-    });
-    this.getTotal();
-
-    console.log(this.carrinho, this.produtos, this.listids, this.total);
-  }
-
-  adicionarProduto(produtoId: number): void {
-      this.carrinhoService.adicionarProduto(produtoId);
       this.getTotal();
+    });
+    console.log(this.carrinho, this.produtos, this.listids, this.total);
   }
 
   aumentarQuantidade(produtoId: number): void {
     this.carrinhoService.aumentarQuantidade(produtoId);
+    this.getTotal();
   }
 
   removerDoCarrinho(produtoId: number): void {
     this.carrinhoService.removerProduto(produtoId);
     this.carrinho = this.carrinhoService.getCarrinho();
-    this.getTotal();
 
     window.location.reload();
   }
@@ -68,14 +61,16 @@ export class ShopCartComponent implements OnInit {
           this.produtos.forEach(element => {
             this.total = this.total + (element.preco! * this.getQuantidade(element.id!));
           });
-  }
 
+  }
 
   diminuirQuantidade(produtoId: number): void {
     this.carrinhoService.diminuirQuantidade(produtoId);
+    this.getTotal();
   }
 
   finalizarCompra(): void {
+    this.getTotal();
     const compra = this.carrinhoService.enviarCompra(100, 100);
     this.compraService.enviarCompra(compra).subscribe(() => {
       this.router.navigate(['/finalizar-compra']);

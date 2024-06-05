@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ItemCompra } from '../../models/itemcompra.models';
 import { CompraItemCompra } from '../../models/compraitemcompra.models';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,8 @@ export class CarrinhoService {
   private cartKey = 'cart';
   private carrinho: ItemCompra[] = [];
 
-  constructor() {
+  constructor(
+    private snackBar: MatSnackBar) {
     this.loadCart();
   }
 
@@ -34,6 +36,11 @@ export class CarrinhoService {
       this.carrinho.push({ produtoId, quantidade: 1 });
     }
     this.saveCart();
+
+    console.log("Produto comprado:", produtoId);
+    this.snackBar.open('Produto adicionado ao carrinho', 'Fechar', {
+      duration: 2000,
+    });
   }
 
   aumentarQuantidade(produtoId: number): void {
