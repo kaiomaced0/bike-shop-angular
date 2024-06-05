@@ -8,7 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class UsuarioService {
 
-  private baseUrl = '/pessoafisica';
+  // private baseUrl = 'http://localhost:8080/pessoafisica';
+  private baseUrl = 'http://34.151.200.157:pessoafisica/';
 
   constructor(private http: HttpClient) { }
 

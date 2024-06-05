@@ -8,8 +8,8 @@ import { tap } from 'rxjs';
 })
 export class HomeService {
 
-  private apiUrl = 'http://localhost:8080/home';
-  // private apiUrl = 'http://34.151.200.157:8080/home';
+  // private apiUrl = 'http://localhost:8080/home';
+  private apiUrl = 'http://34.151.200.157:8080/home';
 
   private token  = localStorage.getItem('token');
 

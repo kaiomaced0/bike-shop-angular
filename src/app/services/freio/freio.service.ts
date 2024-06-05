@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class FreioService {
 
-  private baseUrl = 'http://localhost:8080/freio';
-  // private baseUrl = 'http://34.151.200.157:8080/freio';
+  // private baseUrl = 'http://localhost:8080/freio';
+  private baseUrl = 'http://34.151.200.157:8080/freio';
 
   private token  = localStorage.getItem('token');
 
