@@ -4,7 +4,6 @@ import { MatList, MatListItem } from '@angular/material/list';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ConfiermDialogResetarsenhaComponent } from '../../../components/dialog/confierm-dialog-resetarsenha/confierm-dialog-resetarsenha.component';
 import { UsuariologadoService } from '../../../services/usuariologado/usuariologado.service';
 import { CarrinhoService } from '../../../services/carrinho/carrinho.service';
 
@@ -45,11 +44,7 @@ export class CardProdutoFavoritoComponent {
     }
 
     comprar() {
-      console.log("Produto comprado:", this.id);
-      this.carrinhoService.adicionarProduto(this.id!)
-      this.snackBar.open('Produto adicionado ao carrinho', 'Fechar', {
-        duration: 2000,
-      });
+      this.carrinhoService.adicionarProduto(this.id!);
     }
 
 

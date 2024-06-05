@@ -42,11 +42,7 @@ export class CardProdutoComponent {
   }
 
   comprar() {
-    console.log("Produto comprado:", this.id);
-    this.carrinhoService.adicionarProduto(this.id!)
-    this.snackBar.open('Produto adicionado ao carrinho', 'Fechar', {
-      duration: 2000,
-    });
+    this.carrinhoService.adicionarProduto(this.id!);
   }
 
 
