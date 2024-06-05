@@ -11,7 +11,7 @@ import { Produto } from '../../models/produto.model';
 export class UsuariologadoService {
 
   // private apiUrl = 'http://localhost:8080/usuariologado';
-  private apiUrl = 'http://34.151.200.157:8080/usuariologado';
+  private apiUrl = 'http://34.151.200.157:8443/usuariologado';
 
   private token  = localStorage.getItem('token');
 
