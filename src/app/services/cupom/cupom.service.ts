@@ -7,7 +7,9 @@ import { Observable, tap } from 'rxjs';
   providedIn: 'root'
 })
 export class CupomService {
-  private baseUrl = '/cupom';
+  
+  private baseUrl = 'http://localhost:8080/cupom';
+  // private baseUrl = 'http://34.151.200.157:8080/cupom';
 
   private token  = localStorage.getItem('token');
 

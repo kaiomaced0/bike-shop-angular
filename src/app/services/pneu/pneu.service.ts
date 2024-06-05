@@ -8,7 +8,8 @@ import { Observable, tap } from 'rxjs';
 })
 export class PneuService {
 
-  private baseUrl = '/pneu';
+  private baseUrl = 'http://localhost:8080/pneu';
+  // private baseUrl = 'http://34.151.200.157:8080/';
 
   private token  = localStorage.getItem('token');
 
