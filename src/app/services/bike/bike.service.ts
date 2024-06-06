@@ -11,7 +11,7 @@ export class BikeService {
   private token  = localStorage.getItem('token');
 
   // private baseUrl = 'http://localhost:8080/bike';
-  private baseUrl = 'https://34.151.200.157:8443/bike';
+  private baseUrl = 'http://34.151.200.157:8080/bike';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token})
