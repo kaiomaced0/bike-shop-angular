@@ -8,10 +8,11 @@ export class Usuario{
   dataNascimento?: Date;
   nome?: string;
   email?: string;
-  telefone?: string[];
+  telefones?: string[];
   cartoes?: any[];
   enderecos?: any[];
   listaGostei?: Produto[];
+  senhaAtual?: string;
 
   constructor() {
   }

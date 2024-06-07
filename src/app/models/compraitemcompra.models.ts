@@ -1,8 +1,8 @@
 import { ItemCompra } from "./itemcompra.models";
 
 export class CompraItemCompra{
-  listaIemCompra?: ItemCompra[];
-  idCupom?: number;
+  listaItemCompra?: ItemCompra[];
+  idCupom?: string;
   idEndereco?: number;
   formaPagamento?: number;
 }
