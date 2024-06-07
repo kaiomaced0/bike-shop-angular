@@ -12,10 +12,16 @@
         <label>Email:</label> {{ usuario!.email! || null}}
       </div>
       <div class="profile-item">
+        <label>Data de Nascimento:</label> {{ usuario!.dataNascimento! || null}}
+      </div>
+      <div class="profile-item">
         <label>CPF:</label> {{ usuario!.cpf! || null}}
       </div>
       <div class="profile-item">
-        <label>Telefone:</label> {{ usuario!.telefone![0] || null}}
+        <label>Telefones:</label>
+        @for (telefone of tell; track 'tell') {
+         {{ telefone || null }} -
+        }
       </div>
     </div>
   </div>

@@ -1,30 +1,40 @@
-.profile-container {
-  width: 80%;
-  margin: 0 auto;
+/* produto.component.css */
+.conta-edit {
+  max-width: 500px;
+  margin: auto;
   padding: 20px;
-  background-color: #f9f9f9;
+  background-color: #cacaca;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.profile-item {
+.button-container {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
+  gap: 10px; /* Espaço entre os botões */
+}
+
+.conta-edit h2 {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}
+
+.form-field {
   margin-bottom: 10px;
 }
 
-.profile-item label {
-  font-weight: bold;
+.form-field label {
+  display: block;
+  margin-bottom: 5px;
 }
 
-.profile-item span {
-  flex-grow: 1;
-  margin-left: 10px;
+.form-field input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
 }
 
-@media (max-width: 768px) {
-  .profile-container {
-    width: 100%;
-  }
+.conta-edit select {
+  background-color: white;
 }

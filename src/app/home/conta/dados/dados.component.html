@@ -1,33 +1,45 @@
-<div class="profile-container">
-  <h2>Perfil do Usuário</h2>
-  <div>
-    <div class="profile-item">
-      <label>Nome:</label>
-      <span>{{ usuario!.nome! }}</span>
-      <button mat-icon-button color="primary">
-        <mat-icon>edit</mat-icon>
-      </button>
+<div class="conta-edit">
+  <h2>Atualizar Dados</h2>
+  <form #usuarioForm="ngForm">
+    <div class="form-field">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome" [(ngModel)]="usuario!.nome!" required>
     </div>
-    <div class="profile-item">
-      <label>Email:</label>
-      <span>{{ usuario!.email! }}</span>
-      <button mat-icon-button color="primary">
-        <mat-icon>edit</mat-icon>
-      </button>
+
+    <div class="form-field">
+      <label for="cpf">CPF:</label>
+      <input type="number" id="cpf" name="cpf" [(ngModel)]="usuario!.cpf!" required>
+    </div >
+
+    <div class="form-field">
+      <label for="dataNascimento">Data de Nascimento:</label>
+      <input type="date" id="dataNascimento" name="dataNascimento" [(ngModel)]="usuario!.dataNascimento!" required>
+    </div >
+
+    <div class="form-field">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" [(ngModel)]="usuario!.email!" required>
+    </div >
+
+    <div class="form-field">
+      <label for="login">Login:</label>
+      <input type="text" id="login" name="login" [(ngModel)]="usuario!.login!" required>
+    </div >
+
+    <div class="form-field">
+      <label for="senha">Senha</label>
+      <input type="password" id="senha" name="senha" [(ngModel)]="usuario!.senha!" required>
+    </div >
+
+    <div class="form-field" style="padding-top: 40px;">
+      <label for="senhaAtual">Senha Atual (Senha para validação)</label>
+      <input type="password" id="senhaAtual" name="senhaAtual" [(ngModel)]="usuario!.senhaAtual!" required>
+    </div >
+
+
+    <div class="button-container">
+      <button mat-flat-button color="warn" (click)="cancelar()">Cancelar</button>
+      <button mat-flat-button color="primary" type="submit" (click)="atualizar()">Atualizar</button>
     </div>
-    <div class="profile-item">
-      <label>Senha:</label>
-      <span>********</span>
-      <button mat-icon-button color="primary">
-        <mat-icon>edit</mat-icon>
-      </button>
-    </div>
-    <div class="profile-item">
-      <label>Data de Nascimento:</label>
-      <span>{{ usuario!.dataNascimento! || null }}</span>
-      <button mat-icon-button color="primary">
-        <mat-icon>edit</mat-icon>
-      </button>
-    </div>
-  </div>
-</div>
+  </form>
+</div >
