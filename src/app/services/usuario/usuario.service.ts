@@ -10,6 +10,8 @@ export class UsuarioService {
 
   // private baseUrl = 'http://localhost:8080/pessoafisica';
   private baseUrl = 'http://34.151.200.157:8080/pessoafisica';
+  // private baseUrl2 = 'http://localhost:8080/usuario';
+  private baseUrl2 = 'http://34.151.200.157:8080/usuario';
 
   constructor(private http: HttpClient) { }
 
@@ -33,7 +35,7 @@ export class UsuarioService {
   }
 
   insert(p: Usuario): Observable<Usuario> {
-    return this.http.post<Usuario>('/usuario', p, this.httpOptions);
+    return this.http.post<Usuario>(this., p, this.httpOptions);
   }
 
   getById(id: number): Observable<Usuario> {
