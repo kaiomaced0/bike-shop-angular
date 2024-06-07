@@ -35,7 +35,7 @@ export class UsuarioService {
   }
 
   insert(p: Usuario): Observable<Usuario> {
-    return this.http.post<Usuario>(this., p, this.httpOptions);
+    return this.http.post<Usuario>(this.baseUrl2, p, this.httpOptions);
   }
 
   getById(id: number): Observable<Usuario> {
