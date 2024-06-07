@@ -1,6 +1,38 @@
-<div class="enderecos-container">
-  <button routerLink="/conta/enderecos/new" >Adicionar Novo Endereço</button>
-  <app-endereco-item *ngFor="let endereco of enderecos" [nome]="endereco.nome" [cidade]="endereco.cidade"
-   [cep]="endereco.cep" [complemento]="endereco.complemento" [numero]="endereco.numero"></app-endereco-item>
-
+<div class="button-container">
+  <button mat-raised-button color="primary" style="width: 100%; border-radius: 8px; background-color: green;"
+    (click)="new()">
+    <mat-icon>add</mat-icon>
+    Adicionar endereco
+  </button>
 </div>
+<table class="tabela-enderecos">
+  <thead>
+    <tr>
+      <th style="width: 8%;">ID</th>
+      <th style="width: 22%;">Nome</th>
+      <th style="width: 20%;">Descrição</th>
+      <th style="width: 10%;">CEP</th>
+      <th style="width: 10%;">Cidade</th>
+      <th style="width: 10%;">numero</th>
+      <th style="width: 5%;">Editar</th>
+      <th style="width: 5%;">Principal</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for(endereco of enderecos; track endereco.id){
+
+    <tr>
+      <td>{{ endereco.id }}</td>
+      <td>{{ endereco.nome }}</td>
+      <td>{{ endereco.descricao }}</td>
+      <td>{{ endereco.cep}}</td>
+      <td>{{ endereco.cidade?.nome!}}</td>
+      <td>{{ endereco.numero }}</td>
+      <td><mat-icon (click)="editar(endereco.id!)">edit</mat-icon></td>
+      <td><mat-icon (click)="principal(endereco.id!)">build</mat-icon></td>
+
+    </tr>
+    }
+
+  </tbody>
+</table>
