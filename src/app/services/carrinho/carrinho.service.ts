@@ -2,22 +2,30 @@ import { Injectable } from '@angular/core';
 import { ItemCompra } from '../../models/itemcompra.models';
 import { CompraItemCompra } from '../../models/compraitemcompra.models';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { CompraService } from '../compra/compra.service';
+import { ProdutoService } from '../produto/produto.service';
+import { Produto } from '../../models/produto.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarrinhoService {
 
+  private listid?: number[];
   private cartKey = 'cart';
   private carrinho: ItemCompra[] = [];
+  private produtos: Produto[] = [];
+  private total: number = 0;
 
   constructor(
+    private produtoService: ProdutoService,
     private snackBar: MatSnackBar) {
     this.loadCart();
   }
 
   private saveCart(): void {
     localStorage.setItem(this.cartKey, JSON.stringify(this.carrinho));
+    this.loadCart();
   }
 
   private loadCart(): void {
@@ -26,6 +34,15 @@ export class CarrinhoService {
       this.carrinho = JSON.parse(cart);
     }
   }
+
+  getTotal(produtos: Produto[]) : number{
+      this.produtos.forEach(element => {
+        this.total = this.total + (element.preco! * this.getQuantidade(element.id!));
+      });
+    return this.total;
+  }
+
+
 
   adicionarProduto(produtoId: number): void {
     this.loadCart();
@@ -41,6 +58,8 @@ export class CarrinhoService {
     this.snackBar.open('Produto adicionado ao carrinho', 'Fechar', {
       duration: 2000,
     });
+
+    this.loadCart();
   }
 
   aumentarQuantidade(produtoId: number): void {
@@ -93,14 +112,15 @@ export class CarrinhoService {
     this.saveCart();
   }
 
-  enviarCompra(idCupom?: number, idEndereco?: number): CompraItemCompra {
+  enviarCompra(idCupom?: string, idEndereco?: number): CompraItemCompra {
+    this.loadCart();
     const compra: CompraItemCompra = {
-      listaIemCompra: this.carrinho,
+      listaItemCompra: this.carrinho,
       idCupom: idCupom,
       idEndereco: idEndereco,
       formaPagamento: 1
     };
-    this.limparCarrinho();
+    // this.compraService.insert(compra);
     return compra;
   }
 }

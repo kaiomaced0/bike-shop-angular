@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { Usuario } from '../../models/usuario.model';
 import { Produto } from '../../models/produto.model';
+import { Endereco } from '../../models/endereco.models';
+import { UpdateDados } from '../../models/updatedados.model';
 
 
 @Injectable({
@@ -51,9 +53,19 @@ export class UsuariologadoService {
     return this.httpClient.patch(url, null, this.httpOptions);
   }
 
+
+  dadosupdate(usuario: UpdateDados){
+    const url = `${this.apiUrl}/updatedados`;
+    return this.httpClient.put(url, usuario, this.httpOptions);
+  }
+
   deleteGostei(id: number){
     const url = `${this.apiUrl}/gostei/delete/${id}`;
     return this.httpClient.patch(url, null, this.httpOptions);
+  }
+
+  getEnderecos(): Observable<Endereco[]> {
+    return this.httpClient.get<Endereco[]>(`${this.apiUrl}/enderecos`, this.httpOptions);
   }
 
 }
