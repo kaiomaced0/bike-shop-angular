@@ -36,5 +36,9 @@ export class LoginComponent {
     this.router.navigate(['/admin']);
 
   }
+  irCadastro(){
+    this.router.navigate(['/login/sign']);
+
+  }
 
 }
