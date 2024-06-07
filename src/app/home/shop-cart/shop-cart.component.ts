@@ -2,12 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Produto } from '../../models/produto.model';
 import { FormsModule } from '@angular/forms';
-import { UsuariologadoService } from '../../services/usuariologado/usuariologado.service';
 import { CarrinhoService } from '../../services/carrinho/carrinho.service';
 import { ItemCompra } from '../../models/itemcompra.models';
 import { CompraService } from '../../services/compra/compra.service';
 import { ProdutoService } from '../../services/produto/produto.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-shop-cart',
@@ -25,10 +23,10 @@ export class ShopCartComponent implements OnInit {
 
   constructor(
     private carrinhoService: CarrinhoService,
-    private compraService: CompraService,
     private router: Router,
     private produtoService: ProdutoService
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.carrinho = this.carrinhoService.getCarrinho();
@@ -38,6 +36,9 @@ export class ShopCartComponent implements OnInit {
       this.getTotal();
     });
     console.log(this.carrinho, this.produtos, this.listids, this.total);
+  }
+  recebe(){
+    this.getTotal();
   }
 
   aumentarQuantidade(produtoId: number): void {
@@ -52,16 +53,15 @@ export class ShopCartComponent implements OnInit {
     window.location.reload();
   }
 
-  getQuantidade(produtoId: number): number {
-    return this.carrinhoService.getQuantidade(produtoId);
+  getTotal(){
+    this.total = 0;
+      this.produtos.forEach(element => {
+        this.total = this.total + (element.preco! * this.getQuantidade(element.id!));
+      });
   }
 
-  getTotal(){
-        this.total = 0;
-          this.produtos.forEach(element => {
-            this.total = this.total + (element.preco! * this.getQuantidade(element.id!));
-          });
-
+  getQuantidade(produtoId: number): number {
+    return this.carrinhoService.getQuantidade(produtoId);
   }
 
   diminuirQuantidade(produtoId: number): void {
@@ -70,10 +70,6 @@ export class ShopCartComponent implements OnInit {
   }
 
   finalizarCompra(): void {
-    this.getTotal();
-    const compra = this.carrinhoService.enviarCompra(100, 100);
-    this.compraService.enviarCompra(compra).subscribe(() => {
-      this.router.navigate(['/finalizar-compra']);
-    });
+    this.router.navigate(['/pagamento']);
   }
 }
