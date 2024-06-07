@@ -7,8 +7,9 @@ import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { UsuariologadoService } from './services/usuariologado/usuariologado.service';
+import { ProdutoService } from './services/produto/produto.service';
 
 export const appConfig: ApplicationConfig = {
 
-  providers: [provideRouter(routes), provideAnimationsAsync(), provideStore(), provideEffects(), provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }), UsuariologadoService]
+  providers: [provideRouter(routes), provideAnimationsAsync(), provideStore(), provideEffects(), provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }), UsuariologadoService, ProdutoService]
 };
