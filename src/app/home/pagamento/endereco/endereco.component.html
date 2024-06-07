@@ -1,0 +1,35 @@
+<div class="finalizar-compra-container">
+  <h2>Finalizar Compra</h2>
+  <p>Total: R$ {{ valor }}</p>
+
+  <form [formGroup]="enderecoForm" (ngSubmit)="finalizarCompra()">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Endereço</mat-label>
+      <mat-select formControlName="endereco">
+        @for (e of enderecos; track e.id) {
+        <mat-option [value]="e.id">
+          Nome: {{ e.nome }} - Descrição: [{{e.descricao}}]
+        </mat-option>
+        }
+      </mat-select>
+
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="button" (click)="adicionarEndereco()">
+      Gerenciar Endereços
+    </button>
+
+
+    <div class="form-field">
+      <label for="mensagemCupom">Cupom:</label>
+      <input type="text" id="mensagemCupom" name="mensagemCupom" [value]="mensagemCupom">
+    </div >
+
+
+    <div class="button-container">
+      <button mat-raised-button color="primary" type="submit" (click)="finalizarCompra()">
+        Finalizar Compra
+      </button>
+    </div>
+  </form>
+</div>
