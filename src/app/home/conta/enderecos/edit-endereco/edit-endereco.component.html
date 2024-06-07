@@ -1,0 +1,49 @@
+<p>edit-endereco works!</p>
+<div  class="new-endereco-form">
+  <h2>editar endereco</h2>
+  <form #enderecoForm="ngForm">
+    <div class="form-field">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome" [(ngModel)]="endereco!.nome!" required>
+    </div>
+
+    <div class="form-field">
+      <label for="descricao">Descrição:</label>
+      <input type="text" id="descricao" name="descricao" [(ngModel)]="endereco!.descricao!" required>
+    </div >
+
+    <div class="form-field">
+      <label for="cep">CEP:</label>
+      <input type="text" id="cep" name="cep" [(ngModel)]="endereco!.cep" required>
+    </div >
+
+    <div class="form-field">
+      <label for="numero">Numero:</label>
+      <input type="text" id="numero" name="numero" [(ngModel)]="endereco!.numero" required>
+    </div >
+
+    <div class="form-field">
+      <label for="rua">Rua:</label>
+      <input type="text" id="rua" name="rua" [(ngModel)]="endereco!.rua" required>
+    </div >
+
+
+    <div>
+      <mat-form-field style="width: 100%;">
+        <mat-label>Cidade</mat-label>
+        <mat-select type="number" id="idCidade" name="idCidade" [(ngModel)]="endereco!.idCidade!">
+          @for (cidade of cidades; track cidade.id) {
+
+            <mat-option [value]="cidade.id">{{cidade.nome}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+
+    <div class="button-container">
+      <button mat-flat-button color="warn" (click)="cancelar()">Cancelar</button>
+      <button mat-flat-button color="primary" type="submit" (click)="update()">Atualizar</button>
+    </div>
+  </form>
+</div >
