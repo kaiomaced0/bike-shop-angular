@@ -1,5 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatCard } from '@angular/material/card';
 import { MatIcon } from '@angular/material/icon';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -15,18 +15,23 @@ import { CarrinhoService } from '../../../services/carrinho/carrinho.service';
   templateUrl: './card-produto.component.html',
   styleUrl: './card-produto.component.css'
 })
-export class CardProdutoComponent {
+export class CardProdutoComponent implements OnInit {
 
 
   constructor(private router: Router, private service: UsuariologadoService, private snackBar: MatSnackBar, private carrinhoService: CarrinhoService) {
   }
   @Input() id?: number; // Valor padrão para o id
-  @Input() imageUrl: SafeUrl = 'https://via.placeholder.com/190x215';
+  @Input() imageUrl?: SafeUrl = 'https://placehold.co/220x200/gray/white?text=Produto';
   @Input() title: string = 'Produto Padrão'; // Valor padrão para o título
   @Input() price: number = 0.00; // Valor padrão para o preço
   @Input() stars: number = 0; // Valor padrão para a quantidade de estrelas
   @Input() favoritado: boolean = false;
 
+  ngOnInit(): void {
+      if(this.imageUrl == null || this.imageUrl == ''){
+        this.imageUrl = 'https://placehold.co/220x200/gray/white?text=Produto';
+      }
+  }
   curtir() {
     if (this.favoritado) {
 

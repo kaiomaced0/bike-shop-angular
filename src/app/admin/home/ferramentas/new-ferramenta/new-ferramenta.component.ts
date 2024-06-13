@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FerramentaService } from '../../../../services/ferramenta/ferramenta.service';
 import { FormsModule } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-new-ferramenta',
@@ -19,7 +20,7 @@ export class NewFerramentaComponent {
     this.router.navigate(['/admin/ferramentas']);
   }
 
-  constructor(private router: Router, private service: FerramentaService) {
+  constructor(private router: Router, private service: FerramentaService, private snackBar: MatSnackBar) {
   }
   adicionarFerramenta() {
     this.ferramenta!.idCor = 1;
@@ -29,6 +30,9 @@ export class NewFerramentaComponent {
       next: (FerramentaAdicionado) => {
         console.log('Ferramenta adicionado com sucesso:', FerramentaAdicionado);
         this.router.navigate(['/admin/ferramentas']);
+        this.snackBar.open('Ferramenta Adicionada', 'Fechar', {
+          duration: 2000,
+        });
       },
       error: (erro) => {
         console.error('Erro ao adicionar Ferramenta:', erro, this.ferramenta!);

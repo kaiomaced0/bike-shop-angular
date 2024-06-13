@@ -8,6 +8,7 @@ import { ProdutoService } from '../../../services/produto/produto.service';
 import { CategoriaService } from '../../../services/categoria/categoria.service';
 import { MarcaService } from '../../../services/marca/marca.service';
 import { UploadService } from '../../../services/upload/upload.service';
+import { FileService } from '../../../services/file/file.service';
 
 const routes: Routes = [
   {path: '', component: ListProdutosComponent},
@@ -20,6 +21,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
-  providers: [ProdutoService, CategoriaService, MarcaService, UploadService]
+  providers: [ProdutoService, CategoriaService, MarcaService, UploadService, FileService]
 })
 export class ProdutosRoutingModule { }

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { PneuService } from '../../../../services/pneu/pneu.service';
 import { Pneu } from '../../../../models/pneu.model';
 import { MatButton } from '@angular/material/button';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-new-pneu',
@@ -16,7 +17,7 @@ import { MatButton } from '@angular/material/button';
 export class NewPneuComponent {
   pneu: Pneu = new Pneu();
 
-  constructor(private router: Router, private service: PneuService) {}
+  constructor(private router: Router, private service: PneuService, private snackBar: MatSnackBar) {}
 
 
   cancelar(){
@@ -31,6 +32,9 @@ export class NewPneuComponent {
       next: (produtoAdicionado) => {
         console.log('Pneu adicionado com sucesso:', produtoAdicionado);
         this.router.navigate(['/admin/pneus']);
+        this.snackBar.open('Pneu Adicionado', 'Fechar', {
+          duration: 2000,
+        });
       },
       error: (erro) => {
         console.error('Erro ao adicionar Pneu:', erro, this.pneu!);

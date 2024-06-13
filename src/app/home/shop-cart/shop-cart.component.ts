@@ -34,6 +34,12 @@ export class ShopCartComponent implements OnInit {
     this.produtoService.listIds(this.listids).subscribe(data => {
       this.produtos = data;
       this.getTotal();
+      this.produtos.forEach(element => {
+
+        if(element.img == null || element.img.length == 0){
+          element.img! = ['https://placehold.co/220x200/gray/white?text=Produto'];
+        }
+      });
     });
     console.log(this.carrinho, this.produtos, this.listids, this.total);
   }

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { CupomService } from '../../../../services/cupom/cupom.service';
 import { Cupom } from '../../../../models/cupom.model';
 import { MatButton } from '@angular/material/button';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-new-cupom',
@@ -19,7 +20,7 @@ export class NewCupomComponent {
     this.router.navigate(['/admin/cupons']);
   }
 
-  constructor(private router: Router, private service: CupomService) {}
+  constructor(private router: Router, private service: CupomService, private snackBar: MatSnackBar) {}
   onSubmit(form: any) {
     console.log('Dados do Formulário:', form.value);
   }
@@ -29,6 +30,9 @@ export class NewCupomComponent {
       next: (produtoAdicionado) => {
         console.log('Produto adicionado com sucesso:', produtoAdicionado);
         this.router.navigate(['/admin/cupons']);
+        this.snackBar.open('Cupom Adicionado', 'Fechar', {
+          duration: 2000,
+        });
       },
       error: (erro) => {
         console.error('Erro ao adicionar produto:', erro, this.cupom!);

@@ -15,7 +15,7 @@ import { UsuariologadoService } from '../../services/usuariologado/usuariologado
   styleUrl: './detail.component.css'
 })
 
-export class DetailComponent implements OnInit{
+export class DetailComponent implements OnInit {
   produto: Produto = new Produto();
 
   constructor(
@@ -25,7 +25,7 @@ export class DetailComponent implements OnInit{
     private snackBar: MatSnackBar,
     private carrinhoService: CarrinhoService,
     private usuarioService: UsuariologadoService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     console.log(this.produto);
@@ -35,12 +35,17 @@ export class DetailComponent implements OnInit{
       this.service.getById(+id).subscribe({
         next: (data) => {
           this.produto = data;
+
+          if (this.produto.img == null || this.produto.img.length == 0) {
+            this.produto.img! = ['https://placehold.co/220x200/gray/white?text=Produto']
+          }
         },
         error: (error) => {
           console.error('Erro ao buscar produto', error);
         }
       });
     }
+
   }
 
 
@@ -49,7 +54,7 @@ export class DetailComponent implements OnInit{
     console.log('Mudar imagem principal para:', "bike.jpg");
   }
 
-  curtir(){
+  curtir() {
     this.usuarioService.insertGostei(this.produto.id!).subscribe({
       next: () => {
         this.snackBar.open('Produto adicionado a Favoritos', 'Fechar', {

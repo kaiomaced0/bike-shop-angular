@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { MatList, MatListItem } from '@angular/material/list';
 import { Router } from '@angular/router';
@@ -14,7 +14,7 @@ import { CarrinhoService } from '../../../services/carrinho/carrinho.service';
   templateUrl: './card-produto-favorito.component.html',
   styleUrl: './card-produto-favorito.component.css'
 })
-export class CardProdutoFavoritoComponent {
+export class CardProdutoFavoritoComponent implements OnInit{
 
 
   constructor(private router: Router, private service: UsuariologadoService, private dialog: MatDialog, private snackBar: MatSnackBar, private carrinhoService: CarrinhoService) {
@@ -27,6 +27,12 @@ export class CardProdutoFavoritoComponent {
   @Input() stars?: number; // Valor padrão para a quantidade de estrelas
   @Input() description?: string;
 
+  ngOnInit(): void {
+
+    if(this.imageUrl == null || this.imageUrl == ''){
+      this.imageUrl = 'https://placehold.co/220x200/gray/white?text=Produto';
+    }
+  }
   deletar(){
         this.service.deleteGostei(this.id!).subscribe({
           next: () => {
