@@ -5,11 +5,12 @@ import { Usuario } from '../../../models/usuario.model';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-conta',
   standalone: true,
-  imports: [RouterOutlet, MatFormField, MatButtonModule, MatInputModule, MatLabel],
+  imports: [RouterOutlet, MatFormField, MatButtonModule, MatInputModule, MatLabel, MatIcon],
   templateUrl: './conta.component.html',
   styleUrl: './conta.component.css'
 })
@@ -41,6 +42,9 @@ export class ContaComponent implements OnInit {
   }
   irParaEnderecos() {
     this.router.navigate(['/conta/enderecos']);
+  }
+  irParaTelefones() {
+    this.router.navigate(['/conta/telefones']);
   }
   irParaPedidos() {
     this.router.navigate(['/conta/pedidos']);

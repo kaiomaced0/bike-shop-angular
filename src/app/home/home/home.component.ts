@@ -26,15 +26,30 @@ export class HomeComponent implements OnInit {
 
   produtos: Produto[] = [];
   carrossels: Carrossel[] = [];
+  listaFavoritos: Produto[] = [];
 
   ngOnInit() {
+    this.usuariologadoService.listgostei().subscribe((data: any[]) => {
+      this.listaFavoritos = data;
+      this.marcarProdutosFavoritos();
+    })
     this.homeService.carrossel().subscribe((data: any[]) => {
       this.carrossels = data;
     });
 
     this.produtoService.list().subscribe((data: any[]) => {
       this.produtos = data;
+      this.marcarProdutosFavoritos();
     });
+  }
+  marcarProdutosFavoritos() {
+    if (this.listaFavoritos.length > 0 && this.produtos.length > 0) {
+      this.produtos.forEach(produto => {
+        if (this.listaFavoritos.some(favorito => favorito.id === produto.id)) {
+          produto.favoritado = true;
+        }
+      });
+    }
   }
 
   moveSlide(direction: number): void {
@@ -55,7 +70,7 @@ export class HomeComponent implements OnInit {
   }
 
   irParaTela(link: String){
-      this.router.navigate(['link']);
+      this.router.navigate([link]);
   }
 
 // carregarImagem(nomeImagem: string): SafeUrl {

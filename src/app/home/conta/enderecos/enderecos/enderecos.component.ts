@@ -19,7 +19,7 @@ import { Endereco } from '../../../../models/endereco.models';
   templateUrl: './enderecos.component.html',
   styleUrl: './enderecos.component.css'
 })
-export class EnderecosComponent {
+export class EnderecosComponent implements OnInit {
 
 
   constructor(private router: Router, private usuarioLogadoService: UsuariologadoService, private dialog: MatDialog, private snackBar: MatSnackBar) {

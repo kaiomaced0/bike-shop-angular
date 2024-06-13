@@ -5,7 +5,7 @@ export class Compra{
   formaPagamento?: string;
   statusPedido?: string;
   codigoRastreio?: string;
-  idEnderecoEntrega?: number;
+  idEndereco?: number;
   pago?: boolean;
   idCupom?: number;
 }

@@ -1,7 +1,4 @@
 <mat-toolbar color="primary">
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-    <mat-icon>menu</mat-icon>
-  </button>
   <div (click)="irParaHomeAdmin()" style="cursor: pointer;">
     <span>Bike Shop</span>
   </div>
@@ -14,13 +11,16 @@
   </button>
 
   <!-- Botão de Configurações -->
-  <button mat-icon-button [matMenuTriggerFor]="settingsMenu" class="example-icon" aria-label="Example icon-button with settings icon">
+  <button mat-icon-button [matMenuTriggerFor]="settingsMenu" class="example-icon"
+    aria-label="Example icon-button with settings icon">
     <mat-icon>settings</mat-icon>
   </button>
+
 
   <!-- Menu de Configurações -->
   <mat-menu #settingsMenu="matMenu">
   </mat-menu>
 </mat-toolbar>
-<div class="outlet"><router-outlet></router-outlet></div>
-
+<div class="outlet">
+  <router-outlet></router-outlet>
+</div>

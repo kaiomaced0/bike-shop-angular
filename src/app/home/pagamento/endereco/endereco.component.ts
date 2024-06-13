@@ -84,33 +84,31 @@ export class EnderecoComponent implements OnInit {
   }
 
   finalizarCompra(): void {
+    const enderecoId = this.enderecoForm.get('endereco')?.value;
+    this.carrinho!.idEndereco! = enderecoId;
+    this.carrinho!.idCupom = this.mensagemCupom!;
 
-    window.location.href = 'https://nubank.com.br/cobrar/ip0ty/6662d24c-3f1f-46f7-84f4-851eb6689a45';
-    //   const enderecoId = this.enderecoForm.get('endereco')?.value;
-    // this.carrinho!.idEndereco! = enderecoId;
-    // this.carrinho!.idCupom = this.mensagemCupom!;
+    if (this.enderecoForm.valid) {
+      console.log(this.carrinho!);
 
-    // if (this.enderecoForm.valid) {
-    //   console.log(this.carrinho!);
-
-    //   this.compraService.valida(this.carrinho!).subscribe({
-    //     next: (res) => {
-    //       this.valor! = res.valorTotal!;
-    //       this.snackBar.open('Compra finalizada com sucesso!', 'Fechar', {
-    //         duration: 3000,
-    //       });
-    //     },
-    //     error: (erro) => {
-    //       this.snackBar.open('Erro ao finalizar a compra', 'Fechar', {
-    //         duration: 2000,
-    //       });
-    //       console.error('Erro ao finalizar a compra:', erro);
-    //     }
-    //   });
-    // } else {
-    //   this.snackBar.open('Por favor, selecione um endereço.', 'Fechar', {
-    //     duration: 3000,
-    //   });
-    // }
+      this.compraService.insert(this.carrinho!).subscribe({
+        next: (res) => {
+          this.snackBar.open('Compra finalizada com sucesso!', 'Fechar', {
+            duration: 4500,
+          });
+          window.open('https://nubank.com.br/cobrar/ip0ty/6662d24c-3f1f-46f7-84f4-851eb6689a45', '_blank');
+        },
+        error: (erro) => {
+          this.snackBar.open('Erro ao finalizar a compra', 'Fechar', {
+            duration: 2000,
+          });
+          console.error('Erro ao finalizar a compra:', erro);
+        }
+      });
+    } else {
+      this.snackBar.open('Por favor, selecione um endereço.', 'Fechar', {
+        duration: 3000,
+      });
+    }
   }
 }

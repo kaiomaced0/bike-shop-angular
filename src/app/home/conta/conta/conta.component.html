@@ -12,7 +12,7 @@
         <label>Email:</label> {{ usuario!.email! || null}}
       </div>
       <div class="profile-item">
-        <label>Data de Nascimento:</label> {{ usuario!.dataNascimento! || null}}
+        <label>Data de Nascimento:</label> {{ usuario!.dataNascimento!  || null}}
       </div>
       <div class="profile-item">
         <label>CPF:</label> {{ usuario!.cpf! || null}}
@@ -30,6 +30,7 @@
     <div class="card" (click)="irParaFavoritos()"><i class="icon">❤️</i> Gostei</div>
     <div class="card" (click)="irParaPedidos()"><i class="icon" >📦</i> Pedidos</div>
     <div class="card" (click)="irParaEnderecos()"><i class="icon" >🏠</i> Endereços</div>
+    <div class="card" (click)="irParaTelefones()"><i class="icon" ><mat-icon>phone</mat-icon></i> Telefones</div>
     <div class="card" (click)="irParaDados()"><i class="icon" >👤</i> Dados da Conta</div>
   </div>
   <div class="services">

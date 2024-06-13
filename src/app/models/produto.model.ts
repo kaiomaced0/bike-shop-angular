@@ -17,6 +17,7 @@ export class Produto {
   categoriasId?: number[];
   categorias?: Categoria[];
   starts?: number;
+  favoritado?: boolean;
 
   constructor(
   ) {

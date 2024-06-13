@@ -15,7 +15,11 @@ const routes: Routes = [
   },
   {
     path: 'pedidos', component: PedidosComponent
-  }
+  },
+  {
+    path: 'telefones',
+    loadChildren: () => import('./telefones/telefones.module').then(m => m.TelefonesModule)
+  },
 ];
 
 @NgModule({

@@ -25,20 +25,34 @@ export class CardProdutoComponent {
   @Input() title: string = 'Produto Padrão'; // Valor padrão para o título
   @Input() price: number = 0.00; // Valor padrão para o preço
   @Input() stars: number = 0; // Valor padrão para a quantidade de estrelas
+  @Input() favoritado: boolean = false;
 
-  curtir(){
-    this.service.insertGostei(this.id!).subscribe({
-      next: () => {
-        this.snackBar.open('Produto adicionado a Favoritos', 'Fechar', {
-          duration: 2000,
-        });
-      },
-      error: (error) => {
-        this.snackBar.open('Erro ao favoritar Produto', 'Fechar', {
-          duration: 1000,
-        });
-      }
-    });
+  curtir() {
+    if (this.favoritado) {
+
+      this.service.removeGostei(this.id!).subscribe({
+        next: () => {
+          window.location.reload();
+        },
+        error: (error) => {
+          this.snackBar.open('Erro ao remover Produto', 'Fechar', {
+            duration: 1000,
+          });
+        }
+      });
+
+    } else {
+      this.service.insertGostei(this.id!).subscribe({
+        next: () => {
+          window.location.reload();
+        },
+        error: (error) => {
+          this.snackBar.open('Erro ao favoritar Produto', 'Fechar', {
+            duration: 1000,
+          });
+        }
+      });
+    }
   }
 
   comprar() {
@@ -47,7 +61,7 @@ export class CardProdutoComponent {
 
 
   irParaDetail() {
-    this.router.navigate(['/detail/'+this.id]);
+    this.router.navigate(['/detail/' + this.id]);
   }
 
 

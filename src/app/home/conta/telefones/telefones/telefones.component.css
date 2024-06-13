@@ -1,0 +1,27 @@
+.tabela-telefones {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px; /* Espaçamento acima da tabela */
+}
+
+.mat-icon{
+  cursor: pointer;
+}
+.tabela-telefones th, .tabela-telefones td {
+  border: 1px solid #5f5e5e;
+  padding: 8px;
+  text-align: left;
+}
+
+.tabela-telefones th {
+  background-color: #f2f2f2;
+}
+
+.tabela-telefones mat-icon-button {
+  color: #757575; /* Cor mais suave para os ícones */
+  margin: 0 5px; /* Espaçamento ao redor dos ícones */
+}
+
+.tabela-telefones mat-icon-button:hover {
+  color: #333; /* Cor um pouco mais escura ao passar o mouse */
+}

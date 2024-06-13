@@ -20,8 +20,8 @@ import { pessoateste, UpdateDados } from '../../../models/updatedados.model';
 })
 export class DadosComponent implements OnInit {
   usuario?: Usuario;
-  udados?: UpdateDados;
-  upessoa?: pessoateste;
+  udados: UpdateDados = { senhaAtual: '', pessoa: {} as pessoateste };
+  upessoa: pessoateste = { nome: '', login: '', email: '', cpf: '', senha: '' };
 
   constructor(private usuarioLogadoService: UsuariologadoService, private dialog: MatDialog, private router: Router,
     private snackBar: MatSnackBar) { }
@@ -30,28 +30,32 @@ export class DadosComponent implements OnInit {
     this.usuarioLogadoService.getUsuarioLogado().subscribe(
       data => {
         this.usuario = data;
+        this.inicializarDados();
       },
       error => {
         console.error('Erro ao carregar dados do usuário', error);
       }
     );
-    this.udados!.senhaAtual! = '';
-    this.upessoa!.nome = '';
-    this.upessoa!.login = '';
-    this.upessoa!.email = '';
-    this.upessoa!.cpf = '';
-    this.upessoa!.senha = '';
-    this.udados!.pessoa = this.upessoa!;
+  }
+
+  inicializarDados(): void {
+    this.udados.senhaAtual = '';
+    this.upessoa.nome = '';
+    this.upessoa.login = '';
+    this.upessoa.email = '';
+    this.upessoa.cpf = '';
+    this.upessoa.senha = '';
+    this.udados.pessoa = this.upessoa;
   }
 
   atualizar() {
     this.udados!.senhaAtual! = this.usuario!.senhaAtual!;
-    this.upessoa!.nome = this.usuario?.nome;
-    this.upessoa!.login = this.usuario?.login;
-    this.upessoa!.email = this.usuario?.email;
-    this.upessoa!.cpf = this.usuario?.cpf;
-    this.upessoa!.dataNascimento = this.usuario?.dataNascimento;
-    this.upessoa!.senha = this.usuario?.senha;
+    this.upessoa!.nome = this.usuario!.nome;
+    this.upessoa!.login = this.usuario!.login;
+    this.upessoa!.email = this.usuario!.email;
+    this.upessoa!.cpf = this.usuario!.cpf;
+    this.upessoa!.dataNascimento = this.usuario!.dataNascimento;
+    this.upessoa!.senha = this.usuario!.senha;
     this.udados!.pessoa = this.upessoa!;
     const dialogRef = this.dialog.open(ConfiermDialogResetarsenhaComponent, {
       width: '250px',

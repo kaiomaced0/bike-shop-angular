@@ -1,0 +1,19 @@
+<div  class="new-telefone-form">
+  <h2>Cadastrar telefone</h2>
+  <form #telefoneForm="ngForm">
+    <div class="form-field">
+      <label for="nome">Codigo de area:</label>
+      <input type="text" id="nome" name="nome" [(ngModel)]="telefone!.codigoArea!" required>
+    </div>
+
+    <div class="form-field">
+      <label for="descricao">Numero:</label>
+      <input type="text" id="descricao" name="descricao" [(ngModel)]="telefone!.numero!" required>
+    </div >
+
+    <div class="button-container">
+      <button mat-flat-button color="warn" (click)="cancelar()">Cancelar</button>
+      <button mat-flat-button color="primary" type="submit" (click)="add()">Cadastrar</button>
+    </div>
+  </form>
+</div >

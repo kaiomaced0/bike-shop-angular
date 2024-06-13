@@ -1,0 +1,29 @@
+<div class="button-container">
+  <button mat-raised-button color="primary" style="width: 100%; border-radius: 8px; background-color: green;"
+    (click)="new()">
+    <mat-icon>add</mat-icon>
+    Adicionar telefone
+  </button>
+</div>
+<table class="tabela-telefones">
+  <thead>
+    <tr>
+      <th style="width: 20%;">ID</th>
+      <th style="width: 35%;">Codigo de area</th>
+      <th style="width: 45%;">Numero</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for(telefone of telefones; track telefone.id){
+
+    <tr>
+      <td>{{ telefone.id }}</td>
+      <td>{{ telefone.codigoArea }}</td>
+      <td>{{ telefone.numero }}</td>
+      <td><mat-icon (click)="delete(telefone.id!, telefone.codigoArea!, telefone.numero!)">delete</mat-icon></td>
+
+    </tr>
+    }
+
+  </tbody>
+</table>
