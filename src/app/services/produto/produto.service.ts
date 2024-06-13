@@ -9,7 +9,7 @@ import { Produto } from '../../models/produto.model';
 })
 export class ProdutoService {
   // private apiUrl = 'http://localhost:8080/produto';
-  private apiUrl = 'http://34.151.200.157:8080/produto';
+  private apiUrl = 'http://172.19.0.4:8080/produto';
 
   private token  = localStorage.getItem('token');
 
@@ -51,7 +51,7 @@ export class ProdutoService {
 
   getById(id: number): Observable<Produto> {
     const url = `${this.apiUrl}/${id}`;
-    return this.httpClient.get<Produto>(url, this.httpOptions);
+    return this.httpClient.get<Produto>(url, this.httpOptions3);
   }
 
   getByIdAdmin(id: number): Observable<Produto> {

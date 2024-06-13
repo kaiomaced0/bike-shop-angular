@@ -9,9 +9,9 @@ import { Observable } from 'rxjs';
 export class UsuarioService {
 
   // private baseUrl = 'http://localhost:8080/pessoafisica';
-  private baseUrl = 'http://34.151.200.157:8080/pessoafisica';
+  private baseUrl = 'http://172.19.0.4:8080/pessoafisica';
   // private baseUrl2 = 'http://localhost:8080/usuario';
-  private baseUrl2 = 'http://34.151.200.157:8080/usuario';
+  private baseUrl2 = 'http://172.19.0.4:8080/usuario';
 
   constructor(private http: HttpClient) { }
 
@@ -23,6 +23,9 @@ export class UsuarioService {
   httpOptions2 = {
     headers: new HttpHeaders({'Authorization': 'Bearer ' + this.token})
   };
+  httpOptions3 = {
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
+  };
 
 
   getAll(): Observable<Usuario[]> {
@@ -30,12 +33,19 @@ export class UsuarioService {
   }
 
   resetarSenha(id: number): Observable<any> {
-    const url = `/usuario/resetarsenha/${id}`;
+    const url = `${this.baseUrl2}/resetarsenha/${id}`;
     return this.http.patch(url, null, this.httpOptions2);
   }
 
   insert(p: Usuario): Observable<Usuario> {
-    return this.http.post<Usuario>(this.baseUrl2, p, this.httpOptions);
+    return this.http.post<Usuario>(this.baseUrl2, {
+      "cpf": p.cpf,
+      "nome": p.nome,
+      "login": p.login,
+      "senha": p.senha,
+      "email": p.email,
+      "dataNascimento": p.dataNascimento
+    }, this.httpOptions3);
   }
 
   getById(id: number): Observable<Usuario> {
@@ -44,11 +54,11 @@ export class UsuarioService {
   }
 
   update(id: number, usuario: Usuario): Observable<any> {
-    const url = `/usuario/${id}`;
+    const url = `${this.baseUrl2}/${id}`;
     return this.http.put(url, usuario, this.httpOptions);
   }
   delete(id: number): Observable<any> {
-    const url = `/usuario/delete/${id}`;
+    const url = `${this.baseUrl2}/delete/${id}`;
     return this.http.patch(url, null, this.httpOptions2);
   }
 }

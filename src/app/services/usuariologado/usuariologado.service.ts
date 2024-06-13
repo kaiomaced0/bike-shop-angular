@@ -5,6 +5,7 @@ import { Usuario } from '../../models/usuario.model';
 import { Produto } from '../../models/produto.model';
 import { Endereco } from '../../models/endereco.models';
 import { UpdateDados } from '../../models/updatedados.model';
+import { Telefone } from '../../models/telefone.models';
 
 
 @Injectable({
@@ -13,7 +14,7 @@ import { UpdateDados } from '../../models/updatedados.model';
 export class UsuariologadoService {
 
   // private apiUrl = 'http://localhost:8080/usuariologado';
-  private apiUrl = 'http://34.151.200.157:8080/usuariologado';
+  private apiUrl = 'http://172.19.0.4:8080/usuariologado';
 
   private token  = localStorage.getItem('token');
 
@@ -53,10 +54,25 @@ export class UsuariologadoService {
     return this.httpClient.patch(url, null, this.httpOptions);
   }
 
+  removeGostei(id: number){
+    const url = `${this.apiUrl}/gostei/delete/${id}`;
+    return this.httpClient.patch(url, null, this.httpOptions);
+  }
+
 
   dadosupdate(usuario: UpdateDados){
     const url = `${this.apiUrl}/updatedados`;
-    return this.httpClient.put(url, usuario, this.httpOptions);
+    return this.httpClient.put(url, {
+      "pessoa": {
+        "cpf": usuario.pessoa?.cpf,
+        "nome": usuario.pessoa?.nome,
+        "login": usuario.pessoa?.login,
+        "senha": usuario.pessoa?.senha,
+        "email": usuario.pessoa?.email,
+        "dataNascimento": usuario.pessoa?.dataNascimento
+      },
+      "senhaAtual": usuario.senhaAtual
+    }, this.httpOptions);
   }
 
   deleteGostei(id: number){
@@ -67,5 +83,17 @@ export class UsuariologadoService {
   getEnderecos(): Observable<Endereco[]> {
     return this.httpClient.get<Endereco[]>(`${this.apiUrl}/enderecos`, this.httpOptions);
   }
+
+  insertTelefone(telefone: Telefone){
+    return this.httpClient.post<Telefone>(`${this.apiUrl}/addtelefone`, telefone, this.httpOptions);
+  }
+  getTelefones(): Observable<Telefone[]> {
+    return this.httpClient.get<Telefone[]>(`${this.apiUrl}/telefones`, this.httpOptions);
+  }
+  deleteTelefone(id: number){
+    const url = `${this.apiUrl}/telefone/delete/${id}`;
+    return this.httpClient.put(url, null, this.httpOptions);
+  }
+
 
 }

@@ -9,7 +9,7 @@ import { Observable, tap } from 'rxjs';
 export class FerramentaService {
 
   // private baseUrl = 'http://localhost:8080/ferramenta';
-  private baseUrl = 'http://34.151.200.157:8080/ferramenta';
+  private baseUrl = 'http://172.19.0.4:8080/ferramenta';
 
   private token  = localStorage.getItem('token');
 

@@ -8,7 +8,7 @@ import { tap } from 'rxjs';
 })
 export class CidadeService {
   // private apiUrl = 'http://localhost:8080/cidade';
-  private apiUrl = 'http://34.151.200.157:8080/cidade';
+  private apiUrl = 'http://172.19.0.4:8080/cidade';
 
   private token  = localStorage.getItem('token');
 
