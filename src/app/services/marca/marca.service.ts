@@ -9,7 +9,7 @@ import { Marca } from '../../models/marca.model';
 export class MarcaService {
 
   // private baseUrl = 'http://localhost:8080/marca';
-  private baseUrl = 'http://172.20.0.2:8080/marca';
+  private baseUrl = 'http://172.20.0.3:8080/marca';
 
   private token  = localStorage.getItem('token');
 

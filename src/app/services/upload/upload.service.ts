@@ -7,6 +7,6 @@ export class UploadService {
   constructor() {}
 
 uploadFile(file: File) {
-  
+
 }
 }
