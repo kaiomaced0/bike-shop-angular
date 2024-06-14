@@ -23,4 +23,8 @@ export class AdmMainLayoutComponent {
     this.router.navigate(['/admin']);
   }
 
+  voltarHome() {
+    this.router.navigate(['/']);
+  }
+
 }

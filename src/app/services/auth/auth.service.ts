@@ -1,6 +1,6 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { catchError, map, Observable, Observer, of, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +32,13 @@ export class AuthService {
         }
       }
     }))
-}
+  }
+  verificaAdmin(): Observable<boolean> {
+    return this.http.get<HttpResponse<any>>(`${this.baseUrl}/verificaadmin`, this.httpOptions).pipe(
+      map(response => response.status != 200),
+      catchError(() => of(false))
+    );
+  }
+
 
 }

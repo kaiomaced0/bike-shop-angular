@@ -1,9 +1,9 @@
 <div class="produto-favorito">
   <div class="imagem-container">
-    <img src={{imageUrl}} alt={{title}} class="imagem-produto">
+    <img src={{imageUrl}} alt={{title}} class="imagem-produto" (click)="detail()">
   </div>
   <div class="detalhes-container">
-    <h3 class="titulo">{{title}}</h3>
+    <h3 class="titulo" (click)="detail()">{{title}}</h3>
     <p class="estrelas"> {{'★'}}  {{stars}}</p>
     <p class="preco">{{price}}</p>
   </div>

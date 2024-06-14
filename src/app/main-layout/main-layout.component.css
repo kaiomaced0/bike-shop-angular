@@ -18,3 +18,13 @@
   margin-left: 8px;
   width: 200px; /* Largura do campo de entrada */
 }
+/* Estilo para animação de hover nos botões mat-menu-item */
+.mat-menu-item {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.mat-menu-item:hover {
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}

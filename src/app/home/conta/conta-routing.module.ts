@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ContaComponent } from './conta/conta.component';
 import { DadosComponent } from './dados/dados.component';
-import { PedidosComponent } from './pedidos/pedidos.component';
+import { AuthService } from '../../services/auth/auth.service';
 
 const routes: Routes = [
   {
@@ -14,16 +14,18 @@ const routes: Routes = [
     loadChildren: () => import('./enderecos/enderecos.module').then(m => m.EnderecosModule)
   },
   {
-    path: 'pedidos', component: PedidosComponent
-  },
-  {
     path: 'telefones',
     loadChildren: () => import('./telefones/telefones.module').then(m => m.TelefonesModule)
+  },
+  {
+    path: 'compras',
+    loadChildren: () => import('./compras/compras.module').then(m => m.ComprasModule)
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthService]
 })
 export class ContaRoutingModule { }

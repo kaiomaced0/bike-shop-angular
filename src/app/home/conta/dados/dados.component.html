@@ -3,37 +3,37 @@
   <form #usuarioForm="ngForm">
     <div class="form-field">
       <label for="nome">Nome:</label>
-      <input type="text" id="nome" name="nome" [(ngModel)]="usuario!.nome!" required>
+      <input matInput type="text" id="nome" name="nome" [(ngModel)]="usuario!.nome!" required>
     </div>
 
     <div class="form-field">
       <label for="cpf">CPF:</label>
-      <input type="number" id="cpf" name="cpf" [(ngModel)]="usuario!.cpf!" required>
+      <input matInput  type="number" id="cpf" name="cpf" [(ngModel)]="usuario!.cpf!" required>
     </div >
 
     <div class="form-field">
       <label for="dataNascimento">Data de Nascimento:</label>
-      <input type="date" id="dataNascimento" name="dataNascimento" [(ngModel)]="usuario!.dataNascimento!" required>
+      <input matInput type="date" id="dataNascimento" name="dataNascimento" [(ngModel)]="usuario!.dataNascimento!" required>
     </div >
 
     <div class="form-field">
       <label for="email">Email:</label>
-      <input type="email" id="email" name="email" [(ngModel)]="usuario!.email!" required>
+      <input matInput type="email" id="email" name="email" [(ngModel)]="usuario!.email!" required>
     </div >
 
     <div class="form-field">
       <label for="login">Login:</label>
-      <input type="text" id="login" name="login" [(ngModel)]="usuario!.login!" required>
+      <input matInput type="text" id="login" name="login" [(ngModel)]="usuario!.login!" required>
     </div >
 
     <div class="form-field">
       <label for="senha">Senha</label>
-      <input type="password" id="senha" name="senha" [(ngModel)]="usuario!.senha!" required>
+      <input matInput type="password" id="senha" name="senha" [(ngModel)]="usuario!.senha!" required>
     </div >
 
     <div class="form-field" style="padding-top: 40px;">
       <label for="senhaAtual">Senha Atual (Senha para validação)</label>
-      <input type="password" id="senhaAtual" name="senhaAtual" [(ngModel)]="usuario!.senhaAtual!" required>
+      <input matInput type="password" id="senhaAtual" name="senhaAtual" [(ngModel)]="usuario!.senhaAtual!" required>
     </div >
 
 

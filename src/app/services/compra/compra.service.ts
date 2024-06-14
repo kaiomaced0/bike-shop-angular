@@ -30,6 +30,7 @@ export class CompraService {
       tap(compra => console.log(compra)));
   }
 
+
   valida(compra: CompraItemCompra): Observable<ValidaCompra> {
     return this.http.post<ValidaCompra>(this.baseUrl, compra, this.httpOptions);
   }

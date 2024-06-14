@@ -6,6 +6,7 @@ import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatIcon } from '@angular/material/icon';
+import { AuthService } from '../../../services/auth/auth.service';
 
 @Component({
   selector: 'app-conta',
@@ -15,12 +16,17 @@ import { MatIcon } from '@angular/material/icon';
   styleUrl: './conta.component.css'
 })
 export class ContaComponent implements OnInit {
-  usuario?: Usuario;
+  usuario?: Usuario = new Usuario();
   tell?: string[] = [];
+  isAdmin: boolean = false;
 
-  constructor(private router: Router, private usuarioLogadoService: UsuariologadoService) { }
+  constructor(private router: Router, private usuarioLogadoService: UsuariologadoService, private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.authService.verificaAdmin().subscribe(isAdmin => {
+      this.isAdmin = isAdmin;
+      console.log(isAdmin);
+    });
     this.usuarioLogadoService.getUsuarioLogado().subscribe(
       data => {
         this.usuario = data;
@@ -39,6 +45,12 @@ export class ContaComponent implements OnInit {
 
   irParaDados() {
     this.router.navigate(['/conta/dados']);
+  }
+  irParaCompras(){
+    this.router.navigate(['/conta/compras']);
+  }
+  irParaAdmin() {
+    this.router.navigate(['/admin']);
   }
   irParaEnderecos() {
     this.router.navigate(['/conta/enderecos']);

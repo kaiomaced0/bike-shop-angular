@@ -97,6 +97,8 @@ export class EnderecoComponent implements OnInit {
             duration: 4500,
           });
           window.open('https://nubank.com.br/cobrar/ip0ty/6662d24c-3f1f-46f7-84f4-851eb6689a45', '_blank');
+          this.carrinhoS.limparCarrinho();
+          this.home();
         },
         error: (erro) => {
           this.snackBar.open('Erro ao finalizar a compra', 'Fechar', {
@@ -110,5 +112,9 @@ export class EnderecoComponent implements OnInit {
         duration: 3000,
       });
     }
+  }
+
+  home() {
+    this.router.navigate(['/']);
   }
 }

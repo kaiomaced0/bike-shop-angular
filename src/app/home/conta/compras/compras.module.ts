@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { HomeRoutingModule } from './home-routing.module';
+import { ComprasRoutingModule } from './compras-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -9,8 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [],
   imports: [
     CommonModule,
-    HomeRoutingModule,
+    ComprasRoutingModule,
     HttpClientModule
   ]
 })
-export class HomeModule { }
+export class ComprasModule { }

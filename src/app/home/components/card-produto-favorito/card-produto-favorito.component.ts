@@ -52,6 +52,11 @@ export class CardProdutoFavoritoComponent implements OnInit{
     comprar() {
       this.carrinhoService.adicionarProduto(this.id!);
     }
+    detail() {
+      this.router.navigate(['/detail/'+this.id!]);
+    }
+
+
 
 
 }

@@ -6,6 +6,7 @@ import { Produto } from '../../models/produto.model';
 import { Endereco } from '../../models/endereco.models';
 import { UpdateDados } from '../../models/updatedados.model';
 import { Telefone } from '../../models/telefone.models';
+import { Compra } from '../../models/compra.model';
 
 
 @Injectable({
@@ -41,6 +42,16 @@ export class UsuariologadoService {
     return this.httpClient.get<Usuario>(this.apiUrl, this.httpOptions).pipe(
       tap(usuario => console.log(usuario))
     )
+  }
+  getCompras(): Observable<Compra[]> {
+    return this.httpClient.get<Compra[]>(this.apiUrl+'/compras', this.httpOptions).pipe(
+      tap(compra => console.log(compra))
+    )
+  }
+  getCompraId(id:string): Observable<Compra> {
+    const url = `${this.apiUrl}/compra/${id}`;
+    return this.httpClient.get<Compra>(url, this.httpOptions).pipe(
+      tap(compra => console.log(compra)));
   }
 
   listgostei(){

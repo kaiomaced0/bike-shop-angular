@@ -10,16 +10,17 @@ import { ConfiermDialogResetarsenhaComponent } from '../../../components/dialog/
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { pessoateste, UpdateDados } from '../../../models/updatedados.model';
+import { MatInput } from '@angular/material/input';
 
 @Component({
   selector: 'app-dados',
   standalone: true,
-  imports: [FormsModule, MatButton, MatSelectModule, ReactiveFormsModule],
+  imports: [FormsModule, MatButton, MatSelectModule, ReactiveFormsModule, MatInput],
   templateUrl: './dados.component.html',
   styleUrl: './dados.component.css'
 })
 export class DadosComponent implements OnInit {
-  usuario?: Usuario;
+  usuario?: Usuario = new Usuario();
   udados: UpdateDados = { senhaAtual: '', pessoa: {} as pessoateste };
   upessoa: pessoateste = { nome: '', login: '', email: '', cpf: '', senha: '' };
 
@@ -57,31 +58,46 @@ export class DadosComponent implements OnInit {
     this.upessoa!.dataNascimento = this.usuario!.dataNascimento;
     this.upessoa!.senha = this.usuario!.senha;
     this.udados!.pessoa = this.upessoa!;
-    const dialogRef = this.dialog.open(ConfiermDialogResetarsenhaComponent, {
-      width: '250px',
-      data: {
-        message: `Tem certeza que deseja atualizar seus dados?`,
-      }});
+
+    if (this.udados!.senhaAtual!) {
+      const dialogRef = this.dialog.open(ConfiermDialogResetarsenhaComponent, {
+        width: '250px',
+        data: {
+          message: `Tem certeza que deseja atualizar seus dados?`,
+        }
+      });
       dialogRef.afterClosed().subscribe(result => {
+
         if (result) {
           this.usuarioLogadoService.dadosupdate(this.udados!).subscribe({
             next: () => {
               console.log('Usuario atualizado com sucesso');
-              this.router.navigate(['/dados']);
+              this.router.navigate(['/conta']);
               this.snackBar.open('Dados atualizados', 'Fechar', {
                 duration: 3000,
               });
             },
             error: (erro) => {
               console.error('Erro ao atualizar Dados:', erro);
+              this.snackBar.open('erro ao atualizar dados', 'Fechar', {
+                duration: 3000,
+              });
             }
           });
         }
 
+      });
+    }
+    else {
+      this.snackBar.open('Informe a senha', 'Fechar', {
+        duration: 3000,
+      });
 
-  });}
+    }
 
-  cancelar(){
+  }
+
+  cancelar() {
     this.router.navigate(['/conta']);
   }
 

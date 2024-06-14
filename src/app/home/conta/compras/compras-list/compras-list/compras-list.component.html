@@ -1,0 +1,7 @@
+<table class="tabela-compras">
+    @for(compra of compras; track compra.id){
+
+      <app-card-item-pedido style="width: 80%;" [id]="compra.id!" [codigoPedido]="compra.codigoRastreio!" [dataPedido]="compra.dataPrevista!"
+      [preco]="compra.valorTotal!" />
+    }
+</table>

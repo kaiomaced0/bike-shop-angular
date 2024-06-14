@@ -1,0 +1,25 @@
+<div class="compra-container">
+  <div class="header">
+    <button mat-flat-button color="warn" (click)="voltar()">Voltar</button>
+    <div class="total">
+      <h3>Valor Total: R$ {{ compra.valorTotal!}}</h3>
+    </div>
+  </div>
+  <h2>Detalhes da Compra</h2>
+  <div class="items-list">
+    @for (item of compra.listaItemCompraResponseDTO; track item.produtoId) {
+    <div class="item">
+      <img [src]="item.imgProduto" alt="{{ item.produtoNome }}" class="item-image">
+      <div class="item-details">
+        <h3>{{ item.produtoNome }}</h3>
+        <p>Preço Unitário: R$ {{ item.precoUnitario!}}</p>
+        <p>Quantidade: {{ item.quantidade! }}</p>
+        <p>Preço Total: R$ {{ item.preco!}}</p>
+      </div>
+    </div>
+    }
+
+  </div>
+
+  <h3>Status: {{ compra.statusPedido}}</h3>
+</div>

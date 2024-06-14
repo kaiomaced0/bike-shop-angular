@@ -1,0 +1,64 @@
+.compra-container {
+  padding: 20px;
+}
+h2{
+  text-align: center;
+  width: 100%;
+
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.items-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  width: 100%;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border-radius: 8px;
+  width: calc(50% - 20px); /* Two items per row with space between */
+  box-sizing: border-box;
+}
+
+.item-image {
+  max-width: 220px;
+  max-height: 200px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.item-details {
+  text-align: center;
+}
+
+.total {
+  margin-top: 20px;
+  font-size: 1.5em;
+  text-align: right;
+}
+
+button {
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .item {
+    width: 100%; /* One item per row */
+  }
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
