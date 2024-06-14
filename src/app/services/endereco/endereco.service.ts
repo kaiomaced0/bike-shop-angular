@@ -8,7 +8,7 @@ import { Endereco } from '../../models/endereco.models';
 })
 export class EnderecoService {
   // private apiUrl = 'http://localhost:8080/endereco';
-  private apiUrl = 'http://172.19.0.4:8080/endereco';
+  private apiUrl = 'http://bike-shop-api:8080/endereco';
 
   private token  = localStorage.getItem('token');
 
