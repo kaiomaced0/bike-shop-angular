@@ -9,7 +9,7 @@ import { Observable, tap } from 'rxjs';
 export class CupomService {
 
   // private baseUrl = 'http://localhost:8080/cupom';
-  private baseUrl = 'http://bike-shop-api:8080/cupom';
+  private baseUrl = 'http://172.20.0.2:8080/cupom';
 
   private token  = localStorage.getItem('token');
 

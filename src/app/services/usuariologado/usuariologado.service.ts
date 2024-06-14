@@ -14,7 +14,7 @@ import { Telefone } from '../../models/telefone.models';
 export class UsuariologadoService {
 
   // private apiUrl = 'http://localhost:8080/usuariologado';
-  private apiUrl = 'http://bike-shop-api:8080/usuariologado';
+  private apiUrl = 'http://172.20.0.2:8080/usuariologado';
 
   private token  = localStorage.getItem('token');
 

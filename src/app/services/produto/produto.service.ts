@@ -9,7 +9,7 @@ import { Produto } from '../../models/produto.model';
 })
 export class ProdutoService {
   // private apiUrl = 'http://localhost:8080/produto';
-  private apiUrl = 'http://bike-shop-api:8080/produto';
+  private apiUrl = 'http://172.20.0.2:8080/produto';
 
   private token  = localStorage.getItem('token');
 
