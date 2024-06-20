@@ -22,9 +22,13 @@ export class ListProdutosComponent implements OnInit{
   }
 
   produtos: Produto[] = [];
+  pageSize = 10;
+  page = 0;
+  totalRecords = 0;
+
 
   ngOnInit() {
-    this.produtoService.listAdmin().subscribe((data: Produto[]) => {
+    this.produtoService.listAdmin(this.page, this.pageSize).subscribe((data: Produto[]) => {
       this.produtos = data;
     });
   }

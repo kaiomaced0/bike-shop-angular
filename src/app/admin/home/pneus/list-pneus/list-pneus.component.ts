@@ -22,9 +22,13 @@ export class ListPneusComponent {
   }
 
   pneus: Pneu[] = [];
+  pageSize = 10;
+  page = 0;
+  totalRecords = 0;
+
 
   ngOnInit() {
-    this.service.getAll().subscribe((data: Pneu[]) => {
+    this.service.getAll(this.page, this.pageSize).subscribe((data: Pneu[]) => {
       this.pneus = data;
     });
   }

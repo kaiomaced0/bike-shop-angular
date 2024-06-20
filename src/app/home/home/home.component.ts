@@ -9,11 +9,12 @@ import { HomeService } from '../../services/home/home.service';
 import { Carrossel } from '../../models/carrossel.model';
 import { UsuariologadoService } from '../../services/usuariologado/usuariologado.service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [MatCardModule, CardProdutoComponent, MatFormField],
+  imports: [MatCardModule, CardProdutoComponent, MatFormField, MatPaginatorModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -23,6 +24,10 @@ export class HomeComponent implements OnInit {
   }
   currentSlide: number = 0;
   slideInterval: any;
+  pageSize = 10;
+  page = 0;
+  totalRecords = 0;
+
 
   produtos: Produto[] = [];
   carrossels: Carrossel[] = [];
@@ -37,9 +42,14 @@ export class HomeComponent implements OnInit {
       this.carrossels = data;
     });
 
-    this.produtoService.list().subscribe((data: any[]) => {
+    this.produtoService.list(this.page, this.pageSize).subscribe((data: any[]) => {
       this.produtos = data;
       this.marcarProdutosFavoritos();
+    });
+
+    this.produtoService.count().subscribe(data => {
+      this.totalRecords = data;
+      console.log(this.totalRecords);
     });
   }
   marcarProdutosFavoritos() {
@@ -50,6 +60,12 @@ export class HomeComponent implements OnInit {
         }
       });
     }
+  }
+
+  paginar(event: PageEvent): void {
+    this.page = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.ngOnInit();
   }
 
   moveSlide(direction: number): void {

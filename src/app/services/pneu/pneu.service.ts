@@ -23,9 +23,12 @@ export class PneuService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<Pneu[]> {
-    return this.http.get<Pneu[]>(this.baseUrl+'/admin', this.httpOptions).pipe(
+  getAll(page:number, pageSize:number): Observable<Pneu[]> {
+    return this.http.get<Pneu[]>(`${this.baseUrl}/admin/${page}/${pageSize}`, this.httpOptions).pipe(
       tap(pneu => console.log(pneu)));
+  }
+  count(): Observable<number> {
+    return this.http.get<number>(`${this.baseUrl}/count`);
   }
 
   insert(p: Pneu): Observable<Pneu> {

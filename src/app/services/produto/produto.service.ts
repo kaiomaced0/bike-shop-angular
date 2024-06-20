@@ -26,18 +26,21 @@ export class ProdutoService {
 
   constructor(private httpClient: HttpClient) { }
 
-  listAdmin(){
-    return this.httpClient.get<Produto[]>(this.apiUrl+'/admin', this.httpOptions).pipe(
+  listAdmin(page:number, pageSize:number){
+    return this.httpClient.get<Produto[]>(`${this.apiUrl}/admin/${page}/${pageSize}`, this.httpOptions2).pipe(
       tap(produtos => console.log(produtos))
     );
   }
-  list(){
-    return this.httpClient.get<Produto[]>(this.apiUrl, this.httpOptions3).pipe(
+  list(page:number, pageSize:number){
+    return this.httpClient.get<Produto[]>(`${this.apiUrl}/${page}/${pageSize}`, this.httpOptions3).pipe(
       tap(produtos => console.log(produtos))
     );
   }
   listIds(ids: number[]): Observable<Produto[]> {
     return this.httpClient.post<Produto[]>(`${this.apiUrl}/carrinho/ids`, ids ,this.httpOptions3);
+  }
+  count(): Observable<number> {
+    return this.httpClient.get<number>(`${this.apiUrl}/count`,this.httpOptions3);
   }
 
   insert(p: Produto): Observable<Produto> {
