@@ -1,59 +1,49 @@
 <div class="layout">
-<mat-toolbar color="primary">
-  <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
-    (click)="visibleSidebar1 = true">
-    <mat-icon>menu</mat-icon>
-  </button> -->
-  <div (click)="irParaHome()" style="cursor: pointer;">
-    <span>Bike Shop</span>
+  <mat-toolbar class="mat-toolbar">
+    <div class="left-section" (click)="irParaHome()" style="cursor: pointer;">
+      <span>Bike Shop</span>
+    </div>
+
+    <div class="right-section">
+      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon"
+        (click)="irParaFavoritos()">
+        <mat-icon>favorite</mat-icon>
+      </button>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon"
+        (click)="irParaShopCart()">
+        <mat-icon>shopping_cart</mat-icon>
+      </button>
+      <!-- Botão de Configurações -->
+      <button mat-icon-button [matMenuTriggerFor]="personMenu" class="example-icon"
+        aria-label="Example icon-button with settings icon">
+        <mat-icon>person</mat-icon>
+      </button>
+
+      <!-- Menu de Configurações -->
+      <mat-menu #personMenu="matMenu">
+        <button mat-menu-item (click)="irParaMinhaConta()">
+          <mat-icon>person</mat-icon>
+          <span>Minha Conta</span>
+        </button>
+        <button mat-menu-item (click)="irParaLogin()">
+          <mat-icon>person</mat-icon>
+          <span>Login</span>
+        </button>
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>person</mat-icon>
+          <span>Logout</span>
+        </button>
+      </mat-menu>
+    </div>
+  </mat-toolbar>
+
+  <p-sidebar [(visible)]="visibleSidebar1" [baseZIndex]="10000">
+    <h1 style="font-weight:normal">Left Sidebar</h1>
+    <button pButton type="button" (click)="visibleSidebar1 = false" label="Save" class="ui-button-success"></button>
+    <button pButton type="button" (click)="visibleSidebar1 = false" label="Cancel" class="ui-button-secondary"></button>
+  </p-sidebar>
+
+  <div class="outlet">
+    <router-outlet></router-outlet>
   </div>
-  <span class="icons-toolbar"></span>
-  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon"
-    (click)="irParaFavoritos()">
-    <mat-icon>favorite</mat-icon>
-  </button>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon"
-    (click)="irParaShopCart()">
-    <mat-icon>shopping_cart</mat-icon>
-  </button>
-  <!-- Botão de Configurações -->
-  <button mat-icon-button [matMenuTriggerFor]="personMenu" class="example-icon"
-    aria-label="Example icon-button with settings icon">
-    <mat-icon>person</mat-icon>
-  </button>
-
-  <!-- Menu de Configurações -->
-  <mat-menu #personMenu="matMenu">
-
-    <button mat-menu-item (click)="irParaMinhaConta()">
-      <mat-icon>person</mat-icon>
-      <span>Minha Conta</span>
-    </button>
-    <button mat-menu-item (click)="irParaLogin()">
-      <mat-icon>person</mat-icon>
-      <span>Login</span>
-    </button>
-    <button mat-menu-item (click)="logout()">
-      <mat-icon>person</mat-icon>
-      <span>Logout</span>
-    </button>
-  </mat-menu>
-
-</mat-toolbar>
-
-<p-sidebar [(visible)]="visibleSidebar1" [baseZIndex]="10000">
-  <h1 style="font-weight:normal">Left Sidebar</h1>
-  <button pButton type="button" (click)="visibleSidebar1 = false" label="Save" class="ui-button-success"></button>
-  <button pButton type="button" (click)="visibleSidebar1 = false" label="Cancel" class="ui-button-secondary"></button>
-</p-sidebar>
-<div class="outlet">
-
-  <!-- <div class="search-container">
-    <input matInput placeholder="Pesquisar" #searchQuery>
-    <button mat-icon-button (click)="pesquisar(searchQuery.value)">
-      <mat-icon>search</mat-icon>
-    </button>
-  </div> -->
-  <router-outlet></router-outlet>
-</div>
 </div>

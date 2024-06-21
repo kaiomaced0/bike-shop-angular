@@ -4,8 +4,12 @@
 
   <form [formGroup]="enderecoForm" (ngSubmit)="finalizarCompra()">
     <mat-form-field appearance="fill" class="full-width">
-      <mat-label>Endereço</mat-label>
+      <mat-label> Endereço </mat-label>
       <mat-select formControlName="endereco">
+
+        <mat-option (click)="adicionarEndereco()" style="background-color: green; color: white;">
+          Adionar Endereço
+        </mat-option>
         @for (e of enderecos; track e.id) {
         <mat-option [value]="e.id">
           Nome: {{ e.nome }} - Descrição: [{{e.descricao}}]
@@ -15,20 +19,59 @@
 
     </mat-form-field>
 
-    <button mat-raised-button color="primary" type="button" (click)="adicionarEndereco()">
-      Gerenciar Endereços
-    </button>
-
-
     <div class="form-field">
-      <label for="mensagemCupom">Cupom:</label>
-      <input type="text" id="mensagemCupom" name="mensagemCupom" [value]="mensagemCupom">
-    </div >
 
+      <mat-form-field appearance="fill" class="full-width">
+        <label for="mensagemCupom">Cupom:</label>
+        <input matInput type="text" id="mensagemCupom" name="mensagemCupom" [value]="mensagemCupom">
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Forma de Pagamento</mat-label>
+      <mat-select (selectionChange)="selecionarFormaPagamento($event)">
+        <mat-option *ngFor="let forma of formasPagamento; let i = index" [value]="i + 1">
+          {{ forma }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div *ngIf="carrinho!.formaPagamento === 2 || carrinho!.formaPagamento === 3">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Cartão</mat-label>
+        <mat-select formControlName="cartao">
+
+          <mat-option (click)="cartao()" style="background-color: green; color: white;">
+            Adicionar Cartão
+          </mat-option>
+          <mat-option *ngFor="let cartao of cartoes" [value]="cartao.id">
+            {{ cartao.nome }} - {{ cartao.bandeiraCartao}} - validade: {{ cartao.dataValidade}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div *ngIf="carrinho!.formaPagamento === 3">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Quantidade de parcelas</mat-label>
+        <mat-select (selectionChange)="selecionarParcela($event)">
+          <mat-option *ngFor="let parcelas of qauntidadeParcelas; let i = index" [value]="i + 1">
+            {{ parcelas }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div *ngIf="carrinho!.formaPagamento === 3">
+      <mat-form-field  appearance="fill" class="full-width">
+        <label for="cvc">CVC:</label>
+        <input matInput type="number" id="cvc" name="cvc" [value]="cvc">
+      </mat-form-field>
+    </div>
 
     <div class="button-container">
       <button mat-raised-button color="primary" type="submit" (click)="finalizarCompra()">
-        Finalizar Compra
+        Realizar compra
       </button>
     </div>
   </form>

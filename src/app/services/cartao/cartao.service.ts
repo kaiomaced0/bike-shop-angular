@@ -1,16 +1,18 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Cidade } from '../../models/cidade.models';
-import { tap } from 'rxjs';
+import { Cartao } from '../../models/cartao.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CidadeService {
-  private apiUrl = 'http://localhost:8080/cidade';
-  // private apiUrl = 'http://34.151.236.42:8080/cidade';
+export class CartaoService {
+
 
   private token  = localStorage.getItem('token');
+
+  // private baseUrl = 'http://localhost:8080/cartao';
+  private baseUrl = 'http://34.151.236.42:8080/cartao';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token})
@@ -22,11 +24,11 @@ export class CidadeService {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
 
-  constructor(private httpClient: HttpClient) { }
 
-  list(){
-    return this.httpClient.get<Cidade[]>(this.apiUrl, this.httpOptions3).pipe(
-      tap(c => console.log(c))
-    );
+  constructor(private http: HttpClient) { }
+
+  insert(c: Cartao): Observable<Cartao> {
+    return this.http.post<Cartao>(this.baseUrl, c, this.httpOptions);
   }
+
 }

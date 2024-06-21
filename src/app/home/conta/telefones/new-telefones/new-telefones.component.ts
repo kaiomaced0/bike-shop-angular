@@ -4,7 +4,6 @@ import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatOption, MatSelect, MatSelectModule } from '@angular/material/select';
 import { Router } from '@angular/router';
 import { MatButton } from '@angular/material/button';
-import { UploadComponent } from '../../../../components/upload/upload/upload.component';
 import { Telefone } from '../../../../models/telefone.models';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Cidade } from '../../../../models/cidade.models';
@@ -14,7 +13,7 @@ import { UsuariologadoService } from '../../../../services/usuariologado/usuario
 @Component({
   selector: 'app-new-telefones',
   standalone: true,
-  imports: [FormsModule, MatFormField, MatSelect, MatLabel, MatOption, MatButton, MatSelectModule, ReactiveFormsModule, UploadComponent],
+  imports: [FormsModule, MatFormField, MatSelect, MatLabel, MatOption, MatButton, MatSelectModule, ReactiveFormsModule],
   templateUrl: './new-telefones.component.html',
   styleUrl: './new-telefones.component.css'
 })

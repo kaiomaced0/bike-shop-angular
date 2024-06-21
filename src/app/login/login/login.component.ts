@@ -6,10 +6,11 @@ import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth/auth.service';
+import { MatIcon } from '@angular/material/icon';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, MatIcon, MatInputModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -22,13 +23,16 @@ export class LoginComponent {
   login() {
     this.auth.login(this.username, this.password).subscribe({
       next: () => {
-        this.router.navigate(['/']).then(() => {
-          window.location.reload();
-        });
+        this.irParaHome();
       },
       error: (error) => {
         console.error('Erro ao fazer login', error);
       }
+    });
+  }
+  irParaHome(){
+    this.router.navigate(['/']).then(() => {
+      window.location.reload();
     });
   }
 

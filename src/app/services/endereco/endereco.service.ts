@@ -7,8 +7,8 @@ import { Endereco } from '../../models/endereco.models';
   providedIn: 'root'
 })
 export class EnderecoService {
-  // private apiUrl = 'http://localhost:8080/endereco';
-  private apiUrl = 'http://34.151.236.42:8080/endereco';
+  private apiUrl = 'http://localhost:8080/endereco';
+  // private apiUrl = 'http://34.151.236.42:8080/endereco';
 
   private token  = localStorage.getItem('token');
 

@@ -1,0 +1,33 @@
+<div  class="new-cartao-form">
+  <h2>Cadastrar Cartao</h2>
+  <form #cartaoForm="ngForm">
+    <div class="form-field">
+      <label for="nome">Nome:</label>
+      <input matInput type="text" id="nome" name="nome" [(ngModel)]="cartao!.nome" required>
+    </div>
+
+    <div class="form-field">
+      <label for="numero">Numero:</label>
+      <input matInput type="text" id="numero" name="numero" [(ngModel)]="cartao!.numero!" required>
+    </div >
+
+    <div class="form-field">
+      <label for="dataValidade">Data de validade:</label>
+      <input matInput type="text" id="dataValidade" name="dataValidade" [(ngModel)]="cartao!.dataValidade!" required>
+    </div >
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Forma de Pagamento</mat-label>
+      <mat-select (selectionChange)="selecionarBandeira($event)">
+        <mat-option *ngFor="let bandeira of bandeiraCartao; let i = index" [value]="i + 1">
+          {{ bandeira }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="button-container">
+      <button mat-flat-button color="warn" (click)="cancelar()">Cancelar</button>
+      <button mat-flat-button color="primary" type="submit" (click)="add()">Cadastrar</button>
+    </div>
+  </form>
+</div >

@@ -10,11 +10,14 @@ import { Carrossel } from '../../models/carrossel.model';
 import { UsuariologadoService } from '../../services/usuariologado/usuariologado.service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { MatInput } from '@angular/material/input';
+import { MatIcon } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [MatCardModule, CardProdutoComponent, MatFormField, MatPaginatorModule],
+  imports: [MatCardModule, CardProdutoComponent, MatFormField, MatPaginatorModule, MatInput, MatIcon, MatButtonModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -27,6 +30,7 @@ export class HomeComponent implements OnInit {
   pageSize = 10;
   page = 0;
   totalRecords = 0;
+  termoPesquisa: string = '';
 
 
   produtos: Produto[] = [];
@@ -52,6 +56,12 @@ export class HomeComponent implements OnInit {
       console.log(this.totalRecords);
     });
   }
+
+  pesquisar(query: string) {
+    console.log('Pesquisando por:', query);
+    this.router.navigate([`/search/${query}`]);
+  }
+
   marcarProdutosFavoritos() {
     if (this.listaFavoritos.length > 0 && this.produtos.length > 0) {
       this.produtos.forEach(produto => {

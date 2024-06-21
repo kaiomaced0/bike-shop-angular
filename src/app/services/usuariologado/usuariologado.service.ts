@@ -7,6 +7,7 @@ import { Endereco } from '../../models/endereco.models';
 import { UpdateDados } from '../../models/updatedados.model';
 import { Telefone } from '../../models/telefone.models';
 import { Compra } from '../../models/compra.model';
+import { Cartao } from '../../models/cartao.model';
 
 
 @Injectable({
@@ -14,8 +15,8 @@ import { Compra } from '../../models/compra.model';
 })
 export class UsuariologadoService {
 
-  private apiUrl = 'http://localhost:8080/usuariologado';
-  // private apiUrl = 'http://34.151.236.42:8080/usuariologado';
+  // private apiUrl = 'http://localhost:8080/usuariologado';
+  private apiUrl = 'http://34.151.236.42:8080/usuariologado';
 
   private token  = localStorage.getItem('token');
 
@@ -43,8 +44,8 @@ export class UsuariologadoService {
       tap(usuario => console.log(usuario))
     )
   }
-  getCompras(): Observable<Compra[]> {
-    return this.httpClient.get<Compra[]>(this.apiUrl+'/compras', this.httpOptions).pipe(
+  getCompras(page:number, pageSize:number): Observable<Compra[]> {
+    return this.httpClient.get<Compra[]>(`${this.apiUrl}/compras/${page}/${pageSize}`, this.httpOptions).pipe(
       tap(compra => console.log(compra))
     )
   }
@@ -91,15 +92,36 @@ export class UsuariologadoService {
     return this.httpClient.patch(url, null, this.httpOptions);
   }
 
-  getEnderecos(): Observable<Endereco[]> {
+  getEnderecos(page:number, pageSize:number): Observable<Endereco[]> {
+    return this.httpClient.get<Endereco[]>(`${this.apiUrl}/enderecos/${page}/${pageSize}`, this.httpOptions);
+  }
+
+  getEnderecosLista(): Observable<Endereco[]> {
     return this.httpClient.get<Endereco[]>(`${this.apiUrl}/enderecos`, this.httpOptions);
+  }
+
+  getCartoes(page:number, pageSize:number): Observable<Cartao[]> {
+    return this.httpClient.get<Cartao[]>(`${this.apiUrl}/cartoes/${page}/${pageSize}`, this.httpOptions);
+  }
+
+  getCartoesLista(): Observable<Cartao[]> {
+    return this.httpClient.get<Cartao[]>(`${this.apiUrl}/cartoes`, this.httpOptions);
   }
 
   insertTelefone(telefone: Telefone){
     return this.httpClient.post<Telefone>(`${this.apiUrl}/addtelefone`, telefone, this.httpOptions);
   }
-  getTelefones(): Observable<Telefone[]> {
-    return this.httpClient.get<Telefone[]>(`${this.apiUrl}/telefones`, this.httpOptions);
+  getTelefones(page:number, pageSize:number): Observable<Telefone[]> {
+    return this.httpClient.get<Telefone[]>(`${this.apiUrl}/telefones/${page}/${pageSize}`, this.httpOptions);
+  }
+  countTelefones(): Observable<number> {
+    return this.httpClient.get<number>(`${this.apiUrl}/count/telefones`,this.httpOptions);
+  }
+  countEnderecos(): Observable<number> {
+    return this.httpClient.get<number>(`${this.apiUrl}/count/enderecos`,this.httpOptions);
+  }
+  countCompras(): Observable<number> {
+    return this.httpClient.get<number>(`${this.apiUrl}/count/compras`,this.httpOptions);
   }
   deleteTelefone(id: number){
     const url = `${this.apiUrl}/telefone/delete/${id}`;

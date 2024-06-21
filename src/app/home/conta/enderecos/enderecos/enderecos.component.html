@@ -14,7 +14,7 @@
       <th style="width: 10%;">CEP</th>
       <th style="width: 10%;">Cidade</th>
       <th style="width: 10%;">numero</th>
-      <th style="width: 5%;">Editar</th>
+      <!-- <th style="width: 5%;">Editar</th>  -->
       <th style="width: 5%;">Principal</th>
     </tr>
   </thead>
@@ -28,7 +28,7 @@
       <td>{{ endereco.cep}}</td>
       <td>{{ endereco.cidade?.nome!}}</td>
       <td>{{ endereco.numero }}</td>
-      <td><mat-icon (click)="editar(endereco.id!)">edit</mat-icon></td>
+      <!-- <td><mat-icon (click)="editar(endereco.id!)">edit</mat-icon></td> -->
       <td><mat-icon (click)="principal(endereco.id!)">build</mat-icon></td>
 
     </tr>
@@ -36,3 +36,10 @@
 
   </tbody>
 </table>
+
+<mat-paginator
+    [pageSizeOptions]="[10, 20, 30, 40]"
+    [pageSize]="pageSize"
+    [length]="totalRecords"
+    (page)="paginar($event)">
+  </mat-paginator>

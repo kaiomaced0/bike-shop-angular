@@ -10,8 +10,8 @@ import { ValidaCompra } from '../../models/validacompra.models';
 })
 export class CompraService {
 
-  private baseUrl = 'http://localhost:8080/compra';
-  // private baseUrl = 'http://34.151.236.42:8080/compra';
+  // private baseUrl = 'http://localhost:8080/compra';
+  private baseUrl = 'http://34.151.236.42:8080/compra';
 
   private token  = localStorage.getItem('token');
 

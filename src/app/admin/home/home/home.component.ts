@@ -5,6 +5,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-home',
@@ -14,12 +15,25 @@ import { AuthService } from '../../../services/auth/auth.service';
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit{
-  constructor(private router: Router, private authService: AuthService) {
+  constructor(
+    private router: Router,
+     private authService: AuthService,
+     private snackBar: MatSnackBar) {
   }
   ngOnInit(): void {
-    this.authService.verificaAdmin();
+    this.authService.verificaAdmin().subscribe(data => {
+      if(data == false){
+        this.irParaHome();
+        this.snackBar.open('Não autorizado!', 'Fechar', {
+          duration: 2000,
+        });
+      }
+    });
   }
 
+  irParaHome(){
+    this.router.navigate(['']);
+  }
   irParaProdutosAdmin() {
     this.router.navigate(['/admin/produtos']);
   }

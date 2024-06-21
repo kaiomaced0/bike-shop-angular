@@ -1,4 +1,11 @@
 <!-- home.component.html -->
+
+<div class="search-container">
+  <input matInput placeholder="Pesquisar" #searchQuery>
+  <button mat-button (click)="pesquisar(searchQuery.value)">
+    <mat-icon style="max-height: 30px; max-width: 30px;">search</mat-icon>
+  </button>
+</div>
 <div class="carrossel">
   <div class="carousel-container">
     <div class="carousel-slide" [style.transform]="'translateX(' + (-currentSlide * 100) + '%)'">

@@ -1,1 +1,27 @@
-<p>search works!</p>
+<div class="search-container">
+  <input matInput placeholder="Pesquisar" #searchQuery>
+  <button mat-button (click)="pesquisar(searchQuery.value)">
+    <mat-icon style="max-height: 30px; max-width: 30px;">search</mat-icon>
+  </button>
+</div>
+<div class="produtos-home">
+  <ng-container>
+    @for (produto of produtos; track produto.id!) {
+    <app-card-produto
+      [id]="produto.id!"
+      [imageUrl]="produto.img![0]"
+      [title]="produto.nome!"
+      [price]="produto.preco!"
+      [stars]="produto.starts!"
+      [favoritado]="produto.favoritado!">
+    </app-card-produto>
+
+    }
+  </ng-container>
+</div>
+<mat-paginator
+    [pageSizeOptions]="[10, 20, 30, 40]"
+    [pageSize]="pageSize"
+    [length]="totalRecords"
+    (page)="paginar($event)">
+  </mat-paginator>

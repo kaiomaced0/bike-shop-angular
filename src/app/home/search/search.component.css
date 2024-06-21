@@ -1,0 +1,30 @@
+.produtos-home{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  align-items: center;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: #f5f5f5; /* Background color to distinguish search bar */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: add a subtle shadow */
+}
+
+.search-container input {
+  height: 30px;
+  margin-right: 8px;
+  width: 100%;
+  max-width: 800px; /* Max width for the input to keep it reasonable on large screens */
+}
+@media (max-width: 600px) {
+
+  .produtos-home{
+    gap: 10px
+  }
+
+  }

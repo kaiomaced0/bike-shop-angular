@@ -4,3 +4,8 @@
 .outlet{
   padding: 1ch;
 }
+
+.mat-toolbar{
+  background-color: #00008b;
+  color: white;
+}

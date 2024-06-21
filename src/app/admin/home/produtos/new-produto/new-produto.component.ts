@@ -10,7 +10,6 @@ import { CategoriaService } from '../../../../services/categoria/categoria.servi
 import { Categoria } from '../../../../models/categoria.model';
 import { Marca } from '../../../../models/marca.model';
 import { MarcaService } from '../../../../services/marca/marca.service';
-import { UploadComponent } from '../../../../components/upload/upload/upload.component';
 import { FileService } from '../../../../services/file/file.service';
 import { finalize, Observable } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -21,7 +20,7 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
 @Component({
   selector: 'app-new-produto',
   standalone: true,
-  imports: [FormsModule, MatFormField, MatSelect, MatLabel, MatOption, MatButton, MatSelectModule, ReactiveFormsModule, UploadComponent, NgIf, MatProgressBar],
+  imports: [FormsModule, MatFormField, MatSelect, MatLabel, MatOption, MatButton, MatSelectModule, ReactiveFormsModule, NgIf, MatProgressBar],
   templateUrl: './new-produto.component.html',
   styleUrl: './new-produto.component.css'
 })
@@ -44,7 +43,6 @@ export class NewProdutoComponent implements OnInit {
     private service: ProdutoService,
     private categoriaService: CategoriaService,
     private marcaService: MarcaService,
-    private fileService: FileService,
     private storage: AngularFireStorage,
     private snackBar: MatSnackBar) {
 

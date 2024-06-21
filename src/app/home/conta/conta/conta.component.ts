@@ -23,14 +23,14 @@ export class ContaComponent implements OnInit {
   constructor(private router: Router, private usuarioLogadoService: UsuariologadoService, private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.authService.verificaAdmin().subscribe(isAdmin => {
-      this.isAdmin = isAdmin;
-      console.log(isAdmin);
+    this.authService.verificaAdmin().subscribe((data: any) => {
+      this.isAdmin = data;
+
     });
     this.usuarioLogadoService.getUsuarioLogado().subscribe(
       data => {
         this.usuario = data;
-        this.tell =this.usuario.telefones;
+        this.tell = this.usuario.telefones;
         console.log(this.tell);
       },
       error => {
@@ -46,7 +46,7 @@ export class ContaComponent implements OnInit {
   irParaDados() {
     this.router.navigate(['/conta/dados']);
   }
-  irParaCompras(){
+  irParaCompras() {
     this.router.navigate(['/conta/compras']);
   }
   irParaAdmin() {

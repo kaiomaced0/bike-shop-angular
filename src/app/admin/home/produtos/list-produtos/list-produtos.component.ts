@@ -9,6 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfiermDialogResetarsenhaComponent } from '../../../../components/dialog/confierm-dialog-resetarsenha/confierm-dialog-resetarsenha.component';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { AuthService } from '../../../../services/auth/auth.service';
 
 @Component({
   selector: 'app-list-produtos',
@@ -19,7 +20,12 @@ import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 })
 export class ListProdutosComponent implements OnInit {
 
-  constructor(private router: Router, private produtoService: ProdutoService, private dialog: MatDialog, private snackBar: MatSnackBar) {
+  constructor(
+    private router: Router,
+    private produtoService: ProdutoService,
+    private dialog: MatDialog,
+    private authService: AuthService,
+    private snackBar: MatSnackBar) {
   }
 
   produtos: Produto[] = [];
@@ -29,6 +35,15 @@ export class ListProdutosComponent implements OnInit {
 
 
   ngOnInit() {
+
+    this.authService.verificaAdmin().subscribe(data => {
+      if(data == false){
+        this.irParaHome();
+        this.snackBar.open('Não autorizado!', 'Fechar', {
+          duration: 2000,
+        });
+      }
+    });
     this.produtoService.listAdmin(this.page, this.pageSize).subscribe((data: Produto[]) => {
       this.produtos = data;
     });
@@ -43,6 +58,10 @@ export class ListProdutosComponent implements OnInit {
 
   irParaNewProduto() {
     this.router.navigate(['/admin/produtos/new']);
+  }
+
+  irParaHome(){
+    this.router.navigate(['']);
   }
 
 

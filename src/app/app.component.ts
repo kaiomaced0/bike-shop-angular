@@ -8,9 +8,9 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app.routes';
 import { HttpClientModule } from '@angular/common/http';
-import { environment } from '../../environment';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFireModule } from '@angular/fire/compat';
+import { AdminModule } from './admin/admin.module';
 
 
 @Component({
@@ -26,7 +26,8 @@ import { AngularFireModule } from '@angular/fire/compat';
     AppRoutingModule,
     HttpClientModule,
     RouterModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    AdminModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

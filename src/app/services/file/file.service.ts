@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class FileService {
 
-  private baseUrl = 'http://localhost:8080/file';
-  // private baseUrl = 'http://34.151.236.42:8080/file';
+  // private baseUrl = 'http://localhost:8080/file';
+  private baseUrl = 'http://34.151.236.42:8080/file';
 
   private token  = localStorage.getItem('token');
   httpOptions = {

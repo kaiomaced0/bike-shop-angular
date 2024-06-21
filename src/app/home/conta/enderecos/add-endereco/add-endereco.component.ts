@@ -5,12 +5,6 @@ import { MatOption, MatSelect, MatSelectModule } from '@angular/material/select'
 import { Router } from '@angular/router';
 import { ProdutoService } from '../../../../services/produto/produto.service';
 import { MatButton } from '@angular/material/button';
-import { Produto } from '../../../../models/produto.model';
-import { CategoriaService } from '../../../../services/categoria/categoria.service';
-import { Categoria } from '../../../../models/categoria.model';
-import { Marca } from '../../../../models/marca.model';
-import { MarcaService } from '../../../../services/marca/marca.service';
-import { UploadComponent } from '../../../../components/upload/upload/upload.component';
 import { Endereco } from '../../../../models/endereco.models';
 import { EnderecoService } from '../../../../services/endereco/endereco.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -20,7 +14,7 @@ import { CidadeService } from '../../../../services/cidade/cidade.service';
 @Component({
   selector: 'app-add-endereco',
   standalone: true,
-  imports: [FormsModule, MatFormField, MatSelect, MatLabel, MatOption, MatButton, MatSelectModule, ReactiveFormsModule, UploadComponent],
+  imports: [FormsModule, MatFormField, MatSelect, MatLabel, MatOption, MatButton, MatSelectModule, ReactiveFormsModule],
   templateUrl: './add-endereco.component.html',
   styleUrl: './add-endereco.component.css'
 })

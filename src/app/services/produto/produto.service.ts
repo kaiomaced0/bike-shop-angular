@@ -8,8 +8,8 @@ import { Produto } from '../../models/produto.model';
   providedIn: 'root'
 })
 export class ProdutoService {
-  private apiUrl = 'http://localhost:8080/produto';
-  // private apiUrl = 'http://34.151.236.42:8080/produto';
+  // private apiUrl = 'http://localhost:8080/produto';
+  private apiUrl = 'http://34.151.236.42:8080/produto';
 
   private token  = localStorage.getItem('token');
 
@@ -55,6 +55,15 @@ export class ProdutoService {
   getById(id: number): Observable<Produto> {
     const url = `${this.apiUrl}/${id}`;
     return this.httpClient.get<Produto>(url, this.httpOptions3);
+  }
+
+  getByNome(nome: string, page:number, pageSize:number): Observable<Produto[]> {
+    const url = `${this.apiUrl}/nome/${nome}/${page}/${pageSize}`;
+    return this.httpClient.get<Produto[]>(url, this.httpOptions3);
+  }
+
+  getByNomeCount(nome: string): Observable<number> {
+    return this.httpClient.get<number>(`${this.apiUrl}/count/nome/${nome}`,this.httpOptions3);
   }
 
   getByIdAdmin(id: number): Observable<Produto> {

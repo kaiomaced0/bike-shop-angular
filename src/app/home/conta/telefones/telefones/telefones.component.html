@@ -8,9 +8,10 @@
 <table class="tabela-telefones">
   <thead>
     <tr>
-      <th style="width: 20%;">ID</th>
+      <th style="width: 10%;">ID</th>
       <th style="width: 35%;">Codigo de area</th>
       <th style="width: 45%;">Numero</th>
+      <th style="width: 10%;">Excluir</th>
     </tr>
   </thead>
   <tbody>
@@ -27,3 +28,10 @@
 
   </tbody>
 </table>
+
+<mat-paginator
+    [pageSizeOptions]="[10, 20, 30, 40]"
+    [pageSize]="pageSize"
+    [length]="totalRecords"
+    (page)="paginar($event)">
+  </mat-paginator>
