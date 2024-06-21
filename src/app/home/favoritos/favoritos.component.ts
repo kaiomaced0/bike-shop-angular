@@ -23,19 +23,9 @@ export class FavoritosComponent implements OnInit {
   produtos: Produto[] = [];
 
   ngOnInit() {
-    this.authService.verificaAdmin().subscribe((data: any) => {
-      if (data === false) {
-        this.irParaHome();
-        this.snackBar.open('Realize login para ter uma lista de marcados como gostei!', 'Fechar', {
-          duration: 3000,
-        });
-      } else if (data === true) {
-        this.service.listgostei().subscribe((data: Produto[]) => {
-          this.produtos = data;
-        });
-      } else {
-        console.error('Unexpected response from verificaAdmin:', data);
-      }
+
+    this.service.listgostei().subscribe((data: Produto[]) => {
+      this.produtos = data;
     });
 
   }
