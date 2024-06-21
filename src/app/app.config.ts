@@ -10,6 +10,5 @@ import { UsuariologadoService } from './services/usuariologado/usuariologado.ser
 import { ProdutoService } from './services/produto/produto.service';
 
 export const appConfig: ApplicationConfig = {
-
-  providers: [provideRouter(routes), provideAnimationsAsync(), provideStore(), provideEffects(), provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }), UsuariologadoService, ProdutoService]
+  providers: [provideRouter(routes), provideAnimationsAsync(), provideStore(), provideEffects(), provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }), UsuariologadoService, ProdutoService],
 };

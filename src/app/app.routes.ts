@@ -1,5 +1,10 @@
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
+import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from './services/auth/auth.service';
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from '../../environment';
 
 export const routes: Routes = [
   {
@@ -44,3 +49,10 @@ export const routes: Routes = [
   { path: '**', redirectTo: '' },
 
 ];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes), HttpClientModule],
+  exports: [RouterModule],
+  providers: [AuthService]
+})
+export class AppRoutingModule { }
