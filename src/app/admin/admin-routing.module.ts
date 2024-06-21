@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdmMainLayoutComponent } from './adm-main-layout/adm-main-layout.component';
+import { AuthService } from '../services/auth/auth.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   {
@@ -22,6 +24,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthService, HttpClientModule]
 })
 export class AdminRoutingModule { }
