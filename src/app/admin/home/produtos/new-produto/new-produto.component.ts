@@ -14,11 +14,14 @@ import { UploadComponent } from '../../../../components/upload/upload/upload.com
 import { FileService } from '../../../../services/file/file.service';
 import { finalize, Observable } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { NgIf } from '@angular/common';
+import { MatProgressBar } from '@angular/material/progress-bar';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 
 @Component({
   selector: 'app-new-produto',
   standalone: true,
-  imports: [FormsModule, MatFormField, MatSelect, MatLabel, MatOption, MatButton, MatSelectModule, ReactiveFormsModule, UploadComponent],
+  imports: [FormsModule, MatFormField, MatSelect, MatLabel, MatOption, MatButton, MatSelectModule, ReactiveFormsModule, UploadComponent, NgIf, MatProgressBar],
   templateUrl: './new-produto.component.html',
   styleUrl: './new-produto.component.css'
 })
@@ -28,7 +31,8 @@ export class NewProdutoComponent implements OnInit {
   categorias: Categoria[] = [];
   marcas: Marca[] = [];
   selectedFiles: FileList | null = null;
-  imageNames: string[] = [];
+  img: string[] = [];
+  uploadPercent: number | undefined;
 
   cancelar() {
     this.router.navigate(['/admin/produtos']);
@@ -41,6 +45,7 @@ export class NewProdutoComponent implements OnInit {
     private categoriaService: CategoriaService,
     private marcaService: MarcaService,
     private fileService: FileService,
+    private storage: AngularFireStorage,
     private snackBar: MatSnackBar) {
 
   }
@@ -64,18 +69,42 @@ export class NewProdutoComponent implements OnInit {
     });
   }
 
-  removeImage(imageUrl: string) {
-    this.imageNames = this.imageNames.filter(image => image !== imageUrl);
-  }
 
   onFileSelected(event: any): void {
     this.selectedFiles = event.target.files;
   }
 
+  addImage(imageUrl: string) {
+    this.img.push(imageUrl);
+  }
+
+  removeImage(imageUrl: string) {
+    this.img = this.img.filter(image => image !== imageUrl);
+  }
+
+  uploadFile(event: any) {
+    const file = event.target.files[0];
+    const filePath = `images/${file.name}`;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, file);
+
+    task.percentageChanges().subscribe(percent => {
+      this.uploadPercent = percent;
+    });
+
+    task.snapshotChanges().pipe(
+      finalize(() => {
+        fileRef.getDownloadURL().subscribe(url => {
+          this.addImage(url);
+        });
+      })
+    ).subscribe();
+  }
+
+
   adicionarProduto() {
-    this.uploadImages();
     this.produto!.idCor = 1;
-    this.produto!.img = this.imageNames;
+    this.produto!.img = this.img;
     this.service.insert(this.produto!).subscribe({
       next: (produtoAdicionado) => {
         console.log('Produto adicionado com sucesso:', produtoAdicionado);
@@ -93,26 +122,5 @@ export class NewProdutoComponent implements OnInit {
       }
     });
 
-  }
-  uploadImages(): void {
-    if (this.selectedFiles) {
-      const uploadTasks: any[] = [];
-      for (let i = 0; i < this.selectedFiles.length; i++) {
-        const file = this.selectedFiles[i];
-
-        const uploadTask = this.fileService.uploadImage(file)
-          .subscribe({
-            next: (response) => {
-              console.log(response.imagem);
-              this.imageNames.push(response.imagem);
-            },
-            error: (error) => {
-              console.error('Erro ao fazer upload da imagem:', error);
-            }
-          });
-
-        uploadTasks.push(uploadTask);
-      }
-    }
   }
 }

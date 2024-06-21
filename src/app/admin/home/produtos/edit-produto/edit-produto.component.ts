@@ -85,35 +85,10 @@ export class EditProdutoComponent implements OnInit {
 
   }
 
-  // removeImage(imageUrl: string) {
-  //   this.img = this.img.filter(image => image !== imageUrl);
-  // }
 
   onFileSelected(event: any): void {
     this.selectedFiles = event.target.files;
   }
-
-  // uploadImages(): void {
-  //   if (this.selectedFiles) {
-  //     const uploadTasks: any[] = [];
-  //     for (let i = 0; i < this.selectedFiles.length; i++) {
-  //       const file = this.selectedFiles[i];
-
-  //       const uploadTask = this.fileService.uploadImage(file)
-  //         .subscribe({
-  //           next: (response) => {
-  //             console.log(response.imagem);
-  //             this.img.push(response.imagem);
-  //           },
-  //           error: (error) => {
-  //             console.error('Erro ao fazer upload da imagem:', error);
-  //           }
-  //         });
-
-  //       uploadTasks.push(uploadTask);
-  //     }
-  //   }
-  // }
 
   addImage(imageUrl: string) {
     this.img.push(imageUrl);
@@ -133,7 +108,6 @@ export class EditProdutoComponent implements OnInit {
       this.uploadPercent = percent;
     });
 
-    // Obtenha a URL do download quando o upload estiver completo
     task.snapshotChanges().pipe(
       finalize(() => {
         fileRef.getDownloadURL().subscribe(url => {
@@ -152,7 +126,6 @@ export class EditProdutoComponent implements OnInit {
   }
 
   atualizarProduto() {
-    // this.uploadImages();
     this.produto.img = this.img;
     const dialogRef = this.dialog.open(ConfiermDialogResetarsenhaComponent, {
       width: '250px',

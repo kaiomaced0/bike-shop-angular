@@ -56,9 +56,16 @@
       </mat-form-field>
     </div>
 
-    <div  class="upload-image">
-      <h2>Upload de Imagens</h2>
-      <input type="file" (change)="onFileSelected($event)" multiple>
+    <div class="add-image">
+      <p class="instruction">Por favor, adicione uma imagem de cada vez.</p>
+      <input type="file" (change)="uploadFile($event)" />
+    </div>
+
+    <div *ngIf="uploadPercent !== undefined" class="upload-progress">
+      <mat-progress-bar mode="determinate" [value]="uploadPercent"></mat-progress-bar>
+      <div class="upload-percent">
+        Upload: {{ uploadPercent}}%
+      </div>
     </div>
 
 
