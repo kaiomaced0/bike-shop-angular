@@ -8,8 +8,8 @@ import { Observable, tap } from 'rxjs';
 })
 export class CategoriaService {
 
-  // private baseUrl = 'http://localhost:8080/categoria';
-  private baseUrl = 'http://34.151.236.42:8080/categoria';
+  private baseUrl = 'http://localhost:8080/categoria';
+  // private baseUrl = 'http://34.151.236.42:8080/categoria';
 
   private token  = localStorage.getItem('token');
 
@@ -19,12 +19,22 @@ export class CategoriaService {
   httpOptions2 = {
     headers: new HttpHeaders({'Authorization': 'Bearer ' + this.token})
   };
+  httpOptions3 = {
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
+  };
 
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<Categoria[]> {
     return this.http.get<Categoria[]>(this.baseUrl, this.httpOptions).pipe(
       tap(categoria => console.log(categoria)));
+  }
+  getAllAdmin(page:number, pageSize:number): Observable<Categoria[]> {
+    return this.http.get<Categoria[]>(`${this.baseUrl}/admin/${page}/${pageSize}`, this.httpOptions).pipe(
+      tap(categoria => console.log(categoria)));
+  }
+  count(): Observable<number> {
+    return this.http.get<number>(`${this.baseUrl}/count`,this.httpOptions3);
   }
 
   insert(nome: string): Observable<any> {

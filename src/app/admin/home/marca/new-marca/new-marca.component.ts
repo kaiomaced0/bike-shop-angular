@@ -15,7 +15,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class NewMarcaComponent {
 
-  nome: string = '';
+  nome?: string;
 
   cancelar(){
     this.router.navigate(['/admin/marcas']);
@@ -23,7 +23,7 @@ export class NewMarcaComponent {
 
   constructor(private router: Router, private service: MarcaService, private snackBar: MatSnackBar) {}
   adicionarMarca() {
-      this.service.insert(this.nome).subscribe({
+      this.service.insert(this.nome!).subscribe({
         next: (response) => {
           console.log('Marca criada com sucesso:', response);
           this.snackBar.open('Marca adicionada', 'Fechar', {

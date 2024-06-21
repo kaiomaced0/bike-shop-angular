@@ -10,8 +10,8 @@ import { ValidaCompra } from '../../models/validacompra.models';
 })
 export class CompraService {
 
-  // private baseUrl = 'http://localhost:8080/compra';
-  private baseUrl = 'http://34.151.236.42:8080/compra';
+  private baseUrl = 'http://localhost:8080/compra';
+  // private baseUrl = 'http://34.151.236.42:8080/compra';
 
   private token  = localStorage.getItem('token');
 
@@ -21,15 +21,21 @@ export class CompraService {
   httpOptions2 = {
     headers: new HttpHeaders({'Authorization': 'Bearer ' + this.token})
   };
+  httpOptions3 = {
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
+  };
 
   constructor(private http: HttpClient
      ) { }
 
-  getAll(): Observable<Compra[]> {
-    return this.http.get<Compra[]>(this.baseUrl, this.httpOptions).pipe(
+  getAll(page:number, pageSize:number): Observable<Compra[]> {
+    return this.http.get<Compra[]>(`${this.baseUrl}/${page}/${pageSize}`, this.httpOptions).pipe(
       tap(compra => console.log(compra)));
   }
 
+  count(): Observable<number> {
+    return this.http.get<number>(`${this.baseUrl}/count`,this.httpOptions3);
+  }
 
   valida(compra: CompraItemCompra): Observable<ValidaCompra> {
     return this.http.post<ValidaCompra>(this.baseUrl, compra, this.httpOptions);

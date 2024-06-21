@@ -8,11 +8,12 @@ import { Ferramenta } from '../../../../models/ferramenta.model';
 import { ConfiermDialogResetarsenhaComponent } from '../../../../components/dialog/confierm-dialog-resetarsenha/confierm-dialog-resetarsenha.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-list-ferramentas',
   standalone: true,
-  imports: [MatIcon, MatButton, HttpClientModule],
+  imports: [MatIcon, MatButton, HttpClientModule, MatPaginatorModule],
   templateUrl: './list-ferramentas.component.html',
   styleUrl: './list-ferramentas.component.css'
 })
@@ -22,11 +23,19 @@ export class ListFerramentasComponent {
   }
 
   ferramentas: Ferramenta[] = [];
+  pageSize = 10;
+  page = 0;
+  totalRecords = 0;
 
   ngOnInit() {
-    this.service.getAll().subscribe((data: Ferramenta[]) => {
+    this.service.getAll(this.page, this.pageSize).subscribe((data: Ferramenta[]) => {
       this.ferramentas = data;
     });
+  }
+  paginar(event: PageEvent): void {
+    this.page = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.ngOnInit();
   }
   editar(id:number) {
     this.router.navigate([`/admin/ferramentas/edit/${id}`]);

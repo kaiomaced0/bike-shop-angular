@@ -64,13 +64,18 @@ export class NewProdutoComponent implements OnInit {
     });
   }
 
+  removeImage(imageUrl: string) {
+    this.imageNames = this.imageNames.filter(image => image !== imageUrl);
+  }
+
   onFileSelected(event: any): void {
     this.selectedFiles = event.target.files;
   }
 
   adicionarProduto() {
+    this.uploadImages();
     this.produto!.idCor = 1;
-    this.produto!.img = [''];
+    this.produto!.img = this.imageNames;
     this.service.insert(this.produto!).subscribe({
       next: (produtoAdicionado) => {
         console.log('Produto adicionado com sucesso:', produtoAdicionado);
@@ -82,6 +87,9 @@ export class NewProdutoComponent implements OnInit {
       },
       error: (erro) => {
         console.error('Erro ao adicionar produto:', erro, this.produto!);
+        this.snackBar.open('Erro ao adicionar Produto', 'Fechar', {
+          duration: 2000,
+        });
       }
     });
 
@@ -93,11 +101,10 @@ export class NewProdutoComponent implements OnInit {
         const file = this.selectedFiles[i];
 
         const uploadTask = this.fileService.uploadImage(file)
-          .pipe(finalize(() => { }))
           .subscribe({
             next: (response) => {
-              const parsedResponse = response.replace(/['"]+/g, ''); // Remove as aspas da resposta
-              this.imageNames.push(parsedResponse);
+              console.log(response.imagem);
+              this.imageNames.push(response.imagem);
             },
             error: (error) => {
               console.error('Erro ao fazer upload da imagem:', error);

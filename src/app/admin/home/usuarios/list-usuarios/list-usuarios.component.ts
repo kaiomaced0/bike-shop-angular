@@ -7,11 +7,12 @@ import { Usuario } from '../../../../models/usuario.model';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfiermDialogResetarsenhaComponent } from '../../../../components/dialog/confierm-dialog-resetarsenha/confierm-dialog-resetarsenha.component';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-list-usuarios',
   standalone: true,
-  imports: [MatIconModule, MatButton],
+  imports: [MatIconModule, MatButton, MatPaginatorModule],
   templateUrl: './list-usuarios.component.html',
   styleUrl: './list-usuarios.component.css',
 })
@@ -22,11 +23,24 @@ export class ListUsuariosComponent {
   }
 
   usuarios: Usuario[] = [];
+  pageSize = 10;
+  page = 0;
+  totalRecords = 0;
 
   ngOnInit() {
-    this.usuarioService.getAll().subscribe((data: Usuario[]) => {
+    this.usuarioService.getAll(this.page, this.pageSize).subscribe((data: Usuario[]) => {
       this.usuarios = data;
+      console.log(data);
     });
+    this.usuarioService.count().subscribe(data => {
+      this.totalRecords = data;
+      console.log(this.totalRecords);
+    });
+  }
+  paginar(event: PageEvent): void {
+    this.page = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.ngOnInit();
   }
 
   irParaNewUsuario() {

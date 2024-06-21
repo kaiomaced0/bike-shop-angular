@@ -8,8 +8,8 @@ import { Marca } from '../../models/marca.model';
 })
 export class MarcaService {
 
-  // private baseUrl = 'http://localhost:8080/marca';
-  private baseUrl = 'http://34.151.236.42:8080/marca';
+  private baseUrl = 'http://localhost:8080/marca';
+  // private baseUrl = 'http://34.151.236.42:8080/marca';
 
   private token  = localStorage.getItem('token');
 
@@ -19,6 +19,9 @@ export class MarcaService {
   httpOptions2 = {
     headers: new HttpHeaders({'Authorization': 'Bearer ' + this.token})
   };
+  httpOptions3 = {
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
+  };
 
 
   constructor(private http: HttpClient) { }
@@ -27,9 +30,18 @@ export class MarcaService {
     return this.http.get<Marca[]>(this.baseUrl, this.httpOptions).pipe(
       tap(marcas => console.log(marcas)));
   }
+  getAllAdmin(page:number, pageSize:number): Observable<Marca[]> {
+    return this.http.get<Marca[]>(`${this.baseUrl}/admin/${page}/${pageSize}`, this.httpOptions).pipe(
+      tap(marcas => console.log(marcas)));
+  }
+  count(): Observable<number> {
+    return this.http.get<number>(`${this.baseUrl}/count`,this.httpOptions3);
+  }
 
   insert(nome: string): Observable<any> {
-    return this.http.post<Marca>(this.baseUrl, {nome}, this.httpOptions);
+    const formData: FormData = new FormData();
+    formData.append('nome', nome);
+    return this.http.post<Marca>(this.baseUrl, formData, this.httpOptions);
   }
 
   delete(id: number): Observable<any> {

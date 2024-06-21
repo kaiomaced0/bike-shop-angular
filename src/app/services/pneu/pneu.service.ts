@@ -8,8 +8,8 @@ import { Observable, tap } from 'rxjs';
 })
 export class PneuService {
 
-  // private baseUrl = 'http://localhost:8080/pneu';
-  private baseUrl = 'http://34.151.236.42:8080/pneu';
+  private baseUrl = 'http://localhost:8080/pneu';
+  // private baseUrl = 'http://34.151.236.42:8080/pneu';
 
   private token  = localStorage.getItem('token');
 
@@ -18,6 +18,9 @@ export class PneuService {
   };
   httpOptions2 = {
     headers: new HttpHeaders({'Authorization': 'Bearer ' + this.token})
+  };
+  httpOptions3 = {
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
 
 
@@ -28,7 +31,7 @@ export class PneuService {
       tap(pneu => console.log(pneu)));
   }
   count(): Observable<number> {
-    return this.http.get<number>(`${this.baseUrl}/count`);
+    return this.http.get<number>(`${this.baseUrl}/count`, this.httpOptions3);
   }
 
   insert(p: Pneu): Observable<Pneu> {

@@ -8,11 +8,12 @@ import { Marca } from '../../../../models/marca.model';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfiermDialogResetarsenhaComponent } from '../../../../components/dialog/confierm-dialog-resetarsenha/confierm-dialog-resetarsenha.component';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-list-marcas',
   standalone: true,
-  imports: [MatIcon, MatButton, HttpClientModule],
+  imports: [MatIcon, MatButton, HttpClientModule, MatPaginatorModule],
   templateUrl: './list-marcas.component.html',
   styleUrl: './list-marcas.component.css'
 })
@@ -24,11 +25,23 @@ export class ListMarcasComponent {
   }
 
   marcas: Marca[] = [];
+  pageSize = 10;
+  page = 0;
+  totalRecords = 0;
 
   ngOnInit() {
-    this.MarcaService.getAll().subscribe((data: Marca[]) => {
+    this.MarcaService.getAllAdmin(this.page, this.pageSize).subscribe((data: Marca[]) => {
       this.marcas = data;
     });
+    this.MarcaService.count().subscribe(data => {
+      this.totalRecords = data;
+      console.log(this.totalRecords);
+    });
+  }
+  paginar(event: PageEvent): void {
+    this.page = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.ngOnInit();
   }
   editar(id:number) {
     this.router.navigate([`/admin/marcas/edit/${id}`]);

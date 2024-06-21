@@ -7,11 +7,12 @@ import { CupomService } from '../../../../services/cupom/cupom.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfiermDialogResetarsenhaComponent } from '../../../../components/dialog/confierm-dialog-resetarsenha/confierm-dialog-resetarsenha.component';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-list-cupons',
   standalone: true,
-  imports: [MatIcon, MatButton],
+  imports: [MatIcon, MatButton, MatPaginatorModule],
   templateUrl: './list-cupons.component.html',
   styleUrl: './list-cupons.component.css'
 })
@@ -21,11 +22,23 @@ export class ListCuponsComponent {
   }
 
   cupons: Cupom[] = [];
+  pageSize = 10;
+  page = 0;
+  totalRecords = 0;
 
   ngOnInit() {
-    this.service.getAll().subscribe((data: Cupom[]) => {
+    this.service.getAll(this.page, this.pageSize).subscribe((data: Cupom[]) => {
       this.cupons = data;
     });
+    this.service.count().subscribe(data => {
+      this.totalRecords = data;
+      console.log(this.totalRecords);
+    });
+  }
+  paginar(event: PageEvent): void {
+    this.page = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.ngOnInit();
   }
   editar(id:number) {
     this.router.navigate([`/admin/cupons/edit/${id}`]);

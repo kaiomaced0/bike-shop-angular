@@ -19,7 +19,7 @@
     <tr>
       <td>{{ marca.id }}</td>
       <td>{{ marca.nome }}</td>
-      <td><mat-icon (click)="editar(marca.id)">edit</mat-icon></td>
+      <td><mat-icon (click)="editar(marca.id!)">edit</mat-icon></td>
       <td><mat-icon (click)="deletar(marca.id!, marca.nome!)">delete</mat-icon></td>
 
     </tr>
@@ -27,3 +27,11 @@
 
   </tbody>
 </table>
+
+<mat-paginator
+    [pageSizeOptions]="[10, 20, 30, 40]"
+    [pageSize]="pageSize"
+    [length]="totalRecords"
+    (page)="paginar($event)">
+  </mat-paginator>
+

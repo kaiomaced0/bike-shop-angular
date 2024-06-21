@@ -1,5 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { Router } from '@angular/router';
@@ -8,15 +8,16 @@ import { Pneu } from '../../../../models/pneu.model';
 import { ConfiermDialogResetarsenhaComponent } from '../../../../components/dialog/confierm-dialog-resetarsenha/confierm-dialog-resetarsenha.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-list-pneus',
   standalone: true,
-  imports: [MatIcon, MatButton, HttpClientModule],
+  imports: [MatIcon, MatButton, HttpClientModule, MatPaginatorModule],
   templateUrl: './list-pneus.component.html',
   styleUrl: './list-pneus.component.css'
 })
-export class ListPneusComponent {
+export class ListPneusComponent implements OnInit {
 
   constructor(private router: Router, private service: PneuService, private dialog: MatDialog, private snackBar: MatSnackBar) {
   }
@@ -26,11 +27,20 @@ export class ListPneusComponent {
   page = 0;
   totalRecords = 0;
 
-
   ngOnInit() {
     this.service.getAll(this.page, this.pageSize).subscribe((data: Pneu[]) => {
       this.pneus = data;
     });
+    this.service.count().subscribe(data => {
+      this.totalRecords = data;
+      console.log(this.totalRecords);
+    });
+  }
+
+  paginar(event: PageEvent): void {
+    this.page = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.ngOnInit();
   }
   editar(id:number) {
     this.router.navigate([`/admin/pneus/edit/${id}`]);

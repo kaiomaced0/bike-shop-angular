@@ -8,15 +8,16 @@ import { ProdutoService } from '../../../../services/produto/produto.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfiermDialogResetarsenhaComponent } from '../../../../components/dialog/confierm-dialog-resetarsenha/confierm-dialog-resetarsenha.component';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-list-produtos',
   standalone: true,
-  imports: [MatIcon, MatButton, HttpClientModule],
+  imports: [MatIcon, MatButton, HttpClientModule, MatPaginatorModule],
   templateUrl: './list-produtos.component.html',
   styleUrl: './list-produtos.component.css'
 })
-export class ListProdutosComponent implements OnInit{
+export class ListProdutosComponent implements OnInit {
 
   constructor(private router: Router, private produtoService: ProdutoService, private dialog: MatDialog, private snackBar: MatSnackBar) {
   }
@@ -31,8 +32,12 @@ export class ListProdutosComponent implements OnInit{
     this.produtoService.listAdmin(this.page, this.pageSize).subscribe((data: Produto[]) => {
       this.produtos = data;
     });
+    this.produtoService.count().subscribe(data => {
+      this.totalRecords = data;
+      console.log(this.totalRecords);
+    });
   }
-  editar(id:number) {
+  editar(id: number) {
     this.router.navigate([`/admin/produtos/edit/${id}`]);
   }
 
@@ -41,13 +46,14 @@ export class ListProdutosComponent implements OnInit{
   }
 
 
-  deletar(id:number, nome:string){
+  deletar(id: number, nome: string) {
     const dialogRef = this.dialog.open(ConfiermDialogResetarsenhaComponent, {
       width: '250px',
       data: {
         message: `Tem certeza que deseja Deletar o Produto de nome: ${nome}?`,
         n: nome
-      }});
+      }
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
@@ -66,6 +72,11 @@ export class ListProdutosComponent implements OnInit{
         });
       }
     });
-    }
+  }
+  paginar(event: PageEvent): void {
+    this.page = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.ngOnInit();
+  }
 
 }

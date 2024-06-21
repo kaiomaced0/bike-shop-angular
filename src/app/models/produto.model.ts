@@ -21,5 +21,6 @@ export class Produto {
 
   constructor(
   ) {
+    this.categoriasId = [];
   }
 }

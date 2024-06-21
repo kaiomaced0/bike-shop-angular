@@ -1,5 +1,8 @@
 <mat-card class="product-card">
-  <div (click)="irParaDetail()"><img src="{{imageUrl}}" alt="{{title}}" class="imagem"></div>
+  <div (click)="irParaDetail()">
+     <img src="{{imageUrl}}" alt="{{title}}" class="imagem">  <!-- desenvolvimento -->
+    <!-- <img src="http://localhost:8080/file/download/{{imageUrl}}" alt="{{title}}" class="imagem"> <!-- producao -->
+  </div>
   <div class="title" (click)="irParaDetail()">{{title}}</div>
   <div class="price">R$ {{price}}</div>
   <div class="buttons">

@@ -12,11 +12,16 @@ import { MarcaService } from '../../../../services/marca/marca.service';
 import { MatSelectModule } from '@angular/material/select';
 import { Categoria } from '../../../../models/categoria.model';
 import { Marca } from '../../../../models/marca.model';
-
+import { FileService } from '../../../../services/file/file.service';
+import { MatInputModule } from '@angular/material/input';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { finalize } from 'rxjs/operators';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { NgIf } from '@angular/common';
 @Component({
   selector: 'app-edit-produto',
   standalone: true,
-  imports: [FormsModule, MatButton, MatSelectModule, ReactiveFormsModule],
+  imports: [FormsModule, MatButton, MatSelectModule, ReactiveFormsModule, MatInputModule, MatProgressBarModule, NgIf],
   templateUrl: './edit-produto.component.html',
   styleUrl: './edit-produto.component.css'
 })
@@ -26,13 +31,20 @@ export class EditProdutoComponent implements OnInit {
   produto: Produto = new Produto();
   categorias: Categoria[] = [];
   marcas: Marca[] = [];
+  img: string[] = [];
+  selectedFiles: FileList | null = null;
+  uploadPercent: number | undefined;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private service: ProdutoService,
     private snackBar: MatSnackBar,
-    private dialog: MatDialog, private categoriaService: CategoriaService, private marcaService: MarcaService
+    private dialog: MatDialog,
+    private categoriaService: CategoriaService,
+    private marcaService: MarcaService,
+    private fileService: FileService,
+    private storage: AngularFireStorage
   ) {}
 
   ngOnInit(): void {
@@ -43,6 +55,11 @@ export class EditProdutoComponent implements OnInit {
       this.service.getByIdAdmin(+id).subscribe({
         next: (data) => {
           this.produto = data;
+          this.img = data.img!;
+          console.log(this.produto);
+          this.produto.categoriasId = data.categorias?.map((categoria: any) => categoria.id!) || [];
+          this.produto!.idMarca = data.marca!.id!;
+
         },
         error: (error) => {
           console.error('Erro ao buscar produto', error);
@@ -65,11 +82,65 @@ export class EditProdutoComponent implements OnInit {
         console.error('Erro ao carregar marcas', erro);
       }
     });
-    this.produto.categoriasId = [];
-    this.produto.categorias?.forEach(element => {
-      this.produto.categoriasId?.push(element.id!);
+
+  }
+
+  // removeImage(imageUrl: string) {
+  //   this.img = this.img.filter(image => image !== imageUrl);
+  // }
+
+  onFileSelected(event: any): void {
+    this.selectedFiles = event.target.files;
+  }
+
+  // uploadImages(): void {
+  //   if (this.selectedFiles) {
+  //     const uploadTasks: any[] = [];
+  //     for (let i = 0; i < this.selectedFiles.length; i++) {
+  //       const file = this.selectedFiles[i];
+
+  //       const uploadTask = this.fileService.uploadImage(file)
+  //         .subscribe({
+  //           next: (response) => {
+  //             console.log(response.imagem);
+  //             this.img.push(response.imagem);
+  //           },
+  //           error: (error) => {
+  //             console.error('Erro ao fazer upload da imagem:', error);
+  //           }
+  //         });
+
+  //       uploadTasks.push(uploadTask);
+  //     }
+  //   }
+  // }
+
+  addImage(imageUrl: string) {
+    this.img.push(imageUrl);
+  }
+
+  removeImage(imageUrl: string) {
+    this.img = this.img.filter(image => image !== imageUrl);
+  }
+
+  uploadFile(event: any) {
+    const file = event.target.files[0];
+    const filePath = `images/${file.name}`;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, file);
+
+    task.percentageChanges().subscribe(percent => {
+      this.uploadPercent = percent;
     });
-    this.produto.idMarca = this.produto.marca?.id;
+
+    // Obtenha a URL do download quando o upload estiver completo
+    task.snapshotChanges().pipe(
+      finalize(() => {
+        fileRef.getDownloadURL().subscribe(url => {
+          this.addImage(url);
+        });
+      })
+    ).subscribe();
   }
 
   cancelar(){
@@ -81,6 +152,8 @@ export class EditProdutoComponent implements OnInit {
   }
 
   atualizarProduto() {
+    // this.uploadImages();
+    this.produto.img = this.img;
     const dialogRef = this.dialog.open(ConfiermDialogResetarsenhaComponent, {
       width: '250px',
       data: {

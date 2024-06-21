@@ -14,8 +14,8 @@ import { Compra } from '../../models/compra.model';
 })
 export class UsuariologadoService {
 
-  // private apiUrl = 'http://localhost:8080/usuariologado';
-  private apiUrl = 'http://34.151.236.42:8080/usuariologado';
+  private apiUrl = 'http://localhost:8080/usuariologado';
+  // private apiUrl = 'http://34.151.236.42:8080/usuariologado';
 
   private token  = localStorage.getItem('token');
 

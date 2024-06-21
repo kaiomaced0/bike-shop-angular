@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class FreioService {
 
-  // private baseUrl = 'http://localhost:8080/freio';
-  private baseUrl = 'http://34.151.236.42:8080/freio';
+  private baseUrl = 'http://localhost:8080/freio';
+  // private baseUrl = 'http://34.151.236.42:8080/freio';
 
   private token  = localStorage.getItem('token');
 
@@ -19,12 +19,18 @@ export class FreioService {
   httpOptions2 = {
     headers: new HttpHeaders({'Authorization': 'Bearer ' + this.token})
   };
+  httpOptions3 = {
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
+  };
 
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<Freio[]> {
-    return this.http.get<Freio[]>(this.baseUrl, this.httpOptions);
+  getAll(page:number, pageSize:number): Observable<Freio[]> {
+    return this.http.get<Freio[]>(`${this.baseUrl}/${page}/${pageSize}`, this.httpOptions);
+  }
+  count(): Observable<number> {
+    return this.http.get<number>(`${this.baseUrl}/count`,this.httpOptions3);
   }
 
   insert(nome: string): Observable<any> {

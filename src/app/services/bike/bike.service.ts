@@ -10,8 +10,8 @@ export class BikeService {
 
   private token  = localStorage.getItem('token');
 
-  // private baseUrl = 'http://localhost:8080/bike';
-  private baseUrl = 'http://34.151.236.42:8080/bike';
+  private baseUrl = 'http://localhost:8080/bike';
+  // private baseUrl = 'http://34.151.236.42:8080/bike';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token})
@@ -19,12 +19,18 @@ export class BikeService {
   httpOptions2 = {
     headers: new HttpHeaders({'Authorization': 'Bearer ' + this.token})
   };
+  httpOptions3 = {
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
+  };
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<Bike[]> {
+  getAll(page:number, pageSize:number): Observable<Bike[]> {
     console.info(this.httpOptions);
-    return this.http.get<Bike[]>(this.baseUrl+'/admin', this.httpOptions);
+    return this.http.get<Bike[]>(`${this.baseUrl}/admin/${page}/${pageSize}`, this.httpOptions);
+  }
+  count(): Observable<number> {
+    return this.http.get<number>(`${this.baseUrl}/count`,this.httpOptions3);
   }
 
   insert(p: Bike): Observable<Bike> {

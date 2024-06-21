@@ -7,8 +7,8 @@ import { catchError, map, Observable, Observer, of, tap } from 'rxjs';
 })
 export class AuthService {
 
-  // private baseUrl = 'http://localhost:8080/auth';
-  private baseUrl = 'http://34.151.236.42:8080/auth';
+  private baseUrl = 'http://localhost:8080/auth';
+  // private baseUrl = 'http://34.151.236.42:8080/auth';
 
   constructor(private http: HttpClient) { }
 

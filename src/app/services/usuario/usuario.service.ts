@@ -8,10 +8,10 @@ import { Observable } from 'rxjs';
 })
 export class UsuarioService {
 
-  // private baseUrl = 'http://localhost:8080/pessoafisica';
-  private baseUrl = 'http://34.151.236.42:8080/pessoafisica';
-  // private baseUrl2 = 'http://localhost:8080/usuario';
-  private baseUrl2 = 'http://34.151.236.42:8080/usuario';
+  private baseUrl = 'http://localhost:8080/pessoafisica';
+  // private baseUrl = 'http://34.151.236.42:8080/pessoafisica';
+  private baseUrl2 = 'http://localhost:8080/usuario';
+  // private baseUrl2 = 'http://34.151.236.42:8080/usuario';
 
   constructor(private http: HttpClient) { }
 
@@ -28,8 +28,11 @@ export class UsuarioService {
   };
 
 
-  getAll(): Observable<Usuario[]> {
-    return this.http.get<Usuario[]>(this.baseUrl, this.httpOptions);
+  getAll(page:number, pageSize:number): Observable<Usuario[]> {
+    return this.http.get<Usuario[]>(`${this.baseUrl}/${page}/${pageSize}`, this.httpOptions);
+  }
+  count(): Observable<number> {
+    return this.http.get<number>(`${this.baseUrl}/count`,this.httpOptions3);
   }
 
   resetarSenha(id: number): Observable<any> {

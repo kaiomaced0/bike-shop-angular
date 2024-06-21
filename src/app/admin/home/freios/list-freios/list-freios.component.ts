@@ -8,11 +8,12 @@ import { Freio } from '../../../../models/freio.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfiermDialogResetarsenhaComponent } from '../../../../components/dialog/confierm-dialog-resetarsenha/confierm-dialog-resetarsenha.component';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-list-freios',
   standalone: true,
-  imports: [MatIcon, MatButton, HttpClientModule],
+  imports: [MatIcon, MatButton, HttpClientModule, MatPaginatorModule],
   templateUrl: './list-freios.component.html',
   styleUrl: './list-freios.component.css'
 })
@@ -23,11 +24,23 @@ export class ListFreiosComponent {
   }
 
   freios: Freio[] = [];
+  pageSize = 10;
+  page = 0;
+  totalRecords = 0;
 
   ngOnInit() {
-    this.freioService.getAll().subscribe((data: Freio[]) => {
+    this.freioService.getAll(this.page, this.pageSize).subscribe((data: Freio[]) => {
       this.freios = data;
     });
+    this.freioService.count().subscribe(data => {
+      this.totalRecords = data;
+      console.log(this.totalRecords);
+    });
+  }
+  paginar(event: PageEvent): void {
+    this.page = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.ngOnInit();
   }
 
   irParaNewFreio() {
