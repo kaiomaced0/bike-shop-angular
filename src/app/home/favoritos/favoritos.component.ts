@@ -15,9 +15,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrl: './favoritos.component.css'
 })
 export class FavoritosComponent implements OnInit {
-  constructor(private router: Router, private service: UsuariologadoService,
-    private authService: AuthService,
-    private snackBar: MatSnackBar) {
+  constructor(private router: Router, private service: UsuariologadoService) {
   }
 
   produtos: Produto[] = [];
