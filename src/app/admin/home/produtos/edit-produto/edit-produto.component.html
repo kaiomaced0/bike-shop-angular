@@ -59,7 +59,6 @@
     @for (imagem of img; track imagem) {
     <div class="image-list">
       <div class="image-item">
-        <!-- <img src="http://localhost:8080/file/download/{{imagem}}" alt="Image {{imagem}}" class="product-image" />  <!-- producao -->
         <img src="{{imagem}}" alt="Image {{imagem}}" class="product-image" /> <!-- desenvolvimento -->
         <button mat-flat-button color="warn" (click)="removeImage(imagem)">Remover</button>
       </div>
@@ -67,7 +66,7 @@
     }
 
     <div class="add-image">
-      <p class="instruction">Por favor, adicione uma imagem de cada vez.</p>
+      <p class="instruction">Por favor, adicione uma imagem de cada vez. <br>(aconselhado 200x220)</p>
       <input type="file" (change)="uploadFile($event)" />
     </div>
 
